@@ -34,7 +34,9 @@ for (const target of ["dist", "preview"]) {
   const preview = target === "preview";
   for (const p of PAGES) {
     const html = page({ ...p, preview, isEntry: p.file === "index.html", canonical: p.file === "index.html" ? "" : p.file.replace(/\.html$/, "") });
-    fs.writeFileSync(path.join(out, p.file), html);
+    // Live site: clean URLs (/about instead of about.html). The Claude preview keeps .html links.
+    const final = preview ? html : html.replace(/href="(index|about|work|clientele|cna|outgrow|gnie|jain-connect)\.html(#[^"]*)?"/g, (m, name, hash = "") => `href="${name === "index" ? "/" : "/" + name}${hash}"`).replace(/(href|src)="(styles\.css|main\.js|favicon\.svg|fonts\/|assets\/|Senthil-Devaraj-Resume\.pdf)/g, '$1="/$2');
+    fs.writeFileSync(path.join(out, p.file), final);
   }
   if (!preview) {
     fs.writeFileSync(path.join(out, "404.html"), page({ title: "Page not found · Senthil Devaraj", description: "This page doesn't exist.", active: "", body: `<main id="main"><section class="wrap hero"><p class="eyebrow">404</p><h1 class="display">This page wandered off.</h1><p class="lead">The link may be old or mistyped.</p><div class="btn-row"><a class="btn btn-dark" href="index.html">Go home</a><a class="btn btn-line" href="work.html">See my work</a></div></section></main>` }));

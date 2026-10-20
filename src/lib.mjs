@@ -50,7 +50,7 @@ export function icon(name, cls = "") {
 
 export const SITE = {
   name: "Senthil Devaraj",
-  url: "https://senthildevaraj.co.in",
+  url: "https://www.senthildevaraj.co.in",
   email: "senthildevaraj1998@gmail.com",
   phoneDisplay: "+91 90425 67775",
   phoneHref: "+919042567775",
