@@ -22,7 +22,7 @@ const relink = (html) =>
     })
     .replace(/srcset="([^"]*)"/g, (m, s) => `srcset="${s.replace(/(^|,\s*)\//g, "$1")}"`);
 
-const note = `<div class="preview-note">Preview · the live site is www.senthildevaraj.co.in</div><script>window.SITE_PREVIEW=true</script>`;
+const note = `<div class="preview-note">Preview · images arrive with your Figma export</div><script>window.SITE_PREVIEW=true</script>`;
 for (const p of pages) {
   const file = path.join(OUT, p + ".html");
   let html = relink(fs.readFileSync(file, "utf8")).replace("</body>", `${note}</body>`);
@@ -30,7 +30,7 @@ for (const p of pages) {
     // The artifact host wraps the entry page in its own document: keep only <head> contents + <body> contents.
     const head = html.match(/<head>([\s\S]*)<\/head>/)?.[1] ?? "";
     const body = html.match(/<body[^>]*>([\s\S]*)<\/body>/)?.[1] ?? "";
-    html = `${head}\n${body}\n`;
+    html = `<meta name="claude:viewport-fit-sides" content="cover">\n${head}\n${body}\n`;
   }
   fs.writeFileSync(file, html);
 }
