@@ -1,0 +1,47 @@
+---
+// Product video, muted and looping. Videos live in public/videos/<name>.mp4 (optionally .webm too).
+// Until the file is added, the poster frame (or a placeholder) is shown.
+import fs from "node:fs";
+import path from "node:path";
+import Img from "../Img.astro";
+import { figmaAsset } from "../../lib/figma";
+interface Props {
+  video: string;
+  poster?: string;
+  ratio?: string;
+  bleed?: boolean;
+  label?: string;
+  alt?: string;
+}
+const { video, poster, ratio = "1312/700", bleed, label = "Video", alt = "Product walkthrough video" } = Astro.props;
+const dir = path.join(process.cwd(), "public", "videos");
+const has = (ext: string) => fs.existsSync(path.join(dir, `${video}.${ext}`));
+const mp4 = has("mp4"), webm = has("webm");
+const posterAsset = figmaAsset(poster);
+const [rw, rh] = ratio.split("/").map(Number);
+---
+<figure class:list={["cs-img cs-video", { bleed }]} style={`aspect-ratio:${ratio}`}>
+  {
+    mp4 || webm ? (
+      <video autoplay muted loop playsinline preload="metadata" poster={posterAsset?.src} aria-label={alt}>
+        {webm && <source src={`/videos/${video}.webm`} type="video/webm" />}
+        {mp4 && <source src={`/videos/${video}.mp4`} type="video/mp4" />}
+      </video>
+    ) : poster ? (
+      <Img id={poster} w={rw > 1000 ? rw : undefined} alt={alt} label={label} sizes={bleed ? "100vw" : undefined} />
+    ) : (
+      <div class="ph">{label}</div>
+    )
+  }
+</figure>
+
+<script>
+  // Respect reduced motion: no autoplay, show controls instead.
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    document.querySelectorAll<HTMLVideoElement>(".cs-video video").forEach((v) => {
+      v.removeAttribute("autoplay");
+      v.pause();
+      v.controls = true;
+    });
+  }
+</script>

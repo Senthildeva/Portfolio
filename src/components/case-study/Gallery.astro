@@ -1,0 +1,36 @@
+---
+// Rows of captioned screenshots (2 or 3 per row).
+import Img from "../Img.astro";
+interface Shot {
+  img?: string;
+  w?: number;
+  h?: number;
+  alt?: string;
+  label?: string;
+  cap: string;
+}
+interface Props {
+  title?: string;
+  rows: Shot[][];
+}
+const { title, rows } = Astro.props;
+---
+<div class="cs-gal">
+  {title && <p class="cs-points-head" style="border:0;padding:0">{title}</p>}
+  {
+    rows.map((row) => (
+      <div class={`cs-gal-row cols-${row.length}`}>
+        {row.map((c) => (
+          <figure>
+            {c.img ? (
+              <Img id={c.img} w={c.w ?? 644} h={c.h ?? 322} alt={c.alt ?? ""} label={c.label ?? "Screenshot"} sizes={row.length === 3 ? "(min-width: 1440px) 421px, (min-width: 821px) 31vw, 100vw" : "(min-width: 1440px) 644px, (min-width: 821px) 47vw, 100vw"} />
+            ) : (
+              <div class="ph" style="aspect-ratio:2/1">{c.label ?? ""}</div>
+            )}
+            <figcaption set:html={c.cap} />
+          </figure>
+        ))}
+      </div>
+    ))
+  }
+</div>

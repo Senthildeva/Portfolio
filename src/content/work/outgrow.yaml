@@ -1,0 +1,210 @@
+# OUTGROW (Waycool Labs) — case study page at /outgrow
+# Text fields accept inline HTML: <em> = case colour, <b> = bold, <i class="g"> = gradient text, <span class="hl"> = highlight.
+status: published
+order: 3
+featured: true
+seo:
+  title: Outgrow · Senthil Devaraj
+  description: Outgrow by WayCool Labs — the one-stop solution for farmers, in their own language.
+theme: outgrow
+pager:
+  label: Outgrow (Waycool labs)
+  color: "#22914f"
+card:
+  tag: OUTGROW (Waycool Labs)
+  meta: Agritech • Mobile APP
+  title: The <em>One-Stop Solution</em> for Farmers
+  color: "#22914f"
+  img: "I14086:10016;13934:1360"
+  alt: Outgrow (Waycool labs) case study cover
+hero:
+  tag: <em>OUTGROW (Waycool Labs)</em> • Agritech • Mobile APP
+  title: The <em>One-Stop Solution</em> for Farmers.
+  ctas:
+    - label: Prototype Link
+      href: https://xd.adobe.com/view/8759bb74-6a20-4ecb-b025-7eceb5e92f88-d20a/
+stage:
+  img: "13764:3541"
+  alt: Outgrow farmer app
+  meta:
+    Client: Way-cool Foods - OUTGROW
+    Industry: Agri-tech
+    Role: UX Researcher · Visual Designer
+    Target Audience: Small & marginal farmers
+  intro: Outgrow takes what WayCool learned beside <span class="hl"><b>85,000 farmers</b></span> - Mandi prices, soil testing, weather, crop health - and puts it in one app, in the farmer's own language.
+sections:
+  - blocks:
+      - type: head
+        label: The Setup
+        num: "001"
+        title: A Farmer network, <em>Three years</em> in the making.
+        sub:
+          - Outgrow is the farmer-engagement platform from <b>WayCool Labs</b>, the technology arm of Chennai's WayCool Foods. Long before any app, agronomists and field advisors of Outgrow had spent <b>over three years working alongside farmers on the ground</b> - building a network of more than 85,000 of them.
+          - "In March 2022, that on-ground knowledge became a free - launched in six languages across five states, with one stated mission: <b>To raise the income and profitability of small and marginal farmers, and ultimately reach five million of them.</b>"
+      - type: stats
+        items:
+          - big: <em>85,000</em><small>+</small>
+            label: farmers in the Outgrow network at launch
+            src: WayCool Foods, 2022
+          - big: <em>3</em><small>+yrs</small>
+            label: on the ground before the app existed
+            src: Outgrow extension program
+          - big: <em>5M</em><small>+</small>
+            label: farmers the platform aims to reach
+            src: Stated goal — WayCool
+  - full:
+      type: image
+      img: "13764:3653"
+      w: 1440
+      h: 250
+      bleed: true
+      alt: ""
+      label: Banner
+  - blocks:
+      - type: callout
+        tone: alt
+        title: UX Strategy & Methodology
+        body: I combined field visits with farmers, a competitor scan of existing agri-advisory apps, and persona synthesis to ground every decision in real usage, not assumptions
+        chips: [ Field Interviews, Competitor Analysis, Persona Synthesis ]
+  - blocks:
+      - type: head
+        label: The problem
+        num: "002"
+        title: What we heard, again and again.
+        sub:
+          - Across every conversation, the same picture emerged. Farmers like Gandhi and Murugan didn't lack information - they were lost in scattered, unsolicited advice with no single source to trust. And for farmers on thin margins, that uncertainty translates straight into lost income.
+          - "Listing the pains as we understood them from the field:"
+      - type: points
+        small: true
+        items:
+          - title: No water & irrigation guidance
+            text: No reliable way to plan irrigation or manage water across the farm.
+          - title: Scattered, untrusted advice
+            text: Overexposed to unsolicited tips from many sources, with no single voice to trust.
+          - title: No help with high-yield crops
+            text: Little guidance on managing or improving yield for demanding crops.
+          - title: Opaque, late prices
+            text: Mandi rates arrive late & unclear, leaving farmers at the mercy of middlemen.
+          - title: Insights that come too late
+            text: Soil and crop-health information rarely arrives in time to act on it.
+          - title: A language barrier
+            text: Most digital tools simply don't speak the farmer's mother tongue.
+      - type: callout
+        tone: alt quote
+        title: "\"Today, a farmer depends on multiple platforms and at times is overexposed to unsolicited advisory sources.\""
+        by: "- Sendhil Kumar · Head of Farmer Engagement & Outgrow, WayCool Foods"
+  - blocks:
+      - type: head
+        label: Our research
+        title: We started where the farmers are.
+        sub:
+          - Building on this farmer-engagement platform, the two of us, A small design team - went into the field ourselves. We ran a survey across farming households, sat with farmers on their own land, and watched how they plan, plant, price, and sell across a season.
+          - "The goal was simple: understand the real pain points, not the assumed ones."
+      - type: tags
+        items: [ Field survey, Contextual interviews, On-farm observation, Persona synthesis ]
+      - type: personas
+        tint: true
+        items:
+          - img: "13764:3606"
+            name: Gandhi
+            age: User Age (66)
+            traits: [ Hardworking, Punctual, Observant, Problem-solver ]
+            lists:
+              Goals: [ More information to manage all his crops, "Updates on crops, Irrigation & prices" ]
+              Pain points: [ No good mechanism for water irrigation, No proper guidance for high-yield crops ]
+          - img: "13764:3632"
+            name: Murugan
+            age: User Age (38)
+            traits: [ Curious, Cost-conscious, Tech-ready, Persistent ]
+            lists:
+              Goals: [ "Sell at fair, transparent prices", Adopt modern methods to raise yield ]
+              Pain points: [ Middlemen and unclear mandi rates cut margins, No early warning for pests or bad weather ]
+  - blocks:
+      - type: head
+        label: The Process
+        num: "003"
+        title: Three principles we locked in early
+        sub: Working back from the research, we mapped each pain to a concrete, science-backed feature — the set of solutions that became Outgrow.
+      - type: features
+        items:
+          - title: Real-time market price
+            text: Live Mandi rates from 2,500+ markets, so farmers sell at the right price - not a middleman's.
+          - title: Farm data & NDVI
+            text: Add a farm area and monitor it - farm data analysis, health monitoring and NDVI scores across the season.
+          - title: Weather & climate
+            text: Farm-specific forecasts and microclimatic conditions, with early disease-risk alerts ahead of trouble.
+          - title: Expert advisory
+            text: Agronomist guidance on crops by voice, text or IVR method (Customer Support) - in the farmer's own language.
+          - title: Crop information & Solution
+            text: How to grow each crop, and how to remedy disease the moment it spreads - backed by 500+ remedies.
+          - title: Soil testing
+            text: An Outgrow partner service collects soil from the field and turns it into an actionable report.
+  - blocks:
+      - { type: head, label: The design language }
+      - { type: styleguide, label: Colours & typeface — rebuilding as live text, ratio: 1312/706 }
+      - { type: styleguide, label: UI components — rebuilding as live text, ratio: 1312/948 }
+  - blocks:
+      - { type: head, label: High • Fidelity Wires }
+      - type: image
+        img: "13764:4016"
+        w: 1312
+        h: 1279
+        alt: High fidelity wireframes of the Outgrow app
+        label: Hi-fi wires
+        cap: From early flows and wireframes to a single, consistent interface system.
+  - blocks:
+      - type: head
+        label: The solution
+        num: "004"
+        title: One app for the whole farming cycle.
+        sub: Those research-driven features came to life as a single, calm interface — every service a tap away, every screen readable in bright field light and in the farmer's own language.
+      - type: takeaways
+        label: Key Take-aways
+        items:
+          - Real Time Market Price Access.
+          - Farm Data Analysis and Health Monitoring and NDVI Scores
+          - Weather and Climatic Condition.
+          - Expert Advisory Information about Crops.
+          - Farmers get information about each Crop and how to product and how to remedy if any diseases spread across.
+          - Outgrow partnered service will help on the soil testing by collecting data from the field.
+  - full:
+      type: image
+      img: "13764:4029"
+      w: 1439
+      h: 1791
+      bleed: true
+      fade: true
+      alt: Outgrow app screens
+      label: App screens
+  - full:
+      type: image
+      img: "13773:4372"
+      w: 1440
+      h: 788
+      bleed: true
+      alt: Outgrow in use
+      label: Outgrow showcase
+  - blocks:
+      - type: head
+        label: The OUTCOME
+        num: "005"
+        title: Income, not just information.
+        sub: "The measure of success was never screen time - it was the balance sheet of a farm. By replacing a scatter of half-trusted sources with one credible, multilingual place, Outgrow turned scattered advice into the kind farmers could act on - and farmers in the program saw it land where it matters most: their income."
+      - type: stats
+        grid: true
+        items:
+          - big: <em>20 - 40</em><small>%</small>
+            label: Income increase for Outgrow farmers
+            src: Outgrow program — WayCool, 2022
+          - big: <em>100K</em><small>+</small>
+            label: Downloads on Google Play
+            src: Cumulative, app-level — Google Play
+          - big: <em>2,500</em><small>+</small>
+            label: Markets feeding live prices
+            src: Per Google Play listing
+          - { big: <em>6</em>, label: "Languages, fully localised", src: EN · TA · TE · KN · MR · HI }
+      - type: callout
+        tone: solid
+        title: What I learned
+        body: Designing for users I'd never meet in a lab forced a discipline I'm proud of every decision had to survive a dusty field, a small screen, low connectivity, and …
+        quote: “The hard part wasn't adding features. It was earning enough trust to replace five.”

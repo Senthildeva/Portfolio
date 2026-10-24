@@ -1,0 +1,34 @@
+---
+// Case-study card (Landing, My Works). "Coming soon" projects render as a non-link card.
+import "./ProjectCard.css";
+import Img from "./Img.astro";
+import Icon from "./Icon.astro";
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  entry: CollectionEntry<"work">;
+}
+const { entry } = Astro.props;
+const { card, status } = entry.data;
+const soon = status === "soon";
+const gradient = card.color.startsWith("linear");
+const tagStyle = gradient ? `background:${card.color}` : `--c:${card.color}`;
+const titleColor = gradient ? "#4f46e5" : card.color;
+const sizes = "(min-width: 1440px) 612px, (min-width: 821px) 46vw, 100vw";
+---
+{
+  soon ? (
+    <article class="card soon" aria-label={`${card.tag}, coming soon`}>
+      <div class="card-media"><Img id={card.img} w={612} h={300} alt="" label={card.tag} sizes={sizes} /></div>
+      <div class="card-tags"><span class="tag" style={tagStyle}>{card.tag}</span><span class="tag tag-line">{card.meta}</span></div>
+      <h3 class="card-title" style={`--c:${titleColor}`} set:html={card.title} />
+    </article>
+  ) : (
+    <a class="card" href={`/${entry.id}`} data-reveal>
+      <div class="card-media"><Img id={card.img} w={612} h={300} alt={card.alt} label={card.tag} sizes={sizes} /></div>
+      <div class="card-tags"><span class="tag" style={tagStyle}>{card.tag}</span><span class="tag tag-line">{card.meta}</span></div>
+      <h3 class="card-title" style={`--c:${titleColor}`} set:html={card.title} />
+      <span class="btn btn-lg">View Project <Icon name="arrow-right" /></span>
+    </a>
+  )
+}

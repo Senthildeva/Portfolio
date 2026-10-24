@@ -1,0 +1,22 @@
+---
+// Big numbers with a label, optional explanation and source line.
+import Img from "../Img.astro";
+interface Props {
+  grid?: boolean;
+  caps?: boolean;
+  items: { big?: string; icon?: string; label: string; body?: string; src?: string }[];
+}
+const { grid, caps, items } = Astro.props;
+---
+<div class:list={["cs-stats", { grid }]}>
+  {
+    items.map((s) => (
+      <div class="cs-stat">
+        {s.icon ? <p class="big"><Img id={s.icon} w={48} h={48} alt="" label="◎" style="width:48px;height:48px" /></p> : <p class="big" set:html={s.big ?? ""} />}
+        <p class:list={["what", { caps }]} set:html={s.label} />
+        {s.body && <p class="body" set:html={s.body} />}
+        {s.src && <p class="src" set:html={s.src} />}
+      </div>
+    ))
+  }
+</div>

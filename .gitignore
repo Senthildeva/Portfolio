@@ -1,6 +1,7 @@
 node_modules/
 dist/
 preview/
+.astro/
 fonts-src/
 .vercel/
 .DS_Store

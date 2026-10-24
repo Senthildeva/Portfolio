@@ -1,0 +1,21 @@
+---
+// Inline Lucide icon (https://lucide.dev), e.g. <Icon name="arrow-right" />.
+import fs from "node:fs";
+import path from "node:path";
+
+interface Props {
+  name: string;
+  cls?: string;
+}
+const { name, cls } = Astro.props;
+const file = path.join(process.cwd(), "node_modules", "lucide-static", "icons", `${name}.svg`);
+if (!fs.existsSync(file)) throw new Error(`Icon "${name}" not found in lucide-static`);
+const svg = fs
+  .readFileSync(file, "utf8")
+  .replace(/<!--[\s\S]*?-->/g, "")
+  .replace(/\s*class="[^"]*"/, "")
+  .trim()
+  .replace("<svg", `<svg aria-hidden="true" focusable="false"${cls ? ` class="${cls}"` : ""}`)
+  .replace(/\n\s*/g, " ");
+---
+<Fragment set:html={svg} />

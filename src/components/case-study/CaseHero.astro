@@ -1,0 +1,26 @@
+---
+import Icon from "../Icon.astro";
+interface Props {
+  tag: string;
+  title: string;
+  lead?: string;
+  ctas?: { label: string; href: string; ghost?: boolean }[];
+}
+const { tag, title, lead, ctas } = Astro.props;
+---
+<section class="wrap cs-hero" aria-labelledby="cs-title">
+  <p class="cs-tag" set:html={tag} />
+  <h1 class="cs-title" id="cs-title" set:html={title} />
+  {lead && <p class="lead" set:html={lead} />}
+  {
+    ctas && ctas.length > 0 && (
+      <div class="btn-row">
+        {ctas.map((c) => (
+          <a class:list={["btn cs-btn", { ghost: c.ghost }]} href={c.href} target="_blank" rel="noopener">
+            {c.label} <Icon name="arrow-right" />
+          </a>
+        ))}
+      </div>
+    )
+  }
+</section>

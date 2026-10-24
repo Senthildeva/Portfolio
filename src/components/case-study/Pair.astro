@@ -1,0 +1,21 @@
+---
+import Img from "../Img.astro";
+import Video from "./Video.astro";
+type Item = { video: string; poster?: string; ratio?: string; label?: string; alt?: string } | { img: string; w?: number; h?: number; alt?: string; label?: string };
+interface Props {
+  items: Item[];
+}
+---
+<div class="cs-pair">
+  {
+    Astro.props.items.map((c) =>
+      "video" in c ? (
+        <Video {...c} />
+      ) : (
+        <figure class="cs-img" style={`--ar:${c.w ?? 644}/${c.h ?? 600}`}>
+          <Img id={c.img} w={c.w ?? 644} h={c.h ?? 600} alt={c.alt ?? ""} label={c.label ?? "Image"} sizes="(min-width: 1440px) 644px, (min-width: 821px) 47vw, 100vw" />
+        </figure>
+      ),
+    )
+  }
+</div>

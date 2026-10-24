@@ -1,0 +1,6 @@
+---
+interface Props {
+  items: { title: string; text: string }[];
+}
+---
+<ol class="cs-features">{Astro.props.items.map((f, i) => <li><p class="cs-hand-num" aria-hidden="true">{i + 1}</p><h3 set:html={f.title} /><p set:html={f.text} /></li>)}</ol>

@@ -1,0 +1,12 @@
+---
+// Three numbered principles side by side (tone: card | dark).
+interface Props {
+  tone?: string;
+  items: { title: string; text: string }[];
+}
+const { tone, items } = Astro.props;
+const ROMAN = ["I", "II", "III", "IV", "V", "VI"];
+---
+<div class:list={["cs-principles", tone]}>
+  {items.map((p, i) => <div><p class="num" aria-hidden="true">{ROMAN[i]}</p><h3 set:html={p.title} /><p set:html={p.text} /></div>)}
+</div>

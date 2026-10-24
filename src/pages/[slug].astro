@@ -1,0 +1,41 @@
+---
+// Case-study pages: one per published YAML file in src/content/work (cna.yaml → /cna).
+import Base from "../layouts/Base.astro";
+import "../styles/case-study.css";
+import CaseHero from "../components/case-study/CaseHero.astro";
+import Stage from "../components/case-study/Stage.astro";
+import Block from "../components/case-study/Block.astro";
+import Pager from "../components/case-study/Pager.astro";
+import { caseStudies, neighbours, type WorkEntry } from "../lib/work";
+
+export async function getStaticPaths() {
+  const list = await caseStudies();
+  return list.map((entry) => ({ params: { slug: entry.id }, props: { entry, ...neighbours(list, entry.id) } }));
+}
+
+interface Props {
+  entry: WorkEntry;
+  prev?: WorkEntry;
+  next?: WorkEntry;
+}
+const { entry, prev, next } = Astro.props;
+const d = entry.data;
+---
+<Base title={d.seo!.title} description={d.seo!.description} active="work">
+  <main id="main" class={`cs theme-${d.theme}`}>
+    <CaseHero {...d.hero!} />
+    <Stage {...d.stage!} />
+    {
+      d.sections!.map((s) =>
+        "full" in s ? (
+          <div data-reveal><Block block={s.full} /></div>
+        ) : s.band ? (
+          <section class="cs-band" data-reveal><div class="wrap cs-sec">{s.blocks.map((b) => <Block block={b} />)}</div></section>
+        ) : (
+          <section class:list={["wrap cs-sec", s.cls]} id={s.id} data-reveal>{s.blocks.map((b) => <Block block={b} />)}</section>
+        ),
+      )
+    }
+    <Pager prev={prev} next={next} />
+  </main>
+</Base>

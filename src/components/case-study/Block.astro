@@ -1,0 +1,59 @@
+---
+// Renders one content block from a case-study YAML file by its `type`.
+import type { Block as BlockData } from "../../content.config";
+import SectionHead from "./SectionHead.astro";
+import Subhead from "./Subhead.astro";
+import Split from "./Split.astro";
+import Stats from "./Stats.astro";
+import Callout from "./Callout.astro";
+import Personas from "./Personas.astro";
+import Points from "./Points.astro";
+import Table from "./Table.astro";
+import Gallery from "./Gallery.astro";
+import Principles from "./Principles.astro";
+import Features from "./Features.astro";
+import Steps from "./Steps.astro";
+import Takeaways from "./Takeaways.astro";
+import Tags from "./Tags.astro";
+import Decision from "./Decision.astro";
+import Figure from "./Figure.astro";
+import Pair from "./Pair.astro";
+import Video from "./Video.astro";
+import Masonry from "./Masonry.astro";
+import StyleGuide from "./StyleGuide.astro";
+import CnaComponents from "./CnaComponents.astro";
+import RawHtml from "./RawHtml.astro";
+
+interface Props {
+  block: BlockData;
+}
+const { block } = Astro.props;
+const { type, ...props } = block;
+const COMPONENTS = {
+  head: SectionHead,
+  subhead: Subhead,
+  split: Split,
+  stats: Stats,
+  callout: Callout,
+  personas: Personas,
+  points: Points,
+  table: Table,
+  gallery: Gallery,
+  principles: Principles,
+  features: Features,
+  steps: Steps,
+  takeaways: Takeaways,
+  tags: Tags,
+  decision: Decision,
+  image: Figure,
+  pair: Pair,
+  video: Video,
+  masonry: Masonry,
+  styleguide: StyleGuide,
+  "cna-components": CnaComponents,
+  html: RawHtml,
+} as const;
+const Component = COMPONENTS[type] as any;
+if (!Component) throw new Error(`Unknown case-study block type "${type}"`);
+---
+<Component {...props} />

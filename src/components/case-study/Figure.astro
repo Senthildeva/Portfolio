@@ -1,0 +1,21 @@
+---
+// A single image block (bleed: edge to edge; radius: rounded corners; fade: fades into the page at the bottom).
+import Img from "../Img.astro";
+interface Props {
+  img: string;
+  w?: number;
+  h?: number;
+  bleed?: boolean;
+  radius?: boolean;
+  fade?: boolean;
+  alt?: string;
+  label?: string;
+  cap?: string;
+}
+const { img, w = 1312, h = 700, bleed, radius, fade, alt = "", label = "Image", cap } = Astro.props;
+---
+<figure class:list={["cs-img", { bleed, round: radius }]} style={`--ar:${w}/${h}`}>
+  <Img id={img} w={w} h={h} alt={alt} label={label} sizes={bleed ? "100vw" : undefined} />
+  {fade && <span class="fade" aria-hidden="true"></span>}
+  {cap && <figcaption set:html={cap} />}
+</figure>

@@ -1,0 +1,67 @@
+---
+// An image from the Figma export, looked up by Figma layer id.
+// Raster images get a responsive srcset (WebP); SVGs are used as-is.
+// Until the export exists, a labelled placeholder holds the image's space.
+import { Image } from "astro:assets";
+import { figmaAsset, isSvg } from "../lib/figma";
+
+interface Props {
+  id?: string | null;
+  /** Width/height the image is shown at in the design (CSS px). */
+  w?: number;
+  h?: number;
+  alt?: string;
+  cls?: string;
+  /** Above the fold: load first instead of lazily. */
+  eager?: boolean;
+  /** Text shown on the placeholder while the image is missing. */
+  label?: string;
+  style?: string;
+  /** Override the srcset `sizes` hint when the image is not shown at `w` on wide screens. */
+  sizes?: string;
+}
+
+const { id, w, h, alt = "", cls = "", eager = false, label = "", style = "", sizes } = Astro.props;
+const asset = figmaAsset(id);
+const load = eager ? { fetchpriority: "high" as const } : { loading: "lazy" as const };
+
+let width: number | undefined;
+let widths: number[] | undefined;
+if (asset && !isSvg(asset)) {
+  width = Math.min(Math.round(w ?? asset.width / 2), asset.width);
+  const candidates = [Math.round(width / 2), width, Math.round(width * 1.5), width * 2].filter((x) => x >= 120 && x <= asset.width);
+  widths = [...new Set(candidates.length ? candidates : [asset.width])];
+}
+const phStyle = w && h ? `--w:${w}px;--h:${h}px;${style}` : style || undefined;
+---
+{
+  !asset ? (
+    <div class:list={["ph", cls]} style={phStyle} role="img" aria-label={alt || label}>
+      {label || alt || "image"}
+    </div>
+  ) : isSvg(asset) ? (
+    <img
+      src={asset.src}
+      width={Math.round(w ?? asset.width)}
+      height={Math.round(h ?? asset.height)}
+      alt={alt}
+      class={cls || undefined}
+      style={style || undefined}
+      {...load}
+      decoding="async"
+    />
+  ) : (
+    <Image
+      src={asset}
+      width={width}
+      widths={widths}
+      sizes={sizes ?? `(min-width: ${width}px) ${width}px, 100vw`}
+      alt={alt}
+      class={cls || undefined}
+      style={style || undefined}
+      quality={85}
+      {...load}
+      decoding="async"
+    />
+  )
+}

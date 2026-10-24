@@ -1,0 +1,29 @@
+---
+// Numbered points in two columns (one: single column; rule: line underneath; big/small: text size).
+interface Props {
+  heading?: string;
+  one?: boolean;
+  rule?: boolean;
+  big?: boolean;
+  small?: boolean;
+  items: { n?: number; kicker?: string; title?: string; text: string }[];
+}
+const { heading, one, rule, big, small, items } = Astro.props;
+---
+<div class="cs-points-wrap">
+  {heading && <p class="cs-points-head">{heading}</p>}
+  <ol class:list={["cs-points", { one, rule }]}>
+    {
+      items.map((p, i) => (
+        <li>
+          <span class="n" aria-hidden="true">{String(p.n ?? i + 1).padStart(2, "0")}</span>
+          <div>
+            {p.kicker && <p class="cs-kicker" set:html={p.kicker} />}
+            {p.title && <p class:list={["t", { big }]} set:html={p.title} />}
+            <p class:list={["d", { small }]} set:html={p.text} />
+          </div>
+        </li>
+      ))
+    }
+  </ol>
+</div>

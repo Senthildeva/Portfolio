@@ -1,0 +1,35 @@
+/* ---------- clientele ---------- */
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px;padding-bottom:48px;border-bottom:1px solid var(--line)}
+.stat dt{font-family:var(--text);font-weight:500;font-size:20px;line-height:24px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-3)}
+.stat dd{margin:12px 0 0;font-family:var(--text);font-weight:800;font-size:clamp(24px,2.3vw,32px);line-height:1.35;text-transform:uppercase;color:var(--ink)}
+@media (max-width:760px){.stats{grid-template-columns:minmax(0,1fr);gap:24px}}
+.brand-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px}
+@media (max-width:1100px){.brand-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:760px){.brand-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}}
+.brand{position:relative;height:200px;background:var(--paper-2);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;padding:20px 12px;transition:background-color .3s}
+.brand:hover{background:#f3f3f6}
+.brand-logo{flex:1;display:flex;align-items:center;justify-content:center;transition:transform .35s cubic-bezier(.3,1.4,.5,1)}
+.brand:hover .brand-logo{transform:scale(1.06)}
+.brand-logo img{width:auto}
+.brand-logo .ph{width:var(--w);height:var(--h);border-radius:6px;font-size:10px}
+.brand-tag{font-family:var(--text);font-weight:500;font-size:14px;line-height:17px;text-transform:uppercase;color:#555555;text-align:center}
+@media (max-width:760px){.brand{height:150px}.brand-logo{transform:scale(.78)}.brand:hover .brand-logo{transform:scale(.82)}.brand-tag{font-size:11px}}
+.sectors{background:var(--sand);border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:40px}
+.pills{display:flex;flex-wrap:wrap;gap:20px}
+.pill{display:inline-flex;align-items:center;gap:12px;background:var(--paper);border-radius:8px;padding:8px 16px;font-size:16px;line-height:20px;color:var(--ink)}
+.pill svg{width:16px;height:16px;flex:none}
+@media (max-width:640px){.pills{gap:10px}}
+.quotes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+@media (max-width:900px){.quotes{grid-template-columns:minmax(0,1fr)}}
+.quote{border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;background:var(--paper)}
+.quote-head{padding:16px;display:flex;flex-direction:column;gap:12px;background:var(--qbg,#fff8f0)}
+.quote-who{display:flex;align-items:center;gap:16px}
+.avatar{width:40px;height:40px;border-radius:50%;overflow:hidden;flex:none;background:var(--line)}
+.avatar img{width:100%;height:100%;object-fit:cover}
+.quote-who b{font-family:var(--display);font-weight:700;font-size:24px}
+.quote-meta{display:flex;align-items:center;gap:16px;padding-top:12px;border-top:1px solid rgba(16,16,16,.15);font-size:16px;line-height:20px;color:var(--ink-2)}
+.quote-meta span{flex:1;min-width:0}
+.quote-meta img{height:16px;width:auto;flex:none}
+.quote blockquote{margin:0;padding:16px 16px 24px;font-size:20px;line-height:36px;color:var(--ink-2)}
+.quote blockquote b{font-weight:800;color:var(--ink)}
+@media (max-width:640px){.quote blockquote{font-size:17px;line-height:30px}}

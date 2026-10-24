@@ -1,0 +1,7 @@
+/* ---------- logo strip ---------- */
+.logos{overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.logos .ticker-group{gap:100px;padding-right:100px}
+.logo-item{height:55px;display:flex;align-items:center;flex:none;gap:0}
+.logo-item img{height:auto;max-height:none}
+.logo-item .ph{width:var(--w);height:var(--h);border-radius:6px;font-size:10px;padding:4px}
+@media (max-width:640px){.logos .ticker-group{gap:56px;padding-right:56px}.logo-item{transform:scale(.8)}}

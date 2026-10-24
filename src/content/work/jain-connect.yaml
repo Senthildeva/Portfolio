@@ -1,0 +1,242 @@
+# JDC - Jain Irrigation Systems — case study page at /jain-connect
+# Text fields accept inline HTML: <em> = case colour, <b> = bold, <i class="g"> = gradient text, <span class="hl"> = highlight.
+status: published
+order: 5
+featured: true
+seo:
+  title: Jain Connect · Senthil Devaraj
+  description: Jain Connect — one dashboard for every level of sales at Jain Irrigation Systems.
+theme: jain
+pager:
+  label: Jain Irrigation System (JC)
+  color: "#1479ff"
+card:
+  tag: JDC - Jain Irrigation Systems
+  meta: Agri - Sales Enablement • Mobile APP
+  title: <em>One dashboard</em> for every level of sales
+  color: "#1479ff"
+  img: "I14086:10018;13934:1360"
+  alt: Jain Connect case study cover
+hero:
+  tag: <em>Jain Irrigation Systems</em> • Agri - Sales Enablement • Mobile APP
+  title: Jain Connect - <em>One dashboard for every level of sales.</em>
+stage:
+  img: "13779:1685"
+  alt: Jain Connect dashboard
+  meta:
+    Client: Jain Irrigation Systems - (Jain Dealer Connect JDC)
+    Industry: Agri - Sales Enablement
+    Role: UX Research · End to End Product Designer
+    Target Audience: Employee Sales Dealers
+  intro: Redesigning how Jain Irrigation's sales team <span class="hl">sees its own numbers -</span> Pending and Delivered Orders, Monthly Targets and Account Balances - across 8 product categories and a 5 level management hierarchy.
+sections:
+  - blocks:
+      - type: head
+        label: The Setup
+        num: "001"
+        title: "A new brief: The dashboard <em>behind the dealer network.</em>"
+        sub:
+          - "With the customer-facing showcasing app shipped, the client came back with a very different brief: an <b>Admin-and-Dealer application</b> built entirely around hierarchy, salesperson data and managerial activity."
+          - A salesperson needed to raise a new order, manage it through to delivery, and track the financials behind it - while every level above them saw the orders, payments and targets relevant to their role.
+      - type: stats
+        items:
+          - big: <em>8</em>
+            label: Drip Irrigation · Sprinkler · Solar · Tissue Culture · PVC · Food Processing · Renewable Energy & more
+            src: Product categories in one comparison view
+          - big: <em>5</em>
+            label: Aggregated reports down to individual performance (Sales, targets, performance)
+            src: Management levels, top to salesperson
+          - big: <em>1</em><small>st</small>
+            label: Extra attention went into usability, and it pushed me to think in more directions towards solutions.
+            src: My first dashboard project
+  - full:
+      type: image
+      img: "13779:1726"
+      w: 1440
+      h: 250
+      bleed: true
+      alt: ""
+      label: Banner
+  - blocks:
+      - type: callout
+        title: UX Strategy & Methodology
+        body: I ran structured interviews across two hierarchy levels, mapped the existing data model by hand, and validated each design decision against a real sales scenario before building it.
+        chips: [ Stakeholder Interviews, Data Modeling, Hierarchy Mapping ]
+  - blocks:
+      - type: head
+        label: The problem
+        num: "002"
+        title: The old system was <em>too simple to be useful.</em>
+        sub: "Across conversations with Salespersons and managers, one thing kept surfacing - the system held all the data, but gave nobody a way to act on it. Listing the pains as we understood them from the field:"
+      - type: points
+        heading: Reframed as user problems
+        small: true
+        items:
+          - title: No order categorisation
+            text: Pending and dispatched orders shown as one flat list, with no way to filter across 8 product categories.
+          - title: Categories that didn't compare
+            text: Each product category tracked on a different scale — comparing performance across them meant manual cross-referencing.
+          - title: One dashboard, five roles
+            text: The same screen served sales persons, regional managers and top management, with no way to see only what a role actually needed.
+          - title: Account status buried
+            text: Outstanding amounts and balances lived outside the daily order flow, so sales persons had no early warning on dues.
+          - title: No target-vs-actual view
+            text: Sales targets and achieved numbers sat in separate reports, with no simple way to see how far off the target you were.
+          - title: Built for a desk, used on the move
+            text: Dealers needed this in the field, but the existing system assumed a browser and a desk.
+      - { type: subhead, text: What Jain Connect does }
+      - type: principles
+        tone: card
+        items:
+          - title: Raise, Manage and Track Orders
+            text: A salesperson creates an order, follows it through dispatch, and tracks the truck and its financials.
+          - title: Analyse Sales and Targets
+            text: Achieved sales against monthly targets - for an individual and at every hierarchy level.
+          - title: Hierarchy - level Management
+            text: Five levels, one system - each role sees the depth of data it actually needs.
+      - type: callout
+        tone: solid
+        title: Aha Moment !
+        body: <b>Both Rajeev and Sunil were drowning in the same flat data.</b> The fix wasn't more numbers — it was shaping the data to whoever was looking. Aggregate at the top, detail at the bottom, and let the login decide the view. That single insight set the direction for everything that followed.
+  - blocks:
+      - type: head
+        label: Our research
+        title: <em>How we got here</em>
+        sub: Before designing anything, we grounded the brief in how the sales team actually works — talking to the people who live in this data every day.
+      - type: stats
+        items:
+          - big: <em>3</em>
+            label: Connected virtually with salespeople the client arranged - hearing how orders and targets really move on the ground.
+            src: Salesperson interviews
+          - big: <em>2</em>
+            label: Admin (behind the customer view) and dealer - one system serving very different needs and permissions.
+            src: Sides to design for
+          - icon: "13779:1857"
+            label: Studied comparable admin and dealer apps to borrow patterns worth keeping and spot gaps worth fixing.
+            src: Competitor scan
+      - { type: subhead, text: Who felt it — two ends of the hierarchy }
+      - type: personas
+        tint: true
+        items:
+          - img: "13779:1869"
+            name: Rajeev
+            age: Regional Manager · Age 40
+            traits: [ Organized, Thinker, Introvert ]
+            lists:
+              Goals: [ Consistently hit sales targets and exceed quotas., Develop and manage a high-performing sales team. ]
+              Pain points:
+                - No hierarchy structure across order sales and performance metrics.
+                - Managing complex sales cycles with many order statistics.
+              Behaviours:
+                - Regularly reviews sales data and performance metrics.
+                - Proactively identifies and addresses customer concerns.
+          - img: "13779:1897"
+            name: Sunil
+            age: Sales Person · Age 29
+            traits: [ Overloaded work, Reactive, Field-first, Persistent ]
+            lists:
+              Goals: [ Finally hit this month's target after falling short., Know which orders and categories to chase first. ]
+              Pain points:
+                - Trailing target with no clear view of the gap left to close.
+                - Loses track of pending vs. dispatched orders and outstanding payments.
+              Behaviours: [ "Works mostly from mobile, out in the field.", Reacts to whatever is urgent instead of planning ahead. ]
+  - blocks:
+      - type: head
+        label: The Process
+        num: "003"
+        title: From flat data to <em>3 design decisions.</em>
+        sub: We took the pain points from the interviews and the data-driven findings from the research and converted each one into a concrete design decision. Working closely with my senior and the client, I mapped every metric the sales team relied on, then tested where it belonged in the hierarchy — three decisions did most of the heavy lifting.
+      - type: steps
+        items:
+          - title: Map the metrics
+            text: Listed every number each role needs, across all eight categories.
+          - title: Shape by hierarchy
+            text: Decided what each of the five levels should see, and at what depth.
+          - title: Design & iterate
+            text: Built one reusable frame so categories stay comparable at a glance.
+          - title: Refine post-launch
+            text: Folded real client and sales-team feedback into three revisions.
+  - blocks:
+      - { type: head, label: The design language }
+      - { type: styleguide, label: Colours & typeface — rebuilding as live text, ratio: 1312/514 }
+      - { type: styleguide, label: UI components — rebuilding as live text, ratio: 1312/640 }
+  - blocks:
+      - type: head
+        label: The Solution
+        num: "004"
+        title: Detailed tracking, <em>Shaped by hierarchy.</em>
+        sub: One dashboard covering orders, financials and targets - where the same system reshapes itself for every login, from a Zonal Head's overview down to a single Sales Executive's day.
+      - type: principles
+        tone: card
+        items:
+          - title: <em>5 levels,</em> <b>one source of truth</b>
+            text: Login decides scope — aggregate at the top, a person's own orders and targets at the bottom.
+          - title: 8 categories, <b>only one frame</b>
+            text: Mismatched category data made comparable — switch the tab, keep the same analytics layout.
+          - title: Target vs achieved, <b>at a glance</b>
+            text: Over- and under-achievement read instantly, with a per-category breakdown in crores.
+  - full:
+      type: masonry
+      cols:
+        - - { img: "13779:2204", h: 1925, alt: Home — hierarchy view }
+          - { img: "13779:2205", h: 660, alt: Account balance }
+        - - { img: "13779:2207", h: 902, alt: Sales by customer type }
+          - { img: "13779:2208", h: 514, alt: Add profile details }
+          - { img: "13779:2209", h: 449, alt: Account balance }
+          - { img: "13779:2210", h: 354, alt: Add profile details }
+        - - { img: "13779:2212", h: 509, alt: Salesperson profile }
+          - { img: "13779:2213", h: 600, alt: Videos home }
+          - { img: "13779:2214", h: 751, alt: Open orders }
+          - { img: "13779:2215", h: 514, alt: Onboarding }
+        - - { img: "13779:2217", h: 364, alt: Dialog }
+          - { img: "13779:2218", h: 669, alt: 3 years data }
+          - { img: "13779:2219", h: 534, alt: Product detail — PVC ball valves }
+          - { img: "13779:2220", h: 514, alt: Design calculator }
+          - { img: "13779:2221", h: 514, alt: Design calculator }
+        - - { img: "13779:2223", h: 514, alt: Log in }
+          - { img: "13779:2224", h: 201, alt: Dialog }
+          - { img: "13779:2225", h: 514, alt: Drip irrigation }
+          - { img: "13779:2226", h: 514, alt: Onboarding }
+          - { img: "13779:2227", h: 449, alt: Account balance }
+  - blocks:
+      - type: image
+        img: "13779:2230"
+        w: 1280
+        h: 760
+        radius: true
+        alt: Jain Connect web dashboard
+        label: Dashboard
+      - type: pair
+        items:
+          - img: "13779:2232"
+            w: 620
+            h: 620
+            alt: Jain Connect app detail
+            label: App detail
+          - img: "13779:2233"
+            w: 620
+            h: 620
+            alt: Jain Connect app detail
+            label: App detail
+  - blocks:
+      - type: head
+        label: The Outcome
+        num: "005"
+        title: One dashboard, five levels, <em>decisions in a glance.</em>
+      - type: points
+        small: true
+        items:
+          - kicker: take away
+            text: A real understanding of hierarchy-level design - modelling how the same data should change shape as it moves up and down an organisation.
+          - kicker: take away
+            text: My first time handling the admin app - the layer behind the customer view - and designing for permissions, not just screens.
+          - kicker: shipped as
+            text: Detailed tracking of pending and dispatched orders with truck tracking, segmented across all 8 product categories.
+          - kicker: shipped as
+            text: Login-based visibility - higher managers see orders, payments and targets across every location; a salesperson sees only their own.
+      - type: callout
+        tone: solid
+        deco: "13779:2462"
+        title: What I learned
+        body: As my <b>1st dashboard Project</b> - and my first admin app behind a customer-facing product - this project reshaped how I think about presenting data. <b>I learned to design around hierarchy</b> and <b>login-based permissions</b>, and to <b>structure complex</b>, mismatched data into something a busy salesperson can actually read and act on.
+        quote: "\"The best dashboards don't show more — they show less, to the right person.\""

@@ -1,0 +1,23 @@
+---
+// Tinted box: strategy notes, "Aha moment", quotes, "What I learned". tone: alt | quote | solid (space-separated).
+import Img from "../Img.astro";
+interface Props {
+  tone?: string;
+  deco?: string;
+  title: string;
+  body?: string | string[];
+  chips?: string[];
+  quote?: string;
+  by?: string;
+}
+const { tone, deco, title, body, chips, quote, by } = Astro.props;
+const paras = body ? ([] as string[]).concat(body) : [];
+---
+<div class:list={["cs-callout", tone]}>
+  {deco && <div class="cs-deco" aria-hidden="true"><Img id={deco} alt="" label=" " /></div>}
+  <h3 set:html={title} />
+  {paras.map((p) => <p set:html={p} />)}
+  {chips && <ul class="cs-chips">{chips.map((c) => <li>{c}</li>)}</ul>}
+  {quote && <p class="cs-hand" set:html={quote} />}
+  {by && <p class="cs-by" set:html={by} />}
+</div>

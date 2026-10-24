@@ -1,0 +1,37 @@
+---
+// Live style guide: colour swatches with tints, and the typeface specimen.
+// Without `colors`, shows a placeholder (sections still to be rebuilt from Figma).
+interface Props {
+  colors?: { bg: string; items: { name: string; hex: string; tints: string[] }[] };
+  face?: { name: string; stack: string };
+  label?: string;
+  ratio?: string;
+}
+const { colors, face, label, ratio } = Astro.props;
+---
+{
+  colors && face ? (
+    <div class="sg">
+      <div class="sg-card" style={`--sgbg:${colors.bg}`}>
+        <h4>Colors</h4>
+        <div class="sg-panel sg-colors">
+          {colors.items.map((c) => (
+            <div class="sg-swatch">
+              <div class="sg-main" style={`background:${c.hex}`}><span>{c.name}</span><span>{c.hex.toUpperCase()}</span></div>
+              <div class="sg-tints">{c.tints.map((t) => <span style={`background:${t}`} title={t} />)}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div class="sg-card" style="--sgbg:#101010">
+        <h4>Typeface</h4>
+        <div class="sg-panel sg-type">
+          <p class="sg-face" style={`font-family:${face.stack}`}>{face.name}</p>
+          <div class="sg-specimen" style={`font-family:${face.stack}`} aria-hidden="true"><span class="ghost">Aa</span><span>Aa</span></div>
+        </div>
+      </div>
+    </div>
+  ) : (
+    <div class="cs-sg"><div class="ph" style={`aspect-ratio:${ratio ?? "1312/516"}`}>{label ?? "Style guide — live version in progress"}</div></div>
+  )
+}

@@ -1,0 +1,32 @@
+---
+// Lines that roll up one after another (About hero). Screen readers get all lines at once via aria-label.
+interface Props {
+  lines: string[];
+}
+const { lines } = Astro.props;
+---
+<div class="rotator" aria-label={lines.map((l) => l.replace(/^—\s*/, "").replace(/\.$/, "")).join(", ")}>
+  <ul aria-hidden="true">{lines.map((l) => <li>{l}</li>)}</ul>
+</div>
+
+<script>
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  document.querySelectorAll<HTMLElement>(".rotator").forEach((r) => {
+    const ul = r.querySelector("ul")!;
+    const n = ul.children.length;
+    if (n < 2 || reduce) return;
+    ul.appendChild(ul.children[0].cloneNode(true));
+    let i = 0;
+    setInterval(() => {
+      i++;
+      ul.style.transition = "";
+      ul.style.transform = `translateY(${-i * (ul.children[0] as HTMLElement).offsetHeight}px)`;
+      if (i === n)
+        setTimeout(() => {
+          ul.style.transition = "none";
+          ul.style.transform = "translateY(0)";
+          i = 0;
+        }, 750);
+    }, 2400);
+  });
+</script>

@@ -1,0 +1,6 @@
+---
+interface Props {
+  items: { title: string; text: string }[];
+}
+---
+<ol class="cs-steps">{Astro.props.items.map((s, i) => <li><p class="k">Step {String(i + 1).padStart(2, "0")}</p><h3 set:html={s.title} /><p set:html={s.text} /></li>)}</ol>

@@ -1,0 +1,32 @@
+---
+import Base from "../layouts/Base.astro";
+import LogoStrip from "../components/LogoStrip.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import { allWork } from "../lib/work";
+
+const projects = await allWork();
+---
+<Base title="My Works · Senthil Devaraj" description="Case studies: CNA on Apple TV, Outgrow for farmers, Gnie at GITEX 2024 and Jain Connect." active="work">
+  <main id="main">
+    <section class="wrap hero" aria-labelledby="work-title">
+      <p class="eyebrow">CASE STUDIES · 2020 - 2026</p>
+      <h1 class="display" id="work-title">Solving complex problems under real business constraints.</h1>
+      <p class="lead">Meaningful work happens where constraints, people, and purpose intersect. These case studies represent my work solving complex challenges, making deliberate decisions, and delivering measurable impact.</p>
+    </section>
+
+    <section class="wrap" aria-labelledby="trusted" style="display:flex;flex-direction:column;gap:40px">
+      <p class="label" id="trusted" style="color:var(--ink);font-weight:800">Trusted by global brands</p>
+      <div style="border-block:1px solid var(--line);padding-block:40px"><LogoStrip /></div>
+    </section>
+
+    <section class="wrap work" aria-labelledby="cs-title">
+      <div class="section-head">
+        <h2 class="h2" id="cs-title">Case Studies</h2>
+        <p class="sub">Each project, each different constraint - here's how I solved it.</p>
+      </div>
+      <div class="cards">
+        {projects.map((e) => <ProjectCard entry={e} />)}
+      </div>
+    </section>
+  </main>
+</Base>

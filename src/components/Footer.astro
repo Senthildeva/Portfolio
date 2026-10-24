@@ -1,0 +1,44 @@
+---
+import "./Footer.css";
+import Img from "./Img.astro";
+import Icon from "./Icon.astro";
+import { SITE } from "../site";
+---
+<footer class="footer">
+  <div class="footer-bg" aria-hidden="true"><Img id="I14086:10073;13934:1491" w={1440} h={545} alt="" label=" " sizes="100vw" /></div>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="f-cta">
+        <div>
+          <h2>Let’s Design <span>incredible work together.</span></h2>
+          <button class="chai" type="button" data-say-hi><span class="chai-pill">Let's chat over Chai ☕️</span><span class="chai-arrow"><Icon name="arrow-right" /></span></button>
+        </div>
+        <div class="socials">
+          <a class="social" href={SITE.linkedin} target="_blank" rel="noopener" aria-label="LinkedIn"><Icon name="linkedin" /></a>
+          <a class="social" href={`tel:${SITE.phoneHref}`} aria-label={`Call ${SITE.phoneDisplay}`}><Icon name="phone" /></a>
+        </div>
+      </div>
+      <div class="f-side">
+        <div class="glass f-status"><span class="pulse" aria-hidden="true"></span>Open to new work</div>
+        <div class="f-row">
+          <div class="glass f-note">
+            <p class="from">Note from <b>Senthil</b> ❤</p>
+            <div>
+              <p>Hi, thank you for being here 👋🏻</p>
+              <hr />
+              <p>Design, to me, is understanding the problem behind the screen,<br />If you want to build something intentional together,</p>
+              <hr />
+              <p>Don't be shy, say hi!<br /><a href={`mailto:${SITE.email}`}>{SITE.email}</a></p>
+            </div>
+          </div>
+          <div class="glass f-logo"><Img id="I14086:10073;13934:1548" w={232} h={232} alt="Senthil design" label="logo" /></div>
+        </div>
+      </div>
+    </div>
+    <div class="f-bottom"><p>© <span data-year>{new Date().getFullYear()}</span> Senthil Devaraj</p><p>100% designed and integrated on Claude by me ❤</p></div>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll("[data-year]").forEach((y) => (y.textContent = String(new Date().getFullYear())));
+</script>

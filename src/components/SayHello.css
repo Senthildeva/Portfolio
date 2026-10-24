@@ -1,0 +1,48 @@
+/* ---------- say hi panel ---------- */
+.hi-scrim{position:fixed;inset:0;z-index:90;background:rgba(16,16,16,.45);opacity:0;visibility:hidden;transition:opacity .35s ease,visibility .35s}
+.hi-panel{position:fixed;z-index:100;top:0;right:0;bottom:0;width:min(708px,100%);background:var(--paper);display:flex;flex-direction:column;justify-content:space-between;transform:translateX(100%);transition:transform .45s cubic-bezier(.2,.8,.2,1);overflow-y:auto;overscroll-behavior:contain;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);padding-right:env(safe-area-inset-right,0px)}
+body.hi-open .hi-scrim{opacity:1;visibility:visible}
+body.hi-open .hi-panel{transform:none}
+.hi-close{position:absolute;top:calc(40px + env(safe-area-inset-top,0px));right:max(40px,calc(16px + env(safe-area-inset-right,0px)));width:32px;height:32px;display:flex;align-items:center;justify-content:center;border-radius:8px;transition:background-color .2s}
+.hi-close:hover{background:var(--paper-2)}
+.hi-close svg{width:24px;height:24px}
+.hi-top{display:flex;flex-direction:column;gap:40px;padding:40px 40px 32px}
+.hi-head h2{font-family:var(--display);font-weight:700;font-size:clamp(36px,4vw,48px);line-height:1.17;color:var(--primary);padding-right:48px}
+.hi-head h2 span{display:block;font-weight:400;color:var(--ink-3)}
+.hi-head p{margin-top:8px;font-size:20px;color:var(--ink-3)}
+.form{display:flex;flex-direction:column;gap:40px}
+.fields{display:flex;flex-direction:column;gap:16px}
+.field{display:flex;flex-direction:column;gap:8px;min-width:0;flex:1}
+.field label{font-size:14px;color:var(--faint)}
+.field input,.field textarea{width:100%;font:400 18px/24px var(--text);color:var(--ink);padding:8px;border:1px solid var(--line-2);border-radius:8px;background:var(--paper);transition:border-color .2s,box-shadow .2s;outline:none}
+.field textarea{height:120px;resize:vertical}
+.field input::placeholder,.field textarea::placeholder{color:var(--muted)}
+.field input:focus,.field textarea:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(79,70,229,.15)}
+.field.invalid input,.field.invalid textarea{border-color:#d93025}
+.field .err{font-size:13px;color:#d93025;min-height:0}
+.field-row{display:flex;gap:10px}
+@media (max-width:560px){.field-row{flex-direction:column;gap:16px}}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.send{width:100%;height:64px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:800;font-size:20px;background:var(--faint);color:var(--line-2);transition:background-color .25s,color .25s}
+.send svg{width:24px;height:24px;transition:transform .25s}
+.send.ready{background:var(--ink);color:#fff}
+.send.ready:hover{background:var(--primary)}
+.send.ready:hover svg{transform:translateX(4px)}
+.send[disabled]{cursor:not-allowed}
+.send.busy svg{animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.form-msg{font-size:16px;line-height:1.5;border-radius:8px;padding:12px 14px}
+.form-msg.ok{background:#ecfdf3;color:#05603a}
+.form-msg.bad{background:#fef3f2;color:#b42318}
+.hi-sent{display:flex;flex-direction:column;gap:12px;align-items:flex-start;padding:24px;border-radius:12px;background:var(--sand)}
+.hi-sent h3{font-family:var(--display);font-size:28px;font-weight:700;color:var(--ink)}
+.hi-sent p{font-size:18px;color:var(--ink-2)}
+.hi-foot{background:var(--paper-2);padding:24px 40px 40px;display:flex;flex-direction:column;gap:16px}
+.hi-foot h3{font-family:var(--text);font-weight:400;font-size:24px;color:var(--ink)}
+.hi-actions{display:flex;gap:30px}
+.hi-actions a{flex:1;height:40px;border:1px solid var(--primary);border-radius:6px;background:var(--paper);color:var(--primary);display:inline-flex;align-items:center;justify-content:center;gap:12px;font-weight:800;font-size:20px;transition:background-color .2s,color .2s}
+.hi-actions a svg{width:20px;height:20px}
+.hi-actions a:hover{background:var(--primary);color:#fff}
+.hi-contact-line{font-size:14px;color:var(--ink-3)}
+.hi-contact-line a{color:var(--ink);text-decoration:underline;text-underline-offset:2px}
+@media (max-width:640px){.hi-top{padding:32px 20px 24px}.hi-foot{padding:20px 20px 28px}.hi-actions{gap:10px}.hi-actions a{font-size:16px;gap:8px}.hi-close{top:calc(28px + env(safe-area-inset-top,0px));right:max(14px,env(safe-area-inset-right,0px))}}

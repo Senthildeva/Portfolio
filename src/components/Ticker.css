@@ -1,0 +1,7 @@
+/* ---------- ticker (marquee) ---------- */
+.ticker{overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.ticker-track{display:flex;width:max-content;animation:marquee var(--speed,40s) linear infinite}
+.ticker-group{display:flex;align-items:center;gap:40px;padding-right:40px;flex:none}
+.ticker:hover .ticker-track{animation-play-state:paused}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.ticker.reverse .ticker-track{animation-direction:reverse}

@@ -1,0 +1,274 @@
+# CNA - Mediacorp — case study page at /cna
+# Text fields accept inline HTML: <em> = case colour, <b> = bold, <i class="g"> = gradient text, <span class="hl"> = highlight.
+status: published
+order: 2
+featured: true
+seo:
+  title: Reimagining CNA · Senthil Devaraj
+  description: Redesigning CNA News for Apple TV — bringing Singapore's leading news broadcaster to the couch without losing what makes it CNA.
+theme: cna
+pager:
+  label: CNA (Mediacorp)
+  color: "#b71c1c"
+card:
+  tag: CNA - Mediacorp
+  meta: Media & Entertainment • APPLE TV
+  title: <em>Reimagining CNA</em> - Newsroom to living room.
+  color: "#b71c1c"
+  img: "I14086:10015;13934:1360"
+  alt: CNA case study cover
+hero:
+  tag: <em>Mediacorp</em> • Media & Entertainment • APPLE TV
+  title: Reimagining CNA - <em>Newsroom to living room.</em>
+  lead: Redesigning <b>CNA News for Apple TV</b> — bringing Singapore's leading news broadcaster to the couch without losing what makes it CNA.
+  ctas:
+    - label: View Live
+      href: https://apps.apple.com/in/app/cna-channel-newsasia/id520773971?platform=tv
+stage:
+  img: "13858:1644"
+  alt: CNA on Apple TV
+  meta:
+    Client: MEDIACORP - CNA NEWS
+    Platforms: Apple TV
+    Role: UX Research · Interaction · UI
+    Target Audience: News Followers
+  intro: Most news apps on TV fail one of two ways — too cluttered to navigate, or too thin to feel credible. CNA had to do both jobs at once, <span class="hl">through four arrow keys and a click.</span>
+sections:
+  - blocks:
+      - { type: head, label: The Setup, num: "001" }
+      - type: split
+        title: A mobile-first newsroom, asked to live in the <em>living room</em>
+        body:
+          - CNA is Singapore's most-followed news brand. But news consumption has moved to the biggest screen in the house - and the existing CNA TV experience hadn't moved with it.
+          - The Apple TV adaptation was the first move. It would set the design standard for the Android TV and Roku rollouts that followed.
+        card:
+          title: A TV is not a large phone.
+          body: The task wasn't porting the app. It was rethinking the entire experience for a remote-first, lean-back context - then scaling it across 3 platforms.
+      - type: stats
+        items:
+          - big: <em>47</em><small>%</small>
+            label: most-used online news in Singapore
+            src: Reuters Institute, Digital News Report 2025
+          - big: <em>65.6</em><small>%</small>
+            label: of Singapore internet users now stream SVOD
+            src: GWI, via IAB SEA
+          - big: <em>47.5</em><small>%</small>
+            label: of all TV viewing is now streaming in SINGAPORE
+            src: Nielsen, The Gauge - Dec 2025
+  - full:
+      type: image
+      img: "13764:3166"
+      w: 1440
+      h: 250
+      bleed: true
+      alt: ""
+      label: Banner
+  - blocks:
+      - type: callout
+        title: UX Strategy & Methodology
+        body: "My approach: competitor teardown across 4 major TV news apps, remote-first interaction audit, and iterative usability testing with the actual d-pad hardware - not a mouse simulation."
+        chips: [ Competitor Analysis, Remote-First UX Audit, Usability Testing ]
+  - blocks:
+      - type: head
+        label: The Problem
+        num: "002"
+        title: The data told the story before users did.
+      - type: personas
+        items:
+          - img: "13764:3188"
+            name: The Habitual Watcher
+            age: User Age (40 - 60)
+            desc: Turns the TV on expecting news to just play. Doesn't want to search, browse, or decide. Gets frustrated when she has to.
+            quote: "\"I just want to watch the news. Why do I have to pick something first?\""
+          - img: "13764:3200"
+            name: The Catch-Up Viewer
+            age: User Age (25–40)
+            desc: Returns for a specific programme she missed. Finds content buried under generic categories. Gives up and switches apps.
+            quote: "\"I know the show exists. I just can't find it from here.\""
+      - type: stats
+        caps: true
+        items:
+          - big: <em>3.4</em><small class="reg">/5</small>
+            label: App Store rating
+            body: "Recurring complaints: Confusing navigation, playback issues, & difficulty finding Singapore-specific content."
+            src: Google Play / App Store listing
+          - big: <em>≈ ½</em>
+            label: the session length of leading TV
+            body: Viewers tuned in, then tuned out - engagement ran well below competing news apps.
+            src: Project benchmarking
+          - big: <em>No. 1</em>
+            label: no platform leads the living room
+            body: The connected-TV landscape is fragmented and varies by region - one design had to flex across all of it.
+            src: Pixalate CTV Report, Q3 2025
+  - blocks:
+      - type: points
+        heading: Reframed as user problems
+        items:
+          - kicker: How might we …
+            text: help users land on live content immediately - without even searching?
+          - kicker: How might we …
+            text: make browsing feel natural on a remote, not borrowed from mobile?
+          - kicker: How might we …
+            text: make finding a specific programme effortless - without forcing a keyboard?
+          - kicker: How might we …
+            text: build one design system that feels native across three platforms?
+      - type: callout
+        title: Aha Moment !
+        body: "Four separate complaints was one pattern: viewers were doing work the platform should be doing for them. It collapse that into a single design principle - <b>Reduce effort at every turn, and let the rest follow from it.</b>"
+  - blocks:
+      - type: head
+        label: The Approach
+        num: "003"
+        title: Competitors shaped our principles, not our aesthetics.
+        sub: We weren't looking for visual cues to borrow. We were looking for <b>solved problems</b> - and mapping each pattern to a decision we'd have to make.
+      - type: table
+        head: [ Pattern observed, Where, What we took from it ]
+        rows:
+          - [ Land on Live TV immediately, All news apps, Auto-play live on launch. Full-screen after 10–15s inactivity. ]
+          - [ Grid keyboard + voice search, "Netflix, YouTube, tvOS", Live-filtering grid keyboard with hold-to-dictate. ]
+          - - Top nav over spatial rails
+            - Haystack, Prime Video, Netflix, tvOS apps
+            - Flat layout, predictable focus order, no dead-ends.
+          - [ Channel guide overlaid on live, "Linear TV, YouTube TV", A ‘Now & Next’ schedule summoned over the feed. ]
+          - [ TopShelf integration, Apple TV native, Live + curated editorial. Premium real estate for a news brand. ]
+  - blocks:
+      - type: gallery
+        title: Research, Competitors and Use cases
+        rows:
+          - - { img: "13764:3315", w: 421, h: 238, cap: <b>Apple TV</b> - Menu Navigation }
+            - { img: "13764:3318", w: 421, h: 237, cap: <b>Fox News</b> - Menu Navigation }
+            - { img: "13764:3321", w: 421, h: 237, cap: <b>Haystack News</b> - Menu Navigation }
+          - - { img: "13764:3325", w: 644, h: 322, cap: <b>Apple TV</b> - Menu Navigation }
+            - { img: "13764:3328", w: 644, h: 322, cap: <b>Apple TV</b> - Top Shelf }
+      - { type: head, title: Three principles we locked in early }
+      - type: principles
+        items:
+          - title: Remote-first
+            text: Every interaction must work with a d-pad and a select. If it needs a swipe, it's wrong.
+          - title: Live-first
+            text: Live TV is the entry point - not buried content, else is discovered around it.
+          - title: Platform-native
+            text: Leverage Apple TV behaviours. One system, platform-specific interactions.
+  - blocks:
+      - type: head
+        label: The Process
+        num: "004"
+        title: UX Audit & Usability and Production Testing
+      - type: points
+        rule: true
+        items:
+          - kicker: Concept review
+            text: Walked the flat-navigation model and auto-play concept past the product team before any pixels shipped.
+          - kicker: Moderated usability
+            text: Habitual watchers and catch-up viewers navigated the on-device prototype, Siri Remote in hand, thinking aloud.
+          - kicker: Focus & legibility pass
+            text: Every focus state and type size checked from a real ten-foot seat — not a desktop monitor.
+          - kicker: Search validation
+            text: Timed how many key-presses it took to find a named programme, comparing grid-keyboard vs. voice.
+          - kicker: Cross-platform review
+            text: Checked the system held up on Android TV and Roku hardware before handing off for build.
+  - blocks:
+      - type: head
+        label: The Solution
+        num: "005"
+        title: Designed once. Native on three platforms.
+        sub: What follows are the four decisions that defined the experience. Mockups are concept frames built for this case study - they communicate the pattern, not CNA's shipped UI.
+      - type: head
+        title: Style Guides
+        sub: Our style guide was thoughtfully created to uphold a unified visual identity. We embraced a clean and modern design, emphasizing user-friendly elements.
+      - type: styleguide
+        colors:
+          bg: "#b71c1c"
+          items:
+            - name: Primary Red
+              hex: "#b71c1c"
+              tints: [ "#801414", "#a51919", "#be3333", "#c54949", "#cd6060", "#d47777", "#e2a4a4" ]
+            - name: Primary Black
+              hex: "#101010"
+              tints: [ "#282828", "#484848", "#707070", "#666666", "#9f9f9f", "#cfcfcf", "#e7e7e7" ]
+        face:
+          name: SF Pro
+          stack: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif
+      - { type: cna-components }
+  - blocks:
+      # Decisions: x/y are positions inside the 1312×700 Figma frame. Arrows share one exported artwork;
+      # flip (h, v or hv) turns it to match the frame.
+      - type: decision
+        label: Decision 01 · Home Screen
+        title: <em>Don't make me pick</em> something first.
+        text: Live TV auto-plays on launch, with a collapsible rail beneath it. <b>After 10–15s of inactivity</b> the feed goes full screen — matching how viewers already expect a television to behave.
+        img: "13858:5200"
+        imgY: 40
+        imgH: 660
+        alt: CNA Apple TV home screen with live news playing
+        notes:
+          - { x: 95, y: 122, t: Auto Live, s: 5-10s of inactivity }
+          - { x: 62, y: 440, t: Your Choice, s: Personalised Carousel }
+        arrows:
+          - { id: "13764:3456", x: 184, y: 235 }
+          - { id: "13764:3458", x: 252, y: 556 }
+        cap: Live plays on launch. Rail surfaces options without breaking the broadcast.
+      - type: decision
+        label: Decision 02 · Search
+        title: Make the <em>hardest</em> input on TV the <em>easiest</em>.
+        text: A spatial grid keyboard filters results as you type, and <b>hold-to-dictate voice</b> search skips the keyboard entirely — two routes to the same programme in three or four presses.
+        img: "13858:5197"
+        imgY: 0
+        imgH: 621
+        alt: CNA search screen with grid keyboard
+        notes:
+          - { x: 1015, y: 202, t: hold-to-dictate, s: voice search for anyone }
+        arrows:
+          - { id: "13764:3470", x: 947, y: 94, flip: hv }
+        cap: Grid keyboard + live filtering, with hold-to-dictate voice as the shortcut.
+      - type: decision
+        label: Decision 03 · Navigation Model
+        title: <em>Three d-pad</em> moves. Always.
+        text: A flat, spatial layout — side nav over intent-based rails — keeps every destination within <b>two or three d-pad moves</b>, with oversized, high-contrast focus states legible from a ten-foot seat.
+        img: "224399:1888"
+        imgX: 272
+        imgY: 70
+        imgW: 998
+        imgH: 560
+        alt: CNA browse screen with intent-based rails
+        notes:
+          - { x: 24, y: 322, t: 3 d-pad moves, s: Upcoming shows }
+        arrows:
+          - { id: "224399:1889", x: 148, y: 456 }
+        cap: Intent-based rails. Focus state visible from 10 feet.
+      - type: decision
+        label: Decision 04 · Now & Next
+        title: Tell me what's on, <em>without leaving the broadcast.</em>
+        text: One press summons a <b>'Now & Next'</b> guide over the live feed — the current programme, its progress, and the next three slots — mirroring the channel schedule viewers already trust, without ever interrupting it.
+        img: "13858:5205"
+        imgY: 40
+        imgH: 621
+        alt: Now and Next guide over the live feed
+        notes:
+          - { x: 1041, y: 320, t: Now & Next, s: Upcoming shows }
+        arrows:
+          - { id: "13764:3491", x: 1003, y: 429, flip: h }
+        cap: The channel's running order, overlaid on live. One press to summon, one to dismiss.
+  - full:
+      type: video
+      video: video-cna
+      poster: "13764:3493"
+      bleed: true
+      ratio: 1440/723
+      label: Walkthrough video
+  - blocks:
+      - { type: head, label: The Outcome, num: "006", title: One system. Native on every platform. }
+      - type: points
+        items:
+          - kicker: We Transformed as
+            text: +40% boost in user engagement after the redesign (Mediacorp published project impact).
+          - kicker: We Transformed as
+            text: Auto-play live meant viewers landed on content the instant the app opened - no menu, no decision, the broadcast simply on.
+          - kicker: We Transformed as
+            text: The Now & Next guide let viewers see the running order without ever leaving live - the channel schedule they already trust, on demand.
+          - kicker: We Transformed as
+            text: A remote-first navigation model kept every destination within two/ three d-pad moves, and became the benchmark every later platform rollout inherited.
+      - type: callout
+        title: What I learned
+        body: This project reshaped how I think about interaction design. TV is a genuinely different medium. I learned to design remote-first, Apple’s Native behaviour and its targeted audience to treat focus and motion as core feedback, and to build a single system flexible enough to feel native across very different platforms.
+        quote: “Designing for TV taught me that constraints are the design. When your only input is a directional pad, every placement - and every animation - is a UX decision. <em>The best thing we did was stop treating the TV like a large phone.”</em>

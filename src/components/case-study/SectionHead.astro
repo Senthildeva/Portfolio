@@ -1,0 +1,15 @@
+---
+interface Props {
+  label?: string;
+  num?: string;
+  title?: string;
+  sub?: string | string[];
+}
+const { label, num, title, sub } = Astro.props;
+const paras = sub ? ([] as string[]).concat(sub) : [];
+---
+<div class="cs-head">
+  {label && <p class="cs-label"><span>{label}</span>{num && <span>{num}</span>}</p>}
+  {title && <h2 class="cs-h2" set:html={title} />}
+  {paras.length > 0 && <div class="cs-sub">{paras.map((p) => <p set:html={p} />)}</div>}
+</div>

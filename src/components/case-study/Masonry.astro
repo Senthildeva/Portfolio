@@ -1,0 +1,13 @@
+---
+// Staggered columns of phone screens that fade out at the bottom.
+import Img from "../Img.astro";
+interface Props {
+  cols: { img: string; h: number; alt: string }[][];
+}
+---
+<div class="cs-masonry-wrap">
+  <div class="cs-masonry">
+    {Astro.props.cols.map((col) => <div class="col">{col.map((s) => <figure><Img id={s.img} w={250} h={s.h} alt={s.alt} label={s.alt || "Screen"} sizes="(min-width: 1362px) 250px, (min-width: 821px) 18vw, 31vw" /></figure>)}</div>)}
+  </div>
+  <span class="fade" aria-hidden="true"></span>
+</div>

@@ -1,0 +1,18 @@
+---
+// Endless horizontal marquee. The slot content is shown twice; the copy is hidden from screen readers.
+import "./Ticker.css";
+
+interface Props {
+  cls?: string;
+  /** Seconds for one full loop. */
+  speed?: number;
+  /** Accessible name for the region. */
+  label?: string;
+}
+const { cls = "", speed = 40, label = "" } = Astro.props;
+const html = await Astro.slots.render("default");
+const copy = html.replace(/ alt="[^"]*"/g, ' alt=""');
+---
+<div class:list={["ticker", cls]} style={`--speed:${speed}s`} role={label ? "region" : undefined} aria-label={label || undefined}>
+  <div class="ticker-track"><div class="ticker-group" set:html={html} /><div class="ticker-group" aria-hidden="true" set:html={copy} /></div>
+</div>

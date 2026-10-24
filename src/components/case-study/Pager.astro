@@ -1,0 +1,35 @@
+---
+import Icon from "../Icon.astro";
+import type { WorkEntry } from "../../lib/work";
+interface Props {
+  prev?: WorkEntry;
+  next?: WorkEntry;
+}
+const { prev, next } = Astro.props;
+const nameStyle = (color: string) =>
+  color.startsWith("linear") ? `background:${color};-webkit-background-clip:text;background-clip:text;color:transparent` : `color:${color}`;
+---
+<nav class="wrap" aria-label="More case studies">
+  <div class="cs-pager">
+    {
+      prev?.data.pager ? (
+        <a class="cs-pg prev" href={`/${prev.id}`}>
+          <Icon name="arrow-left" />
+          <span><small>Previous</small><b style={nameStyle(prev.data.pager.color)}>{prev.data.pager.label}</b></span>
+        </a>
+      ) : (
+        <span />
+      )
+    }
+    {
+      next?.data.pager ? (
+        <a class="cs-pg next" href={`/${next.id}`}>
+          <span><small>Next</small><b style={nameStyle(next.data.pager.color)}>{next.data.pager.label}</b></span>
+          <Icon name="arrow-right" />
+        </a>
+      ) : (
+        <span />
+      )
+    }
+  </div>
+</nav>

@@ -1,0 +1,19 @@
+---
+// Cover image over the dark band, then the project facts and the one-paragraph intro.
+import Img from "../Img.astro";
+interface Props {
+  img: string;
+  alt?: string;
+  meta: Record<string, string>;
+  intro: string;
+}
+const { img, alt = "", meta, intro } = Astro.props;
+const facts = Object.entries(meta);
+---
+<section class="cs-stage" aria-label="Project overview">
+  <div class="wrap">
+    <div class="cs-cover"><Img id={img} w={1312} h={700} alt={alt} eager label="Cover image" /></div>
+    <dl class:list={["cs-meta", { six: facts.length > 4 }]}>{facts.map(([k, v]) => <div><dt>{k}</dt><dd>{v}</dd></div>)}</dl>
+    <p class="cs-intro" set:html={intro} />
+  </div>
+</section>

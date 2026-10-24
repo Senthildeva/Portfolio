@@ -1,0 +1,8 @@
+---
+interface Props {
+  label: string;
+  items: string[];
+}
+const { label, items } = Astro.props;
+---
+<div class="cs-takeaways"><p class="cs-points-head" style="border:0;padding:0">{label}</p><ul>{items.map((t) => <li set:html={t} />)}</ul></div>

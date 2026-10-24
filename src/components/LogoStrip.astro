@@ -1,0 +1,9 @@
+---
+import "./LogoStrip.css";
+import Ticker from "./Ticker.astro";
+import BrandLogo from "./BrandLogo.astro";
+import { LOGOS } from "../data/brands";
+---
+<Ticker cls="logos" speed={55} label="Brands I've designed for">
+  {LOGOS.map((b) => <div class="logo-item" title={b.name}><BrandLogo brand={b} /></div>)}
+</Ticker>

@@ -1,0 +1,203 @@
+# GNIE (Gapblue) — case study page at /gnie
+# Text fields accept inline HTML: <em> = case colour, <b> = bold, <i class="g"> = gradient text, <span class="hl"> = highlight.
+status: published
+order: 4
+featured: true
+seo:
+  title: Gnie at GITEX 2024 · Senthil Devaraj
+  description: Tap, Scratch, Win — designing a gamified progressive web app for Gapblue at GITEX Global 2024 in Dubai.
+theme: gnie
+pager:
+  label: Gnie (Gapblue)
+  color: linear-gradient(90deg,#8449e4,#1967d2)
+card:
+  tag: GNIE (Gapblue)
+  meta: Generative AI Solutions • Progressive Web App
+  title: Designing a Gamified PWA for <span class="grad">GITEX 2024</span>
+  color: linear-gradient(168deg,#8449e4 11%,#1967d2 93%)
+  img: "I14086:10017;13934:1360"
+  alt: Gnie (Gapblue) case study cover
+hero:
+  tag: <i class="g">GNIE (Gapblue)</i> • Generative AI Solutions • Progressive Web App
+  title: <i class="g">Tap, Scratch, Win</i> - Designing a Gamified PWA for the World's Largest Tech Show <i class="g">(GITEX 2024).</i>
+stage:
+  img: "13764:4074"
+  alt: Gnie booth app
+  meta:
+    Client: GNIE - Gapblue Software Labs
+    Industry: Generative AI Solutions
+    Event: GITEX Global 2024, Dubai
+    Deliverable: Progressive Web App (PWA)
+    Role: Product Designer
+    Target Audience: investors & enterprise buyers
+  intro: Thousands of booths compete for fleeting attention. Gapblue needed a booth experience that stop people, pull them in, and gift them with something - a memory, a reward, and a reason to be followed up.
+sections:
+  - blocks:
+      - type: head
+        label: The Setup
+        num: "001"
+        title: The client, the product, and the stage
+        sub:
+          - <b>Gapblue Software Labs</b> is a Kochi-based AI integrator building Gen AI - powered enterprise tools for SMEs across Asia and North America. Their flagship platform, <b>Gnie</b>, is an AI-driven productivity and performance management system - built to help businesses close the gap between human potential and business outcomes
+          - "For October 2024, Gapblue had secured a booth at <b>GITEX Global</b> - the world's largest technology conference, held in Dubai, drawing over 100,000 attendees from 170+ countries. The stakes were high: this was Gapblue's moment to put Gnie in front of decision-makers, investors, and enterprise buyers at a single point in time."
+      - type: stats
+        items:
+          - { big: <i class="g">GITEX 2024</i>, label: "GITEX Global 2024, Dubai" }
+          - { big: <i class="g">170</i><small>+</small>, label: countries }
+          - { big: "<i class=\"g\">100,000</i>", label: attendees }
+  - full:
+      type: image
+      img: "13764:4121"
+      w: 1440
+      h: 250
+      bleed: true
+      alt: ""
+      label: Banner
+  - blocks:
+      - type: callout
+        title: UX Strategy & Methodology
+        body: With a hard deadline and no time for traditional research, I relied on rapid prototyping and stakeholder alignment sessions to validate the concept before build - testing assumptions through paper sketches rather than user interviews.
+        chips: [ Constraint-Driven Design, Stakeholder Validation, Gamified Experience ]
+  - blocks:
+      - type: head
+        label: The problem
+        num: "002"
+        title: What I was asked to build
+        sub:
+          - "The brief was clear: build a <b>kiosk-style Progressive Web App</b> that could run simultaneously across multiple devices at the booth - capturing visitor interest, collecting contact data, and distributing a gamified reward."
+          - As the <b>Project Lead</b> on this engagement, I owned the end-to-end design - from defining the user journey and interaction model to delivering the final UI for development handoff.
+      - type: features
+        items:
+          - title: Engage booth visitors
+            text: Create an experience compelling enough to stop foot traffic and hold attention on a busy trade floor.
+          - title: Capture lead data
+            text: Collect visitor contact information interactively - without it feeling like a cold form fill.
+          - title: Reward participation
+            text: Incentivise form completion with a branded gamified reward - a scratch-and-win coupon experience.
+      - type: callout
+        title: Aha Moment !
+        body: The question wasn't just how do we show up - it was how do we make the <b>90 seconds a visitor spends at our booth count.</b>
+  - blocks:
+      - type: head
+        title: Three problems hiding inside one request
+        sub: What looked like a straightforward booth app unpacked into a set of layered technical and experience constraints - each requiring deliberate design decisions.
+      - type: points
+        one: true
+        big: true
+        rule: true
+        items:
+          - title: Getting 90 seconds without anyone noticing
+            text: The moment a visitor feels like they're filling a form, they leave. The flow had to draw people in through curiosity and play - so they were already sharing their details before it felt like that's what they were doing.
+          - title: Zero instruction on a loud, distracting floor
+            text: No staff walking people through it. No onboarding screen. The UI had to be self-evident in under three seconds - legible mid-conversation, operable by anyone regardless of language or tech comfort.
+          - title: Keeping the experience fresh for each person
+            text: The app resets for every visitor. What feels exciting for the first person still had to land for the hundredth. The motion, anticipation, and scratch reveal couldn't feel like a loop - it had to feel like a moment.
+          - title: Unreliable connectivity at a 100,000-person event
+            text: Trade show WiFi is unreliable. Dead kiosks at peak hours wasn't an option. Every interaction had to be captured and stored locally - no server dependency, no risk.
+  - band: true
+    blocks:
+      - type: head
+        label: The Process
+        num: "003"
+        title: From a blank screen to a Genie in a bottle
+        sub: The conceptual challenge was to connect Gapblue's AI brand to a human, playful moment at a busy exhibition booth. The name "Gnie" gave me a creative opening - a genie that grants wishes, reimagined for enterprise AI.
+      - type: takeaways
+        label: "Early sketches explored the visitor flow:"
+        items:
+          - What they see first, how they fill in data naturally
+          - How the reward reveal creates a memorable peak moment
+          - The scratch-and-win mechanic was chosen specifically because it combines tactile interaction (familiar from physical cards) with digital delight - something worth photographing and sharing.
+      - type: image
+        img: "13764:4191"
+        w: 1312
+        h: 700
+        alt: Early sketches of the Gnie booth flow
+        label: Sketches
+      - type: principles
+        tone: dark
+        items:
+          - title: The Genie character
+            text: An animated Genie mascot was designed as the visual anchor - personifying Gnie's AI identity and giving the booth a recognisable, approachable face.
+          - title: The gift box reveal
+            text: A gift-box animation served as the transition between form completion and reward reveal - building anticipation before the scratch interaction begins
+          - title: "Tech pivot: React → Next.js"
+            text: The initial React build was migrated to Next.js to leverage better PWA support, offline caching via service workers, and improved cross-device rendering.
+      - type: pair
+        items:
+          - img: "13764:4209"
+            w: 644
+            h: 600
+            alt: Genie character
+            label: Genie character
+          - img: "13764:4210"
+            w: 644
+            h: 600
+            alt: Gift box reveal
+            label: Gift box reveal
+  - blocks:
+      - type: head
+        label: The Solution
+        num: "004"
+        title: A kiosk that works, with or without the internet
+        sub: The final PWA was built on Next.js, deployed as a Progressive Web App, and optimised for installation on all three device families in kiosk mode. Every interaction state - from the initial landing screen to the scratch-and-win reveal — was designed to require zero user instruction.
+      - type: points
+        big: true
+        items:
+          - title: Universal cross-device compatibility
+            text: Same layout, same touch targets, same animations - on Android tablets, iPad kiosks, and Microsoft Surface without a single platform-specific fix.
+          - title: Fully offline lead capture
+            text: Lead data stored locally via IndexedDB and service workers. No internet needed - everything reviewable on-device, syncable after the event.
+          - title: Scratch-and-win gamification
+            text: A digital scratch card revealed the reward - making data collection feel like participation, not a form fill. Tactile, memorable, and worth sticking around for.
+          - title: Fair reward distribution system
+            text: 10 coupons per day across 5 devices - pool controlled, distribution fair, no server required. Local state handled it all.
+      - type: video
+        video: video-gnie-1
+        poster: "13764:4240"
+        ratio: 1312/700
+        label: Kiosk walkthrough video
+      - type: pair
+        items:
+          - { video: video-gnie-2, poster: "13764:4242", ratio: 636/700, label: Scratch-and-win video }
+          - img: "13764:4243"
+            w: 636
+            h: 700
+            alt: Gnie kiosk screens
+            label: Kiosk screens
+      - type: image
+        img: "13764:4244"
+        w: 1312
+        h: 700
+        alt: Gnie PWA screens
+        label: PWA screens
+  - blocks:
+      - type: head
+        label: The Outcome
+        num: "005"
+        title: What the booth delivered - <i class="g">Elevating Gapblue’s Presence at Gitex 2024</i>
+        sub:
+          - Five kiosks. Five days. Zero downtime. The PWA ran fully offline - capturing leads and distributing rewards from Day 1 through Futuristic Friday without a single failure.
+          - By Day 3, Gapblue reported <b>"Fast gaining momentum, with increased footfalls"</b> and introductions to <b>"Various industry leaders."</b> The scratch-and-win mechanic was the hook that made people stop.
+      - type: stats
+        grid: true
+        items:
+          - big: <i class="g">50</i>
+            label: Companies partnered up with Gnie Studio 3.0 for innovative technology and digital solutions.
+          - big: <i class="g">764</i>
+            label: Customers enrolled their data in this process to discover more about Gnie's optimized solutions.
+          - big: <i class="g">7</i>
+            label: AI companies tied up with Gapblue for their core technology.
+          - big: <i class="g">20</i><small>+</small>
+            label: Countries companies participated and engaged in this project.
+      - type: image
+        img: "13764:4268"
+        w: 1312
+        h: 700
+        alt: Gapblue booth at GITEX 2024
+        label: Booth photo
+      - type: callout
+        tone: solid
+        deco: "13764:4274"
+        title: Outcome
+        body: Gapblue and Gnie Studio are fast gaining momentum, with increased footfalls at our booth. The day has offered us great opportunities for networking and collaboration, providing us with the valuable chance to introduce Gnie Studio and its unique features to various industry leaders."
+        quote: ◦ Gapblue Software Labs, LinkedIn — Day 3, GITEX Global 2024

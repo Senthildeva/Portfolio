@@ -1,0 +1,100 @@
+---
+import Base from "../layouts/Base.astro";
+import "../styles/pages/about.css";
+import Img from "../components/Img.astro";
+import Icon from "../components/Icon.astro";
+import Rotator from "../components/Rotator.astro";
+import PhotoGallery from "../components/PhotoGallery.astro";
+import AboutCollage from "../components/about/AboutCollage.astro";
+import { SITE } from "../site";
+import { EXPERIENCE, EXPERTISE, OFF_CLOCK } from "../data/about";
+---
+<Base title="About · Senthil Devaraj" description="Engineer turned product designer. Experience, expertise and what I do off the clock." active="about">
+  <main id="main">
+    <section class="wrap hero" aria-labelledby="about-title">
+      <p class="eyebrow">Product DESIGNER</p>
+      <div>
+        <h1 class="display" id="about-title">Hey, I’m Senthil Devaraj <span aria-hidden="true" style="font-size:.7em">👋🏻</span></h1>
+        <Rotator lines={["— Product Designer by Curiosity", "— Engineer by background.", "— UX Researcher by Data & instinct.", "— Builder by habit."]} />
+      </div>
+      <p class="lead">Engineer turned product designer based in Chennai. Over 4+ years, I’ve designed Banking, Media &amp; Entertainment, Enterprises UX, Agri-tech, E-commerce, and AI products used by millions</p>
+      <p class="lead">Currently at <strong>BORN XDS (An Tech Mahindra Company)</strong></p>
+      <div class="btn-row">
+        <a class="btn btn-dark" href={SITE.resume} target="_blank" rel="noopener">Download Resume</a>
+        <a class="btn btn-line" href={SITE.linkedin} target="_blank" rel="noopener" aria-label="Connect on LinkedIn">Connect on <Img id="14169:8963" w={63} h={16} alt="LinkedIn" label="LinkedIn" cls="li-mark" style="width:63px;height:16px" /></a>
+      </div>
+    </section>
+
+    <div class="wrap"><AboutCollage /></div>
+
+    <section class="wrap" aria-labelledby="about-me" data-reveal>
+      <div class="section-head label-first" style="gap:40px">
+        <p class="label" id="about-me">About Me</p>
+        <div class="prose-xl">
+          <p>I’ve always been someone who wants to understand <b>why</b> before figuring out how.</p>
+          <p>My engineering background taught me to look at problems through <b>logic</b>, <b>systems</b>, <b>cause</b> and <b>effect</b>. Design gave me another lens — <b>people</b>, <b>behaviour</b>, <b>context</b>, and <b>creativity</b>. Somewhere between these two is how I approach UX.</p>
+          <p>I like getting beneath the surface of a problem: understanding who is affected, what makes their experience difficult, what the evidence tells us, and what a meaningful solution could look like.</p>
+          <p>For me, UX isn’t something that begins with a screen. It’s a way of looking at the world — noticing friction, questioning the things we take for granted, understanding why they happen, and imagining how they could work better.</p>
+          <p><b>That’s how I think. That’s how I design.</b></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap" aria-labelledby="xp-title" data-reveal>
+      <div class="section-head label-first">
+        <p class="label">Experience</p>
+        <h2 class="h2" id="xp-title">The places that shaped the designer I am today</h2>
+      </div>
+      <div class="timeline" style="margin-top:40px">
+        <div class="tl-rail" aria-hidden="true"></div>
+        <ol class="tl-list" style="list-style:none;margin:0;padding:0">
+          {
+            EXPERIENCE.map((x) => (
+              <li class:list={["tl-item", { current: x.current }]}>
+                <div class="tl-when">
+                  <span>{x.when}</span>
+                  {x.current && <span class="badge-current">CURRENT</span>}
+                </div>
+                <div class="tl-what">
+                  <h3>{x.company}</h3>
+                  <p class="role">{x.role}</p>
+                  {x.summary ? <p class="note">{x.summary}</p> : <p class="note todo">Role summary coming soon.</p>}
+                </div>
+              </li>
+            ))
+          }
+        </ol>
+      </div>
+    </section>
+
+    <section class="band" aria-labelledby="exp-title">
+      <div class="wrap" data-reveal>
+        <div class="section-head label-first">
+          <p class="label">EXPERTISE</p>
+          <h2 class="h2" id="exp-title">What I bring to a team</h2>
+        </div>
+        <div class="xp-grid">
+          {
+            EXPERTISE.map(([t, chips]) => (
+              <div class="xp-card">
+                <h3>{t}</h3>
+                <div class="chips">{chips.map((c) => <span class="chip">{c}</span>)}</div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="off-title" data-reveal>
+      <div class="wrap head-row">
+        <div class="section-head label-first">
+          <p class="label">Off the clock</p>
+          <h2 class="h2" id="off-title">When I’m not designing</h2>
+        </div>
+        <div class="gallery-nav"><button type="button" data-gallery-prev="off" aria-label="Previous photos"><Icon name="arrow-left" /></button><button type="button" data-gallery-next="off" aria-label="Next photos"><Icon name="arrow-right" /></button></div>
+      </div>
+      <PhotoGallery name="off" photos={OFF_CLOCK} label="Photos from outside work" />
+    </section>
+  </main>
+</Base>

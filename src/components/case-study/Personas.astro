@@ -1,0 +1,41 @@
+---
+import Img from "../Img.astro";
+interface Persona {
+  img: string;
+  name: string;
+  age: string;
+  desc?: string;
+  quote?: string;
+  traits?: string[];
+  lists?: Record<string, string[]>;
+}
+interface Props {
+  tint?: boolean;
+  items: Persona[];
+}
+const { tint, items } = Astro.props;
+---
+<div class="cs-personas">
+  {
+    items.map((p) => (
+      <article class:list={["cs-persona", { tint }]}>
+        <div class="avatar-lg"><Img id={p.img} w={80} h={80} alt="" label={p.name.slice(0, 1)} /></div>
+        <div class="cs-persona-name"><h3>{p.name}</h3><span class="age">{p.age}</span></div>
+        {p.traits && <ul class="cs-traits">{p.traits.map((t) => <li>{t}</li>)}</ul>}
+        {p.desc && <p class="desc" set:html={p.desc} />}
+        {Object.entries(p.lists ?? {}).map(([t, list], i) => (
+          <>
+            {(i > 0 || p.desc) && <hr />}
+            <div class="cs-plist"><p class="cs-hand-label">{t}</p><ul>{list.map((x) => <li set:html={x} />)}</ul></div>
+          </>
+        ))}
+        {p.quote && (
+          <>
+            <hr />
+            <p class="cs-hand" set:html={p.quote} />
+          </>
+        )}
+      </article>
+    ))
+  }
+</div>

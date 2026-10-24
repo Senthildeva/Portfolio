@@ -1,0 +1,71 @@
+---
+import Base from "../layouts/Base.astro";
+import "../styles/pages/landing.css";
+import Img from "../components/Img.astro";
+import Icon from "../components/Icon.astro";
+import Ticker from "../components/Ticker.astro";
+import LogoStrip from "../components/LogoStrip.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import { caseStudies } from "../lib/work";
+
+const featured = (await caseStudies()).filter((e) => e.data.featured);
+const heroFacts = ["4+ years of Design", "Engineering Mindset × Design Thinking", "Balancing user needs and business reality", "Learning where AI fits in design", "Design Systems at Scale"];
+const skillsA = ["User Research & Discovery", "UX Strategy", "Product thinking", "Complex B2B SaaS", "Business Analysis", "Creative tech"];
+const skillsB = ["Complex workflow design", "Interaction design", "Rapid prototyping", "Design systems", "Human-AI Interaction", "Enterprise Scale"];
+---
+<Base title="Senthil Devaraj" description="Senthil Devaraj, product designer in Chennai — banking, media, e-commerce and AI products used by millions." splash>
+  <main id="main">
+    <section class="wrap hero" aria-labelledby="hero-title">
+      <p class="eyebrow">Product designer • BORN XDS (An Tech Mahindra Company) • Chennai</p>
+      <h1 class="display" id="hero-title">Engineer by Background. <span class="accent">Designer by Curiosity.</span></h1>
+      <p class="lead">Engineer turned product designer based in Chennai. Over 4+ years, I’ve designed banking, media, e-commerce, and AI products used by millions</p>
+      <div class="btn-row">
+        <a class="btn btn-dark" href="/about">About me</a>
+        <a class="btn btn-line" href="/work">Explore my Works</a>
+      </div>
+    </section>
+
+    <div class="wrap">
+      <Ticker speed={45} label="Highlights">
+        {heroFacts.map((f) => (<><span class="facts">{f}</span><span class="facts sep" aria-hidden="true">|</span></>))}
+      </Ticker>
+    </div>
+
+    <section class="wrap stack-xl" aria-label="Featured work and clients">
+      <a class="media hero-media" href="/cna" aria-label="Open the CNA case study" data-reveal><Img id="14086:9778" w={1312} h={700} alt="CNA newsroom" eager label="Hero image · CNA" /></a>
+      <LogoStrip />
+    </section>
+
+    <section class="wrap statement" aria-labelledby="one-thing" data-reveal>
+      <p class="label" id="one-thing">one thing that people know about me</p>
+      <div class="statement-body">
+        <p><strong>I love clearing up chaos.</strong>I design, I research, I overthink (usefully). Systems thinking helps me understand the mess, storytelling helps me make sense of it, and design helps me turn it into something people can actually use.</p>
+        <div class="sticker"><Img id="14102:1918" w={225} h={110} alt="Positive minded sticker" label="Positive minded" /></div>
+      </div>
+    </section>
+
+    <section class="wrap work" aria-labelledby="cs-title">
+      <div class="section-head">
+        <h2 class="h2" id="cs-title">Case Studies</h2>
+        <p class="sub">Each project, each different constraint - here's how I solved it.</p>
+      </div>
+      <div class="cards">
+        {featured.map((e) => <ProjectCard entry={e} />)}
+      </div>
+      <a class="btn btn-lg btn-outline-dark view-all" href="/work">View all Projects <Icon name="arrow-right" /></a>
+    </section>
+
+    <section class="skills" aria-labelledby="good-at" data-reveal>
+      <p class="label wrap" id="good-at">What I’m Good at</p>
+      <div class="skills-rows">
+        <Ticker cls="skill-row" speed={50}>
+          {skillsA.map((s) => (<><span>{s}</span><Img id="14095:10393" w={24} h={24} alt="" label="✦" cls="sparkle" /></>))}
+        </Ticker>
+        <Ticker cls="skill-row reverse" speed={55}>
+          {skillsB.map((s) => (<><span>{s}</span><Img id="14095:10393" w={24} h={24} alt="" label="✦" cls="sparkle" /></>))}
+        </Ticker>
+      </div>
+      <p class="exploring wrap">Currently exploring: AI-assisted product development and agentic workflows.</p>
+    </section>
+  </main>
+</Base>

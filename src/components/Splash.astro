@@ -1,0 +1,70 @@
+---
+// Landing intro, once per browser session: "hello" (handwritten) → "I’m" → Senthil Devaraj → white wipe.
+// Skipped for people who prefer reduced motion. Base.astro hides it before first paint for repeat visits.
+import "./Splash.css";
+import name from "../assets/splash/splash-senthil.svg?raw";
+import hello from "../assets/splash/hello-stroke.txt?raw";
+
+// Stroke width of the Lottie line at this size (9.09 in the 1920×1080 Lottie → 4.23 in the 410×64 frame).
+const STROKE = 4.23;
+---
+<div class="splash" id="splash">
+  <div class="splash-word splash-hello" aria-hidden="true">
+    <svg viewBox="0 0 410 64" width="410" height="64" focusable="false">
+      <path d={hello.trim()} pathLength="1" fill="none" stroke="#fff" stroke-width={STROKE} stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+  </div>
+  <div class="splash-word" aria-hidden="true"><p class="splash-text">I’m</p></div>
+  <div class="splash-word" aria-hidden="true" set:html={name} />
+  <div class="splash-wipe"></div>
+  <button class="skip-splash" type="button">Skip intro</button>
+</div>
+
+<script>
+  const splash = document.getElementById("splash");
+  const html = document.documentElement;
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let seen = false;
+  try {
+    seen = !!sessionStorage.getItem("sd-splash");
+    sessionStorage.setItem("sd-splash", "1");
+  } catch {}
+
+  if (splash) {
+    if (seen || reduce || html.classList.contains("no-splash")) {
+      splash.remove();
+    } else {
+      document.body.classList.add("no-scroll");
+      const words = splash.querySelectorAll<HTMLElement>(".splash-word");
+      // How long each word stays: hello needs time to write itself.
+      const hold = [1900, 900, 1000];
+      let step = 0;
+      let timer = 0;
+      const finish = () => {
+        if (!splash.isConnected) return;
+        clearTimeout(timer);
+        splash.classList.add("done");
+        document.body.classList.remove("no-scroll");
+        document.removeEventListener("keydown", onKey);
+        setTimeout(() => splash.remove(), 500);
+      };
+      const next = () => {
+        if (step > 0) words[step - 1].classList.replace("show", "leave");
+        if (step < words.length) {
+          words[step].classList.add("show");
+          timer = window.setTimeout(next, hold[step] ?? 900);
+          step++;
+        } else {
+          splash.classList.add("wipe");
+          timer = window.setTimeout(finish, 700);
+        }
+      };
+      const onKey = (e: KeyboardEvent) => {
+        if (e.key === "Escape") finish();
+      };
+      document.addEventListener("keydown", onKey);
+      splash.querySelector(".skip-splash")?.addEventListener("click", finish);
+      timer = window.setTimeout(next, 200);
+    }
+  }
+</script>

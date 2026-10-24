@@ -1,0 +1,47 @@
+---
+import "./Nav.css";
+import Img from "./Img.astro";
+import Icon from "./Icon.astro";
+import { NAV, type NavKey } from "../site";
+
+interface Props {
+  active: NavKey;
+}
+const { active } = Astro.props;
+---
+<header class="nav" role="banner">
+  <a class="nav-logo" href="/" aria-label="Senthil Devaraj, home"><Img id="I14169:8973;13931:1034" w={89} h={44} alt="Senthil design" eager label="logo" /></a>
+  <nav class="nav-links" id="nav-links" aria-label="Main">
+    {NAV.map((n) => <a class="nav-link" href={n.href} aria-current={active === n.key ? "page" : undefined}>{n.label}</a>)}
+  </nav>
+  <div class="nav-right">
+    <button class="btn btn-dark btn-hello" type="button" data-say-hi aria-controls="say-hi"><Icon name="corner-down-right" /><span>Say Hello</span><span class="wave" aria-hidden="true">👋🏻</span></button>
+    <button class="nav-burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav-links"><Icon name="menu" /></button>
+  </div>
+</header>
+
+<script>
+  const nav = document.querySelector<HTMLElement>(".nav");
+  if (nav) {
+    const onScroll = () => nav.classList.toggle("scrolled", window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    const burger = nav.querySelector<HTMLButtonElement>(".nav-burger");
+    if (burger) {
+      const set = (open: boolean) => {
+        nav.classList.toggle("open", open);
+        burger.setAttribute("aria-expanded", String(open));
+      };
+      burger.addEventListener("click", () => set(!nav.classList.contains("open")));
+      document.addEventListener("click", (e) => {
+        if (!nav.contains(e.target as Node)) set(false);
+      });
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && nav.classList.contains("open")) {
+          set(false);
+          burger.focus();
+        }
+      });
+    }
+  }
+</script>

@@ -1,0 +1,52 @@
+---
+// A key design decision: label, title, text, then the screen with hand-written notes and arrows,
+// positioned as in the 1312×700 Figma frame. On phones the notes become a list under the screen.
+import Img from "../Img.astro";
+interface Props {
+  label: string;
+  title: string;
+  text: string;
+  img: string;
+  imgX?: number;
+  imgY?: number;
+  imgW?: number;
+  imgH?: number;
+  alt?: string;
+  notes?: { x: number; y: number; t: string; s: string }[];
+  arrows?: { id: string; x: number; y: number; flip?: "h" | "v" | "hv" }[];
+  cap: string;
+}
+const { label, title, text, img, imgX = 0, imgY = 0, imgW = 1312, imgH = 660, alt = "", notes = [], arrows = [], cap } = Astro.props;
+const W = 1312, H = 700;
+const pct = (v: number, t: number) => ((v / t) * 100).toFixed(3) + "%";
+const FLIP = { h: "scale(-1,1)", v: "scale(1,-1)", hv: "scale(-1,-1)" };
+---
+<div class="cs-decision">
+  <p class="cs-dlabel">{label}</p>
+  <h3 class="cs-h2" set:html={title} />
+  <div class="cs-sub"><p set:html={text} /></div>
+  <figure class="cs-dfig">
+    <div class="cs-dstage">
+      <div class="cs-dimg" style={`left:${pct(imgX, W)};top:${pct(imgY, H)};width:${pct(imgW, W)};height:${pct(imgH, H)}`}>
+        <Img id={img} w={imgW} h={imgH} alt={alt} label="Screen mockup" sizes={`(min-width: 1440px) ${imgW}px, ${((imgW / W) * 100).toFixed(0)}vw`} />
+      </div>
+      {
+        arrows.map((a) => (
+          <div class="cs-arrow" style={`left:${pct(a.x, W)};top:${pct(a.y, H)};width:${pct(136, W)}${a.flip ? `;transform:${FLIP[a.flip]}` : ""}`}>
+            <Img id={a.id} w={136} h={57} alt="" label=" " />
+          </div>
+        ))
+      }
+      {
+        notes.map((n) => (
+          <div class="cs-ann" style={`left:${pct(n.x, W)};top:${pct(n.y, H)}`} aria-hidden="true">
+            <p class="t">{n.t}</p>
+            <p class="s">{n.s}</p>
+          </div>
+        ))
+      }
+    </div>
+    {notes.length > 0 && <ul class="cs-ann-list">{notes.map((n) => <li><b>{n.t}</b> {n.s}</li>)}</ul>}
+    <figcaption set:html={cap} />
+  </figure>
+</div>

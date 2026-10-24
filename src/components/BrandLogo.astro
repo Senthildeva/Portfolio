@@ -1,0 +1,11 @@
+---
+// A brand logo made of one or more exported Figma layers (e.g. Danburite = mark + wordmark).
+import Img from "./Img.astro";
+import type { Brand } from "../data/brands";
+
+interface Props {
+  brand: Brand;
+}
+const { brand } = Astro.props;
+---
+{brand.parts.map(([id, w, h], i) => <Img id={id} w={w} h={h} alt={i === 0 ? brand.name : ""} label={i === 0 ? brand.name : ""} style={`width:${w}px;height:${h}px`} />)}

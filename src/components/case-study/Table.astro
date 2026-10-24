@@ -1,0 +1,13 @@
+---
+interface Props {
+  head: string[];
+  rows: string[][];
+}
+const { head, rows } = Astro.props;
+---
+<div class="cs-table-wrap" tabindex="0" role="region" aria-label={head.join(", ")}>
+  <table class="cs-table">
+    <thead><tr>{head.map((h, i) => <th scope="col" class={i === head.length - 1 ? "hl" : undefined}>{h}</th>)}</tr></thead>
+    <tbody>{rows.map((r) => <tr>{r.map((c, i) => <td class={i === r.length - 1 ? "hl" : undefined}>{c}</td>)}</tr>)}</tbody>
+  </table>
+</div>

@@ -1,0 +1,56 @@
+---
+import Base from "../layouts/Base.astro";
+import "../styles/pages/clientele.css";
+import Img from "../components/Img.astro";
+import Icon from "../components/Icon.astro";
+import BrandLogo from "../components/BrandLogo.astro";
+import { BRANDS } from "../data/brands";
+import { SECTORS, TESTIMONIALS } from "../data/clientele";
+---
+<Base title="Clientele · Senthil Devaraj" description="Brands and industries I've designed for, and what people say about working with me." active="clientele">
+  <main id="main">
+    <section class="wrap hero" aria-labelledby="cl-title">
+      <p class="eyebrow">Trusted by global brands</p>
+      <h1 class="display" id="cl-title">Clients across industries, One way of working.</h1>
+      <p class="lead" style="max-width:1000px">Over 4+ years, I've designed for BFSI, Media &amp; OTT, Agri-tech, E-commerce, Generative AI, and Enterprise SaaS - different domains, same focus on solving the actual problem.</p>
+    </section>
+
+    <section class="wrap" aria-label="At a glance">
+      <dl class="stats" style="margin:0">
+        <div class="stat"><dt>Role</dt><dd>Product Designer</dd></div>
+        <div class="stat"><dt>Experience</dt><dd>4+ YEARS OF DESIGN</dd></div>
+        <div class="stat"><dt>Clients</dt><dd>20+ BRANDS</dd></div>
+      </dl>
+    </section>
+
+    <section class="wrap" aria-label="Brands">
+      <ul class="brand-grid" style="list-style:none;margin:0;padding:0">
+        {BRANDS.map((b) => <li class="brand" data-reveal><div class="brand-logo"><BrandLogo brand={b} /></div><p class="brand-tag">{b.tag}</p></li>)}
+      </ul>
+    </section>
+
+    <section class="wrap" aria-labelledby="sec-title" data-reveal>
+      <div class="sectors">
+        <h2 class="h2" id="sec-title">Industries and Sectors</h2>
+        <ul class="pills" style="list-style:none;margin:0;padding:0">{SECTORS.map(([i, t]) => <li class="pill"><Icon name={i} />{t}</li>)}</ul>
+      </div>
+    </section>
+
+    <section class="wrap" aria-labelledby="say-title" data-reveal>
+      <h2 class="h2" id="say-title" style="margin-bottom:40px">What people say...</h2>
+      <div class="quotes">
+        {
+          TESTIMONIALS.map((q) => (
+            <figure class="quote" style="margin:0">
+              <figcaption class="quote-head" style={q.tint ? `--qbg:${q.tint}` : undefined}>
+                <div class="quote-who"><span class="avatar"><Img id={q.avatar} w={40} h={40} alt="" label={q.name.split(" ").map((p) => p[0]).join("")} /></span><b>{q.name}</b></div>
+                <div class="quote-meta"><span>{q.role}</span><Img id={q.logo[0]} w={83} h={16} alt={q.logo[1]} label={q.logo[1]} style="width:83px;height:16px" /></div>
+              </figcaption>
+              <blockquote set:html={q.quote} />
+            </figure>
+          ))
+        }
+      </div>
+    </section>
+  </main>
+</Base>

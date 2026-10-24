@@ -1,0 +1,6 @@
+---
+interface Props {
+  items: string[];
+}
+---
+<ul class="cs-traits lined">{Astro.props.items.map((t) => <li>{t}</li>)}</ul>
