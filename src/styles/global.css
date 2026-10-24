@@ -22,7 +22,7 @@
 
 /* ---------- tokens (mirror the Figma file) ---------- */
 :root{
-  --ink:#101010; --ink-2:#333333; --ink-3:#666666; --muted:#888888; --faint:#999999; --line:#eeeeee; --line-2:#dddddd;
+  --ink:#101010; --ink-2:#333333; --ink-3:#666666; --muted:#888888; --muted-text:#767676; --faint:#999999; --line:#eeeeee; --line-2:#dddddd;
   --paper:#ffffff; --paper-2:#fafafa; --sand:#fcfaf7; --primary:#4f46e5; --primary-ink:#ffffff; --live:#00ba2f; --night:#101010; --night-card:#1e1e1c;
   --display:"Proxima Nova","Helvetica Neue",Arial,sans-serif;
   --text:"Avenir","Avenir Next","Nunito Sans","Helvetica Neue",Arial,sans-serif;
@@ -53,7 +53,7 @@ main{display:flex;flex-direction:column;gap:var(--section);padding-top:clamp(150
 /* ---------- type ---------- */
 .eyebrow{display:flex;align-items:center;gap:16px;font-family:var(--text);font-weight:800;font-size:16px;line-height:20px;letter-spacing:2px;text-transform:uppercase;color:var(--ink)}
 .eyebrow::before{content:"";flex:0 0 40px;height:1px;background:var(--muted)}
-.label{font-family:var(--text);font-size:16px;line-height:20px;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
+.label{font-family:var(--text);font-size:16px;line-height:20px;letter-spacing:2px;text-transform:uppercase;color:var(--muted-text)}
 .display{font-family:var(--display);font-weight:700;font-size:clamp(42px,5.6vw,80px);line-height:1.25;color:var(--ink);letter-spacing:-.01em}
 .display .accent,.accent{color:var(--primary)}
 .lead{font-family:var(--text);font-size:clamp(18px,1.7vw,24px);line-height:1.667;color:var(--ink-2);max-width:1200px}

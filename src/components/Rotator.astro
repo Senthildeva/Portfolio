@@ -1,11 +1,12 @@
 ---
-// Lines that roll up one after another (About hero). Screen readers get all lines at once via aria-label.
+// Lines that roll up one after another (About hero). Screen readers get all lines at once as text.
 interface Props {
   lines: string[];
 }
 const { lines } = Astro.props;
 ---
-<div class="rotator" aria-label={lines.map((l) => l.replace(/^—\s*/, "").replace(/\.$/, "")).join(", ")}>
+<div class="rotator">
+  <span class="sr-only">{lines.map((l) => l.replace(/^—\s*/, "").replace(/\.$/, "")).join(", ")}</span>
   <ul aria-hidden="true">{lines.map((l) => <li>{l}</li>)}</ul>
 </div>
 

@@ -13,8 +13,10 @@ interface Props {
   active?: NavKey;
   /** Landing page only: play the intro. */
   splash?: boolean;
+  /** Keep this page out of search results (404). */
+  noindex?: boolean;
 }
-const { title, description, active = "", splash = false } = Astro.props;
+const { title, description, active = "", splash = false, noindex = false } = Astro.props;
 const path = Astro.url.pathname.replace(/\.html$/, "").replace(/\/index$/, "/");
 const canonical = new URL(path || "/", SITE.url).href;
 ---
@@ -25,7 +27,7 @@ const canonical = new URL(path || "/", SITE.url).href;
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <link rel="canonical" href={canonical} />
+    {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical} />}
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />

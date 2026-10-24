@@ -38,7 +38,7 @@ const phStyle = w && h ? `--w:${w}px;--h:${h}px;${style}` : style || undefined;
 ---
 {
   !asset ? (
-    optional ? null : <div class:list={["ph", cls]} style={phStyle} role="img" aria-label={alt || label}>
+    optional ? null : <div class:list={["ph", cls]} style={phStyle} role={alt || label.trim() ? "img" : undefined} aria-label={alt || label.trim() || undefined} aria-hidden={alt || label.trim() ? undefined : "true"}>
       {label || alt || "image"}
     </div>
   ) : isSvg(asset) ? (

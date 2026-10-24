@@ -47,7 +47,7 @@ const at = (x: number, y: number) => `left:calc(${x} * var(--u));top:calc(${y} *
         </div>
       </div>
       <!-- Sales vs target chart -->
-      <div class="jb-card jb-chart" style="--w:532;--h:307.5" aria-label="Sales achieved against sales target, April 2024 to March 2025">
+      <div class="jb-card jb-chart" style="--w:532;--h:307.5" role="img" aria-label="Sales achieved against sales target, April 2024 to March 2025">
         <div class="jb-in" aria-hidden="true">
           <p class="jb-year" style={at(420.24, 36.9)}>2024 - 2025</p>
           {GRID_Y.map((y) => <i class="jb-grid" style={at(67.65, y)} />)}
@@ -78,7 +78,7 @@ const at = (x: number, y: number) => `left:calc(${x} * var(--u));top:calc(${y} *
         </div>
       </div>
       <!-- Categories donut -->
-      <div class="jb-card jb-cats" style="--w:309.55;--h:307.5" aria-label="8 categories: 15 orders worth ₹128 crores">
+      <div class="jb-card jb-cats" style="--w:309.55;--h:307.5" role="img" aria-label="8 categories: 15 orders worth ₹128 crores">
         <div class="jb-in" aria-hidden="true">
           <p class="jb-title" style={at(0, 16.9)}>8 Categories</p>
           <span class="jb-abs" style={`${at(37.92, 57.4)};width:calc(234.85 * var(--u))`}><Img id="13779:2167" w={235} h={234} alt="" optional /></span>
@@ -92,7 +92,7 @@ const at = (x: number, y: number) => `left:calc(${x} * var(--u));top:calc(${y} *
     </div>
   </div>
   <!-- Navigation bar states -->
-  <div class="jb-card jb-nav" style="--w:421.275;--h:639.6" aria-label="Bottom navigation bar in its five states">
+  <div class="jb-card jb-nav" style="--w:421.275;--h:639.6" role="img" aria-label="Bottom navigation bar in its five states">
     <div class="jb-in" aria-hidden="true">
       <p class="jb-title" style={at(0, 41.2)}>Navigation Bar</p>
       {

@@ -13,7 +13,7 @@ body.hi-open .hi-panel{transform:none}
 .form{display:flex;flex-direction:column;gap:40px}
 .fields{display:flex;flex-direction:column;gap:16px}
 .field{display:flex;flex-direction:column;gap:8px;min-width:0;flex:1}
-.field label{font-size:14px;color:var(--faint)}
+.field label{font-size:14px;color:var(--muted-text)}
 .field input,.field textarea{width:100%;font:400 18px/24px var(--text);color:var(--ink);padding:8px;border:1px solid var(--line-2);border-radius:8px;background:var(--paper);transition:border-color .2s,box-shadow .2s;outline:none}
 .field textarea{height:120px;resize:vertical}
 .field input::placeholder,.field textarea::placeholder{color:var(--muted)}

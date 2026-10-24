@@ -7,6 +7,6 @@ interface Props {
 const { title, body, card } = Astro.props;
 ---
 <div class="cs-split">
-  <div class="cs-split-main"><h3 class="cs-h2" set:html={title} /><div class="cs-sub">{body.map((p) => <p set:html={p} />)}</div></div>
-  <aside class="cs-note"><h3 set:html={card.title} /><p set:html={card.body} /></aside>
+  <div class="cs-split-main"><h2 class="cs-h2" set:html={title} /><div class="cs-sub">{body.map((p) => <p set:html={p} />)}</div></div>
+  <div class="cs-note"><h3 set:html={card.title} /><p set:html={card.body} /></div>
 </div>

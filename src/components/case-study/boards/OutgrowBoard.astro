@@ -10,13 +10,13 @@ const chipsB = ["Spices", "Natural Pesticides", "Biological Treatment", "Chemica
   <div class="ogb-main">
     <div class="ogb-row">
       <div class="ogb-card ogb-title"><p>WAYCOOL LABS AGRITECH PLATFORM</p></div>
-      <div class="ogb-card ogb-chips" aria-label="Crop category filter">
+      <div class="ogb-card ogb-chips" role="group" aria-label="Crop category filter">
         <ul>{chipsA.map((c) => <li class:list={{ on: c === "Fruits" }}>{c}</li>)}</ul>
         <ul>{chipsB.map((c) => <li>{c}</li>)}</ul>
       </div>
     </div>
     <div class="ogb-row">
-      <div class="ogb-card ogb-prices" aria-label="Live mandi price cards">
+      <div class="ogb-card ogb-prices" role="group" aria-label="Live mandi price cards">
         <div class="ogb-price-row">
           <div class="pc sm">
             <span class="pc-bg"><Img id="13764:3859" w={102} h={122} alt="" optional /></span>
@@ -45,7 +45,7 @@ const chipsB = ["Spices", "Natural Pesticides", "Biological Treatment", "Chemica
       <div class="ogb-card ogb-audio">
         <div class="ogb-audio-img"><Img id="13764:3981" w={260} h={140} alt="Wheat field at sunset" label="Field" /></div>
         <p>Agriculture experts discussion on organic fertilizers.</p>
-        <div class="ogb-player" aria-label="Audio player, 1:20 of 4:50">
+        <div class="ogb-player" role="img" aria-label="Audio player, 1:20 of 4:50">
           <span class="ogb-play"><Img id="13764:3984" w={20} h={20} alt="" label="▶" /></span>
           <span class="t">01:20</span>
           <span class="bar"><i></i></span>
