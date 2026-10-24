@@ -11,6 +11,8 @@ if (!fs.existsSync(DIST)) throw new Error("Run `npm run build` first.");
 fs.rmSync(OUT, { recursive: true, force: true });
 fs.cpSync(DIST, OUT, { recursive: true });
 
+// The artifact host reserves names starting with "_", so Astro's _astro/ folder is published as assets/.
+if (fs.existsSync(path.join(OUT, "_astro"))) fs.renameSync(path.join(OUT, "_astro"), path.join(OUT, "assets"));
 const pages = new Set(fs.readdirSync(OUT).filter((f) => f.endsWith(".html")).map((f) => f.replace(/\.html$/, "")));
 const relink = (html) =>
   html
@@ -20,7 +22,8 @@ const relink = (html) =>
       if (pages.has(route)) return `${attr}="${route}.html${hash ? "#" + hash : ""}"`;
       return `${attr}="${p}"`;
     })
-    .replace(/srcset="([^"]*)"/g, (m, s) => `srcset="${s.replace(/(^|,\s*)\//g, "$1")}"`);
+    .replace(/srcset="([^"]*)"/g, (m, s) => `srcset="${s.replace(/(^|,\s*)\//g, "$1")}"`)
+    .replace(/(["'(,\s])_astro\//g, "$1assets/");
 
 const note = `<div class="preview-note">Preview · images arrive with your Figma export</div><script>window.SITE_PREVIEW=true</script>`;
 for (const p of pages) {
@@ -35,8 +38,8 @@ for (const p of pages) {
   fs.writeFileSync(file, html);
 }
 // CSS in _astro/ refers to /fonts/… — make it relative to the stylesheet.
-for (const f of fs.readdirSync(path.join(OUT, "_astro")).filter((f) => f.endsWith(".css"))) {
-  const file = path.join(OUT, "_astro", f);
+for (const f of fs.readdirSync(path.join(OUT, "assets")).filter((f) => f.endsWith(".css"))) {
+  const file = path.join(OUT, "assets", f);
   fs.writeFileSync(file, fs.readFileSync(file, "utf8").replace(/url\((["']?)\/(fonts|_astro)\//g, (m, q, d) => `url(${q}${d === "fonts" ? "../fonts" : "."}/`));
 }
 for (const f of ["404.html", "robots.txt", "sitemap.xml"]) fs.rmSync(path.join(OUT, f), { force: true });
