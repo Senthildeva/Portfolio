@@ -1,0 +1,170 @@
+---
+// Jain Connect — UI components board (Figma 13779:2003), rebuilt as live HTML around the exported icons and charts.
+// Each card keeps the Figma proportions: positions are design pixels scaled with the card's width (cqw),
+// so the card shrinks as one piece on small screens. Text uses the site's fonts (Figma: Montserrat / Poppins).
+import Img from "../../Img.astro";
+
+// Category icon tiles (24.6px each) in the "Icons Set" card: [layer id, x, y, name]
+const ICONS: [string, number, number, string][] = [
+  ["13779:2006", 41, 90.92, "Micro irrigation"],
+  ["13779:2010", 106.6, 90.92, "PVC pipes & fittings"],
+  ["13779:2013", 41, 140.12, "Plumbing systems"],
+  ["13779:2023", 106.6, 140.12, "Food processing"],
+  ["13779:2027", 41, 189.32, "Tissue culture"],
+  ["13779:2041", 106.6, 189.32, "Renewable energy"],
+  ["13779:2083", 41, 238.52, "Protected cultivation"],
+  ["13779:2087", 106.6, 238.52, "Plastic products"],
+];
+const GRID_Y = [83.88, 110.38, 136.88, 163.39, 189.89, 217.59];
+const Y_LABELS: [string, number][] = [["10L", 83.88], ["7.5L", 114], ["5L", 144.11], ["2.5L", 174.23], ["0", 204.34]];
+const MONTHS = ["Apr", "May", "Jun", "July", "Aug", "Sept", "Oct", "Nov", "Dec", "Jan", "Feb", "Mar"];
+// Navigation bar states, top to bottom; icons are [inactive, active] layer ids.
+const TABS: [string, string, string][] = [
+  ["Home", "I13779:2099;150:42259", "I13779:2098;150:42226"],
+  ["Sales", "I13779:2098;150:42204", "I13779:2099;150:42237"],
+  ["Orders", "I13779:2098;150:42198", "I13779:2101;150:42264"],
+  ["Accounts", "I13779:2098;150:42212", "I13779:2102;150:42336"],
+  ["Price list", "I13779:2098;150:42219", "I13779:2100;150:42400"],
+];
+const BAR_TOP = [107.3, 205.7, 304.1, 402.5, 500.9];
+const at = (x: number, y: number) => `left:calc(${x} * var(--u));top:calc(${y} * var(--u))`;
+---
+<div class="jb" role="group" aria-label="Jain Connect UI components">
+  <div class="jb-left">
+    <div class="jb-row">
+      <!-- Icons set -->
+      <div class="jb-card jb-icons" style="--w:309.55;--h:307.5">
+        <div class="jb-in">
+          <p class="jb-title" style={at(0, 41.2)}>Icons Set</p>
+          {ICONS.map(([id, x, y, name]) => <span class="jb-abs" style={`${at(x, y)};width:calc(24.6 * var(--u))`}><Img id={id} w={25} h={25} alt={name} optional /></span>)}
+          <div class="jb-catnum" style={at(166.05, 90.92)}>
+            <span class="n"><span class="ic"><Img id="13779:2023" w={25} h={25} alt="" optional /></span>133</span>
+            <span class="l">Food Processing</span>
+          </div>
+          <div class="jb-catnum" style={at(166.05, 189.32)}>
+            <span class="n"><span class="ic"><Img id="13779:2023" w={25} h={25} alt="" optional /></span>133</span>
+          </div>
+        </div>
+      </div>
+      <!-- Sales vs target chart -->
+      <div class="jb-card jb-chart" style="--w:532;--h:307.5" aria-label="Sales achieved against sales target, April 2024 to March 2025">
+        <div class="jb-in" aria-hidden="true">
+          <p class="jb-year" style={at(420.24, 36.9)}>2024 - 2025</p>
+          {GRID_Y.map((y) => <i class="jb-grid" style={at(67.65, y)} />)}
+          {Y_LABELS.map(([t, y]) => <span class="jb-ylab" style={at(70.06, y)}>{t}</span>)}
+          <span class="jb-abs" style={`${at(97.77, 89.9)};width:calc(365.006 * var(--u))`}><Img id="13779:2112" w={365} h={128} alt="" optional /></span>
+          <span class="jb-abs" style={`${at(97.77, 89.9)};width:calc(364.403 * var(--u))`}><Img id="13779:2119" w={364} h={58} alt="" optional /></span>
+          <span class="jb-abs" style={`${at(97.77, 82.68)};width:calc(365.006 * var(--u))`}><Img id="13779:2141" w={365} h={135} alt="" optional /></span>
+          <span class="jb-abs" style={`${at(97.77, 82.68)};width:calc(364.403 * var(--u))`}><Img id="13779:2142" w={364} h={92} alt="" optional /></span>
+          <i class="jb-hover" style={at(133.3, 82.68)} />
+          <i class="jb-dot" style={`${at(131.5, 133.27)};background:#c44dff`} />
+          <i class="jb-dot" style={`${at(131.5, 80.27)};background:#1479ff`} />
+          <div class="jb-months" style={at(88.13, 227.23)}>{MONTHS.map((m) => <span class:list={{ hl: m === "May" }}>{m}</span>)}</div>
+          <span class="jb-legend" style={at(174.86, 258.55)}><i style="background:#c44dff" />Sales Achieved</span>
+          <span class="jb-legend" style={at(306.17, 258.55)}><i style="background:#1479ff" />Sales Target</span>
+          <div class="jb-tip" style={at(144.75, 64.61)}>
+            <p><i style="background:#c44dff" />Sales Achieved - <b style="color:#c44dff">6.5 Lacs</b></p>
+            <p><i style="background:#1479ff" />Sales Target - <b style="color:#1479ff">11 Lacs</b></p>
+            <p><i />Performance - <b style="color:#9f5316">70%</b></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="jb-row">
+      <!-- Welcome screen -->
+      <div class="jb-card jb-welcome" style="--w:532;--h:307.5">
+        <div class="jb-in">
+          <span class="jb-welcome-img"><Img id="13779:2095" w={489} h={224} alt="Jain Connect welcome screen: “Welcome to Jains — we are happy to see you onboard! Experience our redesigned app, Jains Connect.”" label="Welcome screen" /></span>
+        </div>
+      </div>
+      <!-- Categories donut -->
+      <div class="jb-card jb-cats" style="--w:309.55;--h:307.5" aria-label="8 categories: 15 orders worth ₹128 crores">
+        <div class="jb-in" aria-hidden="true">
+          <p class="jb-title" style={at(0, 16.9)}>8 Categories</p>
+          <span class="jb-abs" style={`${at(37.92, 57.4)};width:calc(234.85 * var(--u))`}><Img id="13779:2167" w={235} h={234} alt="" optional /></span>
+          <p class="jb-big" style={at(0, 122)}>15</p>
+          <p class="jb-small" style={at(0, 149.66)}>Orders</p>
+          <i class="jb-rule" style={at(90.2, 174.2)} />
+          <p class="jb-big" style={at(0, 185)}><span class="rs">₹</span>128</p>
+          <p class="jb-small" style={at(0, 212.7)}>Crores</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Navigation bar states -->
+  <div class="jb-card jb-nav" style="--w:421.275;--h:639.6" aria-label="Bottom navigation bar in its five states">
+    <div class="jb-in" aria-hidden="true">
+      <p class="jb-title" style={at(0, 41.2)}>Navigation Bar</p>
+      {
+        TABS.map((_, bar) => (
+          <div class="jb-bar" style={at(30.75, BAR_TOP[bar])}>
+            {TABS.map(([label, off, on], i) => (
+              <span class:list={["seg", { on: i === bar }]}>
+                <span class="ic"><Img id={i === bar ? on : off} w={25} h={25} alt="" optional /></span>
+                {label}
+              </span>
+            ))}
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</div>
+
+<style>
+  .jb { display: grid; grid-template-columns: minmax(0, 866fr) minmax(0, 421fr); gap: 24px; align-items: start; font-family: var(--display); }
+  .jb-left { display: flex; flex-direction: column; gap: 24px; min-width: 0; }
+  .jb-row { display: flex; gap: 24px; }
+  .jb-card { position: relative; border-radius: 16px; overflow: hidden; container-type: inline-size; aspect-ratio: var(--w) / var(--h); min-width: 0; }
+  .jb-row > .jb-card { flex: var(--w) 1 0; }
+  .jb-in { position: absolute; inset: 0; --u: calc(100cqw / var(--w)); color: #505050; }
+  .jb-in :global(img), .jb-in :global(.ph) { display: block; width: 100%; height: auto; }
+  .jb-abs { position: absolute; display: block; }
+  .jb-title { position: absolute; right: 0; text-align: center; font-weight: 500; font-size: calc(18.45 * var(--u)); line-height: calc(24.6 * var(--u)); color: #101010; }
+
+  .jb-icons, .jb-cats, .jb-nav { background: #f0f7ff; }
+  .jb-cats { box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04); }
+  .jb-catnum { position: absolute; display: flex; flex-direction: column; gap: calc(4.1 * var(--u)); width: calc(102.5 * var(--u)); }
+  .jb-catnum .n { display: flex; align-items: center; gap: calc(4.1 * var(--u)); font-weight: 500; font-size: calc(16.4 * var(--u)); line-height: calc(20.5 * var(--u)); }
+  .jb-catnum .ic { width: calc(24.6 * var(--u)); flex: none; }
+  .jb-catnum .l { font-size: calc(12.3 * var(--u)); line-height: calc(16.4 * var(--u)); }
+
+  .jb-chart { background: #fff; box-shadow: 0 0 8px rgba(0, 0, 0, 0.16); }
+  .jb-year { position: absolute; transform: translateX(-50%); font-size: calc(14.456 * var(--u)); line-height: calc(19.274 * var(--u)); color: #1a1a18; white-space: nowrap; }
+  .jb-grid { position: absolute; width: calc(395.122 * var(--u)); height: 1px; background: #eeeeee; }
+  .jb-ylab { position: absolute; font-size: calc(9.637 * var(--u)); line-height: calc(12.046 * var(--u)); color: #939393; }
+  .jb-hover { position: absolute; width: calc(1.205 * var(--u)); height: calc(138.533 * var(--u)); background: #fff; border-radius: 16px; }
+  .jb-dot { position: absolute; width: calc(4.819 * var(--u)); height: calc(4.819 * var(--u)); border-radius: 50%; }
+  .jb-months { position: absolute; display: flex; gap: calc(2.409 * var(--u)); font-weight: 300; font-size: calc(9.637 * var(--u)); line-height: calc(12.046 * var(--u)); }
+  .jb-months span { width: calc(28.911 * var(--u)); text-align: center; }
+  .jb-months .hl { color: #9f5316; font-weight: 400; }
+  .jb-legend { position: absolute; display: flex; align-items: center; gap: calc(4.8 * var(--u)); font-size: calc(9.637 * var(--u)); line-height: calc(12.046 * var(--u)); color: #1a1a18; white-space: nowrap; }
+  .jb-legend i, .jb-tip i { width: calc(4.819 * var(--u)); height: calc(4.819 * var(--u)); border-radius: 50%; flex: none; }
+  .jb-tip { position: absolute; width: calc(185.514 * var(--u)); padding: calc(9.637 * var(--u)); display: flex; flex-direction: column; gap: calc(4.819 * var(--u)); background: #fff; border-radius: calc(16 * var(--u)); filter: drop-shadow(0 0 calc(7.228 * var(--u)) rgba(0, 0, 0, 0.12)); }
+  .jb-tip::before { content: ""; position: absolute; left: calc(-5.4 * var(--u)); top: 50%; transform: translateY(-50%); border-style: solid; border-width: calc(5.4 * var(--u)) calc(6 * var(--u)) calc(5.4 * var(--u)) 0; border-color: transparent #fff transparent transparent; }
+  .jb-tip p { display: flex; align-items: center; gap: calc(4.819 * var(--u)); font-size: calc(12.046 * var(--u)); line-height: calc(16.865 * var(--u)); white-space: nowrap; }
+  .jb-tip b { font-weight: 600; }
+
+  .jb-welcome { background: #fbeb26; border: 1px solid #f2f2f2; border-radius: 24px; }
+  .jb-welcome-img { position: absolute; left: 50%; top: 50%; width: calc(488.924 * var(--u)); transform: translate(-50%, -50%); border-radius: calc(20.385 * var(--u)); overflow: hidden; }
+
+  .jb-big { position: absolute; right: 0; text-align: center; font-weight: 500; font-size: calc(30.75 * var(--u)); line-height: calc(36.9 * var(--u)); color: #1a1a18; }
+  .jb-big .rs { font-size: 0.42em; vertical-align: 0.2em; margin-right: 0.15em; }
+  .jb-small { position: absolute; right: 0; text-align: center; font-weight: 300; font-size: calc(12.3 * var(--u)); line-height: calc(15.375 * var(--u)); }
+  .jb-rule { position: absolute; width: calc(129.15 * var(--u)); height: calc(1.531 * var(--u)); background: #d9d9d9; }
+
+  .jb-nav { border-radius: 24px; }
+  .jb-bar { position: absolute; width: calc(369 * var(--u)); height: calc(57.4 * var(--u)); background: #fff; display: flex; }
+  .jb-bar .seg { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: calc(2.05 * var(--u)); font-size: calc(12.3 * var(--u)); line-height: calc(16.4 * var(--u)); letter-spacing: calc(0.5 * var(--u)); white-space: nowrap; }
+  .jb-bar .seg.on { color: #1479ff; font-weight: 700; }
+  .jb-bar .ic { width: calc(24.6 * var(--u)); }
+
+  @media (max-width: 1100px) {
+    .jb { grid-template-columns: minmax(0, 1fr); }
+    .jb-nav { width: min(421px, 100%); justify-self: center; }
+  }
+  @media (max-width: 640px) {
+    .jb-row { flex-direction: column; }
+    .jb-row > .jb-card { flex: none; width: 100%; }
+  }
+</style>

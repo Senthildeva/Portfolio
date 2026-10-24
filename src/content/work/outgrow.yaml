@@ -141,8 +141,25 @@ sections:
             text: An Outgrow partner service collects soil from the field and turns it into an actionable report.
   - blocks:
       - { type: head, label: The design language }
-      - { type: styleguide, label: Colours & typeface — rebuilding as live text, ratio: 1312/706 }
-      - { type: styleguide, label: UI components — rebuilding as live text, ratio: 1312/948 }
+      - type: styleguide
+        colors:
+          bg: "#146133"
+          items:
+            - { name: Primary Green, hex: "#146133", tints: ["#2c7147", "#43815c", "#72a085", "#8ab099", "#b9d0c2", "#d0dfd6", "#e8efeb"] }
+            - { name: Primary Brown, hex: "#683c13", tints: ["#77502b", "#866342", "#a48a71", "#b49e89", "#c3b1a1", "#e1d8d0", "#f0ece7"] }
+            - { name: Primary Black, hex: "#101010", tints: ["#282828", "#484848", "#707070", "#666666", "#9f9f9f", "#cfcfcf", "#e7e7e7"] }
+        face:
+          name: Noto Sans
+          stack: "'SG Noto Sans', 'Noto Sans', sans-serif"
+          # "Farmer" in English, Tamil, Hindi, Marathi, Malayalam and Kannada.
+          words:
+            - { text: Farmer, lang: en }
+            - { text: விவசாயி, lang: ta, font: "'SG Noto Sans Tamil', 'Noto Sans Tamil', sans-serif" }
+            - { text: किसान, lang: hi, font: "'SG Mukta', Mukta, sans-serif" }
+            - { text: शेतकरी, lang: mr, font: "'SG Mukta', Mukta, sans-serif" }
+            - { text: കർഷകൻ, lang: ml, font: "'SG Noto Sans Malayalam', 'Noto Sans Malayalam', sans-serif" }
+            - { text: ರೈತ, lang: kn, font: "'SG Noto Sans Kannada', 'Noto Sans Kannada', sans-serif" }
+      - { type: board, name: outgrow }
   - blocks:
       - { type: head, label: High • Fidelity Wires }
       - type: image
@@ -205,6 +222,8 @@ sections:
           - { big: <em>6</em>, label: "Languages, fully localised", src: EN · TA · TE · KN · MR · HI }
       - type: callout
         tone: solid
+        bg: "13764:3993"
+        bgPos: center 19%
         title: What I learned
-        body: Designing for users I'd never meet in a lab forced a discipline I'm proud of every decision had to survive a dusty field, a small screen, low connectivity, and …
+        body: Designing for users I'd never meet in a lab forced a discipline I'm proud of — every decision had to survive a dusty field, a small screen, low connectivity, and a language I might not read.
         quote: “The hard part wasn't adding features. It was earning enough trust to replace five.”

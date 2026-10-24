@@ -189,7 +189,7 @@ sections:
         face:
           name: SF Pro
           stack: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif
-      - { type: cna-components }
+      - { type: image, img: "13764:3395", w: 1312, h: 700, alt: "CNA tvOS component board: profiles, topic chips, carousels, password field, Sign In button and the live TV schedule", label: Component board }
   - blocks:
       # Decisions: x/y are positions inside the 1312×700 Figma frame. Arrows share one exported artwork;
       # flip (h, v or hv) turns it to match the frame.

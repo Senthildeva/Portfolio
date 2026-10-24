@@ -21,7 +21,7 @@ import Pair from "./Pair.astro";
 import Video from "./Video.astro";
 import Masonry from "./Masonry.astro";
 import StyleGuide from "./StyleGuide.astro";
-import CnaComponents from "./CnaComponents.astro";
+import Board from "./Board.astro";
 import RawHtml from "./RawHtml.astro";
 
 interface Props {
@@ -50,7 +50,7 @@ const COMPONENTS = {
   video: Video,
   masonry: Masonry,
   styleguide: StyleGuide,
-  "cna-components": CnaComponents,
+  board: Board,
   html: RawHtml,
 } as const;
 const Component = COMPONENTS[type] as any;

@@ -1,6 +1,87 @@
 ---
-// About hero collage (Figma 14199:9930). Placeholder until it is rebuilt from the Figma layers as live HTML.
+// About hero collage (Figma 14199:9930): Senthil's cut-out photo on a dark backdrop with hand-written notes
+// and doodles. Notes are live text placed as in the 1312×700 frame and scaled with its width.
+// On phones the notes move into a list under the picture so they stay readable.
+import Img from "../Img.astro";
+
+const ROLES = [
+  { name: "Curious one", x: 64, y: 64, lines: ["I ask why,", "Then I ask why again . . ."], lx: 64, ly: 109, lw: 260 },
+  { name: "Problem-solver", x: 149, y: 392, lines: ["1st, understand the problem,", "Then build . . ."], lx: 149, ly: 437, lw: 260 },
+  { name: "AI enthusiast", x: 988, y: 518, lines: ["Curious about what", "we can build with AI . . ."], lx: 988, ly: 563, lw: 250 },
+];
+// Doodles exported from Figma: [layer id, x, y, width] in the 1312×700 frame (exports include each layer's rotation).
+const DOODLES_BEHIND: [string, number, number, number][] = [
+  ["14199:9931", 821.05, 197, 19.94],
+  ["14199:9933", 334, 127, 258],
+  ["14199:9944", 225, 95, 44],
+  ["14199:9947", 1162, 538, 48],
+  ["14199:9948", 1062.98, 263, 17.97],
+  ["14199:9949", 855, 281, 117.8],
+  ["14199:9950", 611, 481, 336.6],
+];
+const at = (x: number, y: number, w?: number) => `left:calc(${x} * var(--u));top:calc(${y} * var(--u))${w ? `;width:calc(${w} * var(--u))` : ""}`;
 ---
-<div class="media about-hero-media" data-reveal>
-  <div class="ph" role="img" aria-label="Senthil — the AI enthusiast, the problem-solver, the curious one">About collage</div>
+<div class="ac" data-reveal>
+  <div class="ac-stage">
+    <div class="ac-in">
+      {DOODLES_BEHIND.map(([id, x, y, w]) => <span class="ac-abs" style={at(x, y, w)} aria-hidden="true"><Img id={id} alt="" optional /></span>)}
+      {
+        ROLES.map((r) => (
+          <>
+            <p class="ac-role" style={at(r.x, r.y)}>The <b>{r.name}</b></p>
+            <p class="ac-note" style={at(r.lx, r.ly, r.lw)}>
+              <span>{r.lines[0]}</span>
+              <span class="r">{r.lines[1]}</span>
+            </p>
+          </>
+        ))
+      }
+      <div class="ac-photo"><Img id="14199:9951" w={1312} h={700} alt="Senthil Devaraj, arms folded, smiling" label="Photo of Senthil" eager /></div>
+      <p class="ac-head" style={at(913.5, 191)}>A Passionate<br />Experience Designer</p>
+      <span class="ac-abs ac-stamp" style={at(1149.6, 58.5, 104.2)} aria-hidden="true"><Img id="14218:10271" alt="" optional /></span>
+    </div>
+  </div>
+  <div class="ac-list">
+    <p class="ac-head-m">A Passionate Experience Designer</p>
+    <ul>
+      {
+        ROLES.map((r) => (
+          <li>
+            <p class="ac-role-m">The <b>{r.name}</b></p>
+            <p class="ac-note-m">{r.lines.join(" ")}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
 </div>
+
+<style>
+  .ac { background: #070707; overflow: hidden; }
+  .ac-stage {
+    position: relative; aspect-ratio: 1312 / 700; container-type: inline-size; overflow: hidden;
+    /* The Figma backdrop: a soft light patch behind the left-hand notes, fading to near black. */
+    background: radial-gradient(ellipse 34% 52% at 23% 37%, #363636 0%, #2a2a2a 30%, #161616 62%, #0b0b0b 85%), #070707;
+  }
+  .ac-in { position: absolute; inset: 0; --u: calc(100cqw / 1312); font-family: var(--hand); }
+  .ac-abs { position: absolute; display: block; }
+  .ac-abs :global(img) { display: block; width: 100%; height: auto; }
+  .ac-photo { position: absolute; inset: 0; }
+  .ac-photo :global(img), .ac-photo :global(.ph) { width: 100%; height: 100%; object-fit: cover; }
+  .ac-photo :global(.ph) { background: none; color: #555; }
+  .ac-role { position: absolute; margin: 0; font-size: calc(36 * var(--u)); line-height: 1.25; color: #555; white-space: nowrap; }
+  .ac-role b { color: #fff; font-weight: 700; }
+  .ac-note { position: absolute; margin: 0; display: flex; flex-direction: column; gap: calc(4 * var(--u)); font-size: calc(24 * var(--u)); line-height: calc(28 * var(--u)); color: #ddd; }
+  .ac-note .r { text-align: right; }
+  .ac-head { position: absolute; margin: 0; transform: translateX(-50%); text-align: center; font-weight: 700; font-size: calc(40 * var(--u)); line-height: 1.25; color: #fff; white-space: nowrap; }
+  .ac-list { display: none; }
+  @media (max-width: 760px) {
+    .ac-role, .ac-note, .ac-head { display: none; }
+    .ac-list { display: block; padding: 8px 20px 28px; font-family: var(--hand); color: #ddd; }
+    .ac-head-m { font-weight: 700; font-size: 30px; line-height: 1.2; color: #fff; margin-bottom: 16px; }
+    .ac-list ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
+    .ac-role-m { font-size: 26px; line-height: 1.1; color: #777; }
+    .ac-role-m b { color: #fff; }
+    .ac-note-m { font-size: 20px; line-height: 1.3; }
+  }
+</style>

@@ -1,0 +1,11 @@
+---
+// Case-specific UI component boards ("The design language"), rebuilt from Figma as live HTML.
+import OutgrowBoard from "./boards/OutgrowBoard.astro";
+import JainBoard from "./boards/JainBoard.astro";
+interface Props {
+  name: "outgrow" | "jain";
+}
+const BOARDS = { outgrow: OutgrowBoard, jain: JainBoard };
+const Board = BOARDS[Astro.props.name];
+---
+<Board />

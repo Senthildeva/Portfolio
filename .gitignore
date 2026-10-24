@@ -6,3 +6,4 @@ fonts-src/
 .vercel/
 .DS_Store
 *.log
+preview-files.json

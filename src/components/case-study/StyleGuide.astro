@@ -1,13 +1,43 @@
 ---
-// Live style guide: colour swatches with tints, and the typeface specimen.
-// Without `colors`, shows a placeholder (sections still to be rebuilt from Figma).
+// Live style guide: brand colours with their tints, and the typeface specimen (name, sample words, "Aa").
+// Without colours and a typeface it shows a placeholder.
+import "./StyleGuide.css";
+
+interface Word {
+  text: string;
+  /** CSS font-family for this word (e.g. a script-specific font). */
+  font?: string;
+  /** Language code, e.g. "ta" for Tamil — helps browsers and screen readers. */
+  lang?: string;
+}
+/** Geometry of the "Aa" specimen in design px, as in the Figma frame. */
+interface Specimen {
+  w: number;
+  front: [number, number];
+  ghost: [number, number];
+  v: [number, number];
+  h: [number, number];
+}
 interface Props {
   colors?: { bg: string; items: { name: string; hex: string; tints: string[] }[] };
-  face?: { name: string; stack: string };
+  face?: { name: string; stack: string; words?: Word[]; specimen?: Specimen };
   label?: string;
   ratio?: string;
 }
 const { colors, face, label, ratio } = Astro.props;
+// Default: the Noto Sans specimen in the CNA and Outgrow files.
+const sp: Specimen = face?.specimen ?? { w: 373, front: [19.47, 3.7], ghost: [27, 6], v: [19.47, 335.08], h: [36, 222] };
+const specVars = [
+  `--sw:${sp.w}`,
+  `--fx:${sp.front[0]}`,
+  `--fy:${sp.front[1]}`,
+  `--gx:${sp.ghost[0] - sp.front[0]}`,
+  `--gy:${sp.ghost[1] - sp.front[1]}`,
+  `--v1:${sp.v[0]}`,
+  `--v2:${sp.v[1]}`,
+  `--h1:${sp.h[0]}`,
+  `--h2:${sp.h[1]}`,
+].join(";");
 ---
 {
   colors && face ? (
@@ -17,8 +47,15 @@ const { colors, face, label, ratio } = Astro.props;
         <div class="sg-panel sg-colors">
           {colors.items.map((c) => (
             <div class="sg-swatch">
-              <div class="sg-main" style={`background:${c.hex}`}><span>{c.name}</span><span>{c.hex.toUpperCase()}</span></div>
-              <div class="sg-tints">{c.tints.map((t) => <span style={`background:${t}`} title={t} />)}</div>
+              <div class="sg-main" style={`background:${c.hex}`}>
+                <span>{c.name}</span>
+                <span>{c.hex.toUpperCase()}</span>
+              </div>
+              <div class="sg-tints" aria-hidden="true">
+                {c.tints.map((t) => (
+                  <span style={`background:${t}`} title={t} />
+                ))}
+              </div>
             </div>
           ))}
         </div>
@@ -26,12 +63,32 @@ const { colors, face, label, ratio } = Astro.props;
       <div class="sg-card" style="--sgbg:#101010">
         <h4>Typeface</h4>
         <div class="sg-panel sg-type">
-          <p class="sg-face" style={`font-family:${face.stack}`}>{face.name}</p>
-          <div class="sg-specimen" style={`font-family:${face.stack}`} aria-hidden="true"><span class="ghost">Aa</span><span>Aa</span></div>
+          <div class="sg-type-head">
+            <p class="sg-face" style={`font-family:${face.stack}`}>{face.name}</p>
+            {face.words && (
+              <ul class="sg-words">
+                {face.words.map((w) => (
+                  <li lang={w.lang} style={`font-family:${w.font ?? face.stack}`}>{w.text}</li>
+                ))}
+              </ul>
+            )}
+          </div>
+          <div class="sg-spec-wrap" aria-hidden="true" style={specVars}>
+            <div class="sg-specimen" style={`font-family:${face.stack}`}>
+              <i class="gv v1" />
+              <i class="gv v2" />
+              <i class="gh h1" />
+              <i class="gh h2" />
+              <span class="ghost">Aa</span>
+              <span class="outline">Aa</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   ) : (
-    <div class="cs-sg"><div class="ph" style={`aspect-ratio:${ratio ?? "1312/516"}`}>{label ?? "Style guide — live version in progress"}</div></div>
+    <div class="cs-sg">
+      <div class="ph" style={`aspect-ratio:${ratio ?? "1312/516"}`}>{label ?? "Style guide — live version in progress"}</div>
+    </div>
   )
 }

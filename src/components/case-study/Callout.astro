@@ -1,20 +1,24 @@
 ---
 // Tinted box: strategy notes, "Aha moment", quotes, "What I learned". tone: alt | quote | solid (space-separated).
+// bg: optional background image (Figma layer id) behind the text, positioned with bgPos.
 import Img from "../Img.astro";
 interface Props {
   tone?: string;
   deco?: string;
+  bg?: string;
+  bgPos?: string;
   title: string;
   body?: string | string[];
   chips?: string[];
   quote?: string;
   by?: string;
 }
-const { tone, deco, title, body, chips, quote, by } = Astro.props;
+const { tone, deco, bg, bgPos = "center", title, body, chips, quote, by } = Astro.props;
 const paras = body ? ([] as string[]).concat(body) : [];
 ---
-<div class:list={["cs-callout", tone]}>
-  {deco && <div class="cs-deco" aria-hidden="true"><Img id={deco} alt="" label=" " /></div>}
+<div class:list={["cs-callout", tone, { "has-bg": bg }]}>
+  {bg && <div class="cs-callout-bg" aria-hidden="true" style={`--pos:${bgPos}`}><Img id={bg} w={1312} h={320} alt="" optional sizes="(min-width: 1440px) 1312px, 100vw" /></div>}
+  {deco && <div class="cs-deco" aria-hidden="true"><Img id={deco} alt="" optional /></div>}
   <h3 set:html={title} />
   {paras.map((p) => <p set:html={p} />)}
   {chips && <ul class="cs-chips">{chips.map((c) => <li>{c}</li>)}</ul>}

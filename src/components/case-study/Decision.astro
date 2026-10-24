@@ -33,7 +33,7 @@ const FLIP = { h: "scale(-1,1)", v: "scale(1,-1)", hv: "scale(-1,-1)" };
       {
         arrows.map((a) => (
           <div class="cs-arrow" style={`left:${pct(a.x, W)};top:${pct(a.y, H)};width:${pct(136, W)}${a.flip ? `;transform:${FLIP[a.flip]}` : ""}`}>
-            <Img id={a.id} w={136} h={57} alt="" label=" " />
+            <Img id={a.id} w={136} h={57} alt="" optional />
           </div>
         ))
       }

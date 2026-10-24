@@ -158,8 +158,17 @@ sections:
             text: Folded real client and sales-team feedback into three revisions.
   - blocks:
       - { type: head, label: The design language }
-      - { type: styleguide, label: Colours & typeface — rebuilding as live text, ratio: 1312/514 }
-      - { type: styleguide, label: UI components — rebuilding as live text, ratio: 1312/640 }
+      - type: styleguide
+        colors:
+          bg: "#1479ff"
+          items:
+            - { name: Primary Blue, hex: "#1479ff", tints: ["#0c6be9", "#378dff", "#5ba1ff", "#7eb5ff", "#a1c9ff", "#c4ddff", "#e3efff"] }
+            - { name: Primary Black, hex: "#101010", tints: ["#282828", "#484848", "#707070", "#666666", "#9f9f9f", "#cfcfcf", "#e7e7e7"] }
+        face:
+          name: Poppins
+          stack: "'SG Poppins', Poppins, sans-serif"
+          specimen: { w: 364, front: [2, 30], ghost: [8, 30], v: [5, 346], h: [28, 207] }
+      - { type: board, name: jain }
   - blocks:
       - type: head
         label: The Solution

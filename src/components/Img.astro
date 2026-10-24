@@ -19,9 +19,11 @@ interface Props {
   style?: string;
   /** Override the srcset `sizes` hint when the image is not shown at `w` on wide screens. */
   sizes?: string;
+  /** Decorative extra: render nothing (instead of a placeholder) while the file is missing. */
+  optional?: boolean;
 }
 
-const { id, w, h, alt = "", cls = "", eager = false, label = "", style = "", sizes } = Astro.props;
+const { id, w, h, alt = "", cls = "", eager = false, label = "", style = "", sizes, optional = false } = Astro.props;
 const asset = figmaAsset(id);
 const load = eager ? { fetchpriority: "high" as const } : { loading: "lazy" as const };
 
@@ -36,7 +38,7 @@ const phStyle = w && h ? `--w:${w}px;--h:${h}px;${style}` : style || undefined;
 ---
 {
   !asset ? (
-    <div class:list={["ph", cls]} style={phStyle} role="img" aria-label={alt || label}>
+    optional ? null : <div class:list={["ph", cls]} style={phStyle} role="img" aria-label={alt || label}>
       {label || alt || "image"}
     </div>
   ) : isSvg(asset) ? (

@@ -28,6 +28,9 @@ export const block = z.discriminatedUnion("type", [
     type: z.literal("callout"),
     tone: opt(z.string()),
     deco: opt(nodeId),
+    /** Background image (Figma layer id) and its CSS object-position. */
+    bg: opt(nodeId),
+    bgPos: opt(z.string()),
     title: rich,
     body: opt(z.union([rich, z.array(rich)])),
     chips: opt(z.array(z.string())),
@@ -103,11 +106,20 @@ export const block = z.discriminatedUnion("type", [
   z.object({
     type: z.literal("styleguide"),
     colors: opt(z.object({ bg: z.string(), items: z.array(z.object({ name: z.string(), hex: z.string(), tints: z.array(z.string()) })) })),
-    face: opt(z.object({ name: z.string(), stack: z.string() })),
+    face: opt(
+      z.object({
+        name: z.string(),
+        stack: z.string(),
+        words: opt(z.array(z.object({ text: z.string(), font: opt(z.string()), lang: opt(z.string()) }))),
+        /** "Aa" geometry in Figma px: width, outlined/filled copies' top-left, vertical and horizontal guide positions. */
+        specimen: opt(z.object({ w: z.number(), front: z.tuple([z.number(), z.number()]), ghost: z.tuple([z.number(), z.number()]), v: z.tuple([z.number(), z.number()]), h: z.tuple([z.number(), z.number()]) })),
+      }),
+    ),
     label: opt(z.string()),
     ratio: opt(z.string()),
   }),
-  z.object({ type: z.literal("cna-components") }),
+  /** A case-specific UI components board (src/components/case-study/boards). */
+  z.object({ type: z.literal("board"), name: z.enum(["outgrow", "jain"]) }),
   /** Escape hatch: raw HTML. */
   z.object({ type: z.literal("html"), html: z.string() }),
 ]);
