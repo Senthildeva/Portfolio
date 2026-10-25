@@ -168,7 +168,12 @@ sections:
           name: Poppins
           stack: "'SG Poppins', Poppins, sans-serif"
           specimen: { w: 364, front: [2, 30], ghost: [8, 30], v: [5, 346], h: [28, 207] }
-      - { type: board, name: jain }
+      - type: board
+        name: jain
+        frame: "13779:2003"
+        w: 1312
+        h: 648
+        alt: "Jain Connect design language board: icon set, sales-versus-target chart, navigation bar with active and inactive tabs, a Welcome to Jains card and a categories donut chart"
   - blocks:
       - type: head
         label: The Solution
@@ -188,7 +193,7 @@ sections:
       type: masonry
       cols:
         - - { img: "13779:2204", h: 1925, alt: Home — hierarchy view }
-          - { img: "13779:2205", h: 660, alt: Account balance }
+          - { img: "13779:2205", h: 408, alt: Account balance }
         - - { img: "13779:2207", h: 902, alt: Sales by customer type }
           - { img: "13779:2208", h: 514, alt: Add profile details }
           - { img: "13779:2209", h: 449, alt: Account balance }
@@ -196,12 +201,12 @@ sections:
         - - { img: "13779:2212", h: 509, alt: Salesperson profile }
           - { img: "13779:2213", h: 600, alt: Videos home }
           - { img: "13779:2214", h: 751, alt: Open orders }
-          - { img: "13779:2215", h: 514, alt: Onboarding }
+          - { img: "13779:2215", h: 394, alt: Onboarding }
         - - { img: "13779:2217", h: 364, alt: Dialog }
           - { img: "13779:2218", h: 669, alt: 3 years data }
           - { img: "13779:2219", h: 534, alt: Product detail — PVC ball valves }
           - { img: "13779:2220", h: 514, alt: Design calculator }
-          - { img: "13779:2221", h: 514, alt: Design calculator }
+          - { img: "13779:2221", h: 133, alt: Design calculator }
         - - { img: "13779:2223", h: 514, alt: Log in }
           - { img: "13779:2224", h: 201, alt: Dialog }
           - { img: "13779:2225", h: 514, alt: Drip irrigation }
@@ -245,7 +250,8 @@ sections:
             text: Login-based visibility - higher managers see orders, payments and targets across every location; a salesperson sees only their own.
       - type: callout
         tone: solid
-        deco: "13779:2462"
+        bg: "13779:2266"
+        bgPos: right center
         title: What I learned
         body: As my <b>1st dashboard Project</b> - and my first admin app behind a customer-facing product - this project reshaped how I think about presenting data. <b>I learned to design around hierarchy</b> and <b>login-based permissions</b>, and to <b>structure complex</b>, mismatched data into something a busy salesperson can actually read and act on.
         quote: "\"The best dashboards don't show more — they show less, to the right person.\""

@@ -1,11 +1,20 @@
 ---
 // Case-specific UI component boards ("The design language"), rebuilt from Figma as live HTML.
+// When the whole board frame is exported from Figma as one picture (`frame`), that picture is shown instead.
 import OutgrowBoard from "./boards/OutgrowBoard.astro";
 import JainBoard from "./boards/JainBoard.astro";
+import Img from "../Img.astro";
+import { figmaAsset } from "../../lib/figma";
 interface Props {
   name: "outgrow" | "jain";
+  frame?: string;
+  w?: number;
+  h?: number;
+  alt?: string;
 }
+const { name, frame, w = 1312, h, alt = "" } = Astro.props;
 const BOARDS = { outgrow: OutgrowBoard, jain: JainBoard };
-const Board = BOARDS[Astro.props.name];
+const Board = BOARDS[name];
+const flat = Boolean(frame && figmaAsset(frame));
 ---
-<Board />
+{flat ? <figure class="cs-board-flat"><Img id={frame} w={w} h={h} alt={alt} sizes="(min-width: 1440px) 1312px, 92vw" /></figure> : <Board />}

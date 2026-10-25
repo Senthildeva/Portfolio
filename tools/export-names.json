@@ -3,7 +3,6 @@
   "files": {
     "splash-hello.svg.svg": null,
     "splash-senthil.svg.svg": null,
-
     "Logos/SBI.png": "14086:9781",
     "Logos/Amazon.png": "14086:9782",
     "Logos/Flipkar.png": "14086:9783",
@@ -22,7 +21,6 @@
     "Logos/Rustic Charm.png": "14086:9992",
     "Logos/Danburite Corp.png": "224413:2131",
     "Logos/Tenanto.png": "14086:9996",
-
     "Landing page/CNA.png": "I14086:10015;13934:1360",
     "Landing page/Outgrow.png": "I14086:10016;13934:1360",
     "Landing page/Gnie.png": "I14086:10017;13934:1360",
@@ -31,7 +29,6 @@
     "Landing page/Rectangle 59__I14086-10073_13934-1491.png": null,
     "Landing page/sparkle-container.svg": "14095:10393",
     "Landing page/arrow-right.svg": null,
-
     "About page/Image.png": "14199:9930",
     "About page/Pic 1.png": "14218:10264",
     "About page/Pic 2.png": "14218:10265",
@@ -39,14 +36,12 @@
     "About page/Pic 4.png": "14218:10267",
     "About page/Pic 5.png": "14218:10268",
     "About page/Pic 6.png": "14218:10269",
-
     "Project page/CNA.png": null,
     "Project page/Outgrow.png": null,
     "Project page/Gnie.png": null,
     "Project page/JDC.png": null,
     "Project page/YB_SBI.png": "I13934:1402;13934:1360",
     "Project page/YBBI - SBI.png": "I13934:3531;13934:1360",
-
     "Clintele/Sahil Verma.png": "13840:3996",
     "Clintele/Shashwat Verma.png": "13873:8230",
     "Clintele/Aemco.png": null,
@@ -67,9 +62,11 @@
     "Clintele/Taqanal.png": null,
     "Clintele/Tenanto.png": null,
     "Clintele/Waycool.png": null,
-
     "CNA Case study/650170a4bca8a6127e6c886f_food-app.webp.png": "14086:9778",
-    "CNA Case study/image.png": { "2624x1400": "224399:1883", "2880x500": "13764:3166" },
+    "CNA Case study/image.png": {
+      "2624x1400": "224399:1883",
+      "2880x500": "13764:3166"
+    },
     "CNA Case study/Frame 1597882226.png": "13764:3188",
     "CNA Case study/Frame 1597882211.png": "13764:3200",
     "CNA Case study/Screenshot_20230308_055516_CetusPlay.png": "13764:3315",
@@ -82,6 +79,81 @@
     "CNA Case study/Frame 1597882252.png": "13764:3448",
     "CNA Case study/Frame 1597882252-1.png": "13764:3464",
     "CNA Case study/Image-1.png": "13764:3487",
-    "CNA Case study/cna video 1.mp4": "video-cna"
+    "CNA Case study/cna video 1.mp4": {
+      "video": "video-cna",
+      "poster": "13764:3493"
+    },
+    "CNA Case study/Components.png": "13764:3395",
+    "Outgrow Case study/650170a4bca8a6127e6c886f_food-app.webp.png": {
+      "2624x1400": "13764:3541",
+      "2880x1576": "13773:4372"
+    },
+    "Outgrow Case study/650170a4bca8a6127e6c886f_food-app.webp-1.png": {
+      "2624x1400": "13764:3541",
+      "2880x1576": "13773:4372"
+    },
+    "Outgrow Case study/image.png": "13764:3653",
+    "Outgrow Case study/Frame 1597882226.png": "13764:3606",
+    "Outgrow Case study/Frame 1597882211.png": "13764:3632",
+    "Outgrow Case study/Frame 1597882301.png": null,
+    "Outgrow Case study/Frame 1597882302.png": null,
+    "Outgrow Case study/Frame 1597882287.png": "13764:3827",
+    "Outgrow Case study/Frame 1597882292.png": { "id": "13764:4016", "crop": [0, 0, 2624, 2559] },
+    "Outgrow Case study/Frame 1597882293.png": "13764:4029",
+    "Outgrow Case study/Frame 1597882271.png": {
+      "id": "13764:4060",
+      "erase": [[60, 60, 1480, 560]]
+    },
+    "Gnie Case Study/650170a4bca8a6127e6c886f_food-app.webp.png": "13764:4074",
+    "Gnie Case Study/650170a4bca8a6127e6c886f_food-app.webp-1.png": "13764:4191",
+    "Gnie Case Study/650170a4bca8a6127e6c886f_food-app.webp-2.png": "13764:4240",
+    "Gnie Case Study/650170a4bca8a6127e6c886f_food-app.webp-3.png": "13764:4243",
+    "Gnie Case Study/650170a4bca8a6127e6c886f_food-app.webp-4.png": "13764:4244",
+    "Gnie Case Study/650170a4bca8a6127e6c886f_food-app.webp-5.png": "13764:4268",
+    "Gnie Case Study/image.png": "13764:4121",
+    "Gnie Case Study/Frame 1597882271.png": {
+      "id": "13764:4269",
+      "erase": [[60, 60, 1500, 570]]
+    },
+    "Gnie Case Study/Gnie Scratch and Win_1.mp4": "video-gnie-1",
+    "Gnie Case Study/Gine On Lap_Square_1.mp4": {
+      "video": "video-gnie-2",
+      "poster": "13764:4242"
+    },
+    "Jain Case study/2.png": "13779:1685",
+    "Jain Case study/4.png": "13779:1726",
+    "Jain Case study/Frame 1597882226.png": "13779:1869",
+    "Jain Case study/Frame 1597882211.png": "13779:1897",
+    "Jain Case study/Frame 1597882301.png": null,
+    "Jain Case study/Frame 1597882302.png": null,
+    "Jain Case study/Frame 1597882326.png": "13779:2003",
+    "Jain Case study/Frame 1597882210.png": {
+      "id": "13779:2266",
+      "erase": [[36, 36, 2096, 452]]
+    },
+    "Jain Case study/Rectangle 24117.png": "13779:2230",
+    "Jain Case study/Rectangle 24119.png": "13779:2233",
+    "Jain Case study/Rectangle 24121.png": "13779:2232",
+    "Jain Case study/Frame 1597881817.png": [
+      { "id": "13779:2204", "crop": [80, 0, 580, 3850] },
+      { "id": "13779:2205", "crop": [80, 3932, 580, 4748] },
+      { "id": "13779:2207", "crop": [636, 0, 1136, 1804] },
+      { "id": "13779:2208", "crop": [636, 1884, 1136, 2912] },
+      { "id": "13779:2209", "crop": [636, 2992, 1136, 3890] },
+      { "id": "13779:2210", "crop": [636, 3970, 1136, 4678] },
+      { "id": "13779:2212", "crop": [1192, 0, 1692, 1018] },
+      { "id": "13779:2213", "crop": [1192, 1098, 1692, 2298] },
+      { "id": "13779:2214", "crop": [1192, 2378, 1692, 3881] },
+      { "id": "13779:2215", "crop": [1192, 3961, 1692, 4748] },
+      { "id": "13779:2217", "crop": [1748, 0, 2248, 728] },
+      { "id": "13779:2218", "crop": [1748, 808, 2248, 2146] },
+      { "id": "13779:2219", "crop": [1748, 2226, 2248, 3294] },
+      { "id": "13779:2220", "crop": [1748, 3374, 2248, 4402] },
+      { "id": "13779:2221", "crop": [1748, 4482, 2248, 4748] },
+      { "id": "13779:2223", "crop": [2304, 0, 2804, 1028] },
+      { "id": "13779:2224", "crop": [2304, 1108, 2804, 1510] },
+      { "id": "13779:2225", "crop": [2304, 1590, 2804, 2618] },
+      { "id": "13779:2226", "crop": [2304, 2698, 2804, 3726] }
+    ]
   }
 }

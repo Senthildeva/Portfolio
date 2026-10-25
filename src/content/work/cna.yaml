@@ -260,6 +260,7 @@ sections:
       bleed: true
       ratio: 1440/723
       label: Walkthrough video
+      alt: Walkthrough of the CNA Apple TV app
   - blocks:
       - { type: head, label: The Outcome, num: "006", title: One system. Native on every platform. }
       - type: points

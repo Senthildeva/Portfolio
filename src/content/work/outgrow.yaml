@@ -159,7 +159,12 @@ sections:
             - { text: शेतकरी, lang: mr, font: "'SG Mukta', Mukta, sans-serif" }
             - { text: കർഷകൻ, lang: ml, font: "'SG Noto Sans Malayalam', 'Noto Sans Malayalam', sans-serif" }
             - { text: ರೈತ, lang: kn, font: "'SG Noto Sans Kannada', 'Noto Sans Kannada', sans-serif" }
-      - { type: board, name: outgrow }
+      - type: board
+        name: outgrow
+        frame: "13764:3827"
+        w: 1320
+        h: 964
+        alt: "Outgrow design language board: Waycool Labs agritech platform card, crop categories, live price cards, user personalisation with fruit and vegetable icons, an agricultural-expert video, scan-a-leaf diagnosis, a farm illustration and crop protection"
   - blocks:
       - { type: head, label: High • Fidelity Wires }
       - type: image
@@ -222,8 +227,8 @@ sections:
           - { big: <em>6</em>, label: "Languages, fully localised", src: EN · TA · TE · KN · MR · HI }
       - type: callout
         tone: solid
-        bg: "13764:3993"
-        bgPos: center 19%
+        bg: "13764:4060"
+        bgPos: center
         title: What I learned
         body: Designing for users I'd never meet in a lab forced a discipline I'm proud of — every decision had to survive a dusty field, a small screen, low connectivity, and a language I might not read.
         quote: “The hard part wasn't adding features. It was earning enough trust to replace five.”

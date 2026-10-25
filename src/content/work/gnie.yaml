@@ -155,10 +155,11 @@ sections:
         video: video-gnie-1
         poster: "13764:4240"
         ratio: 1312/700
-        label: Kiosk walkthrough video
+        label: Scratch-and-win video
+        alt: The scratch-and-win reward screen on the Gnie kiosk tablet
       - type: pair
         items:
-          - { video: video-gnie-2, poster: "13764:4242", ratio: 636/700, label: Scratch-and-win video }
+          - { video: video-gnie-2, poster: "13764:4242", ratio: 636/700, label: Gnie on a tablet, alt: The Gnie app running on a tablet }
           - img: "13764:4243"
             w: 636
             h: 700
@@ -197,7 +198,8 @@ sections:
         label: Booth photo
       - type: callout
         tone: solid
-        deco: "13764:4274"
+        bg: "13764:4269"
+        bgPos: center
         title: Outcome
         body: Gapblue and Gnie Studio are fast gaining momentum, with increased footfalls at our booth. The day has offered us great opportunities for networking and collaboration, providing us with the valuable chance to introduce Gnie Studio and its unique features to various industry leaders."
         quote: ◦ Gapblue Software Labs, LinkedIn — Day 3, GITEX Global 2024

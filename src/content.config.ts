@@ -121,7 +121,15 @@ export const block = z.discriminatedUnion("type", [
     ratio: opt(z.string()),
   }),
   /** A case-specific UI components board (src/components/case-study/boards). */
-  z.object({ type: z.literal("board"), name: z.enum(["outgrow", "jain"]) }),
+  z.object({
+    type: z.literal("board"),
+    name: z.enum(["outgrow", "jain"]),
+    /** The whole board frame exported from Figma as one picture (its size in the design, and a description); used when present. */
+    frame: opt(nodeId),
+    w: opt(z.number()),
+    h: opt(z.number()),
+    alt: opt(z.string()),
+  }),
   /** Escape hatch: raw HTML. */
   z.object({ type: z.literal("html"), html: z.string() }),
 ]);

@@ -236,6 +236,9 @@
 .cs-arrow .ph{display:none}
 .cs-dfig figcaption{position:relative;text-align:center;padding:0 16px 20px;font-size:clamp(15px,1.4vw,20px);line-height:1.4;color:var(--ink-2)}
 .cs-ann-list{display:none}
+/* Design-language board shown as the exported Figma frame. */
+.cs-board-flat{margin:0}
+.cs-board-flat img,.cs-board-flat .ph{display:block;width:100%;height:auto}
 /* Decision shown as the exported Figma frame: on wide screens its notes and caption are part of the picture. */
 .cs-dframe img,.cs-dframe .ph{display:block;width:100%;height:auto}
 .cs-dframe .ph{aspect-ratio:1312/700}
