@@ -14,8 +14,10 @@ How a file is matched to the site image it fills:
                                     keep part of the picture, and/or lift light text off a smooth background
                                     inside the boxes (the page sets that text live); pixels of the exported file
        [ ... ]                      several site images cut from one file
-       "video-cna" or {"video": "video-cna", "poster": "13764:3493"}
-                                    a video, optionally with its first frame saved as that poster image
+       "video-cna" or {"video": "video-cna", "poster": "13764:3493", "frame": [1288, 1200, "#101010"]}
+                                    a video (or an animated GIF, which becomes a video), optionally with its first
+                                    frame saved as that poster image; "frame" fits it inside a canvas of that size
+                                    and colour, the way Figma's "Fit" places it in its frame
   2. Otherwise the "__<layer id>" ending added by the export settings in Figma is used
      (e.g. "hero__14086-9778.png").
 Layer ids that are copies of one artwork go through src/lib/asset-map.json, so each image is stored once.
@@ -57,9 +59,9 @@ def size_of(path):
 
 
 def is_video(path):
-    """True for real MP4/MOV/WebM data (a Finder alias or shortcut with a video name is not)."""
+    """True for real MP4/MOV/WebM data or an animated GIF (a Finder alias or shortcut with a video name is not)."""
     head = path.read_bytes()[:12]
-    return head[4:8] == b"ftyp" or head[:4] == b"\x1a\x45\xdf\xa3"
+    return head[4:8] == b"ftyp" or head[:4] == b"\x1a\x45\xdf\xa3" or head[:4] == b"GIF8"
 
 
 def erase_text(im, boxes):
@@ -105,23 +107,33 @@ def bitrate(path):
         return 0
 
 
-def import_video(f, name, poster=None):
+def import_video(f, name, poster=None, frame=None):
     dest = VIDEOS / f"{name}.mp4"
-    note = "copied"
-    if FFMPEG and bitrate(f) > 4_000_000:
-        subprocess.run([FFMPEG, "-v", "error", "-y", "-i", str(f), "-an", "-c:v", "libx264", "-preset", "veryfast", "-crf", "26",
-                        "-pix_fmt", "yuv420p", "-movflags", "+faststart", str(dest)], check=True)
+    gif = f.read_bytes()[:4] == b"GIF8"
+    encode = [FFMPEG, "-v", "error", "-y", "-an", "-c:v", "libx264", "-preset", "veryfast", "-crf", "26", "-pix_fmt", "yuv420p", "-movflags", "+faststart"]
+    if (gif or frame) and not FFMPEG:
+        raise ValueError("needs ffmpeg to turn it into a video")
+    if frame:
+        w, h, bg = frame
+        graph = (f"color=c={bg}:s={w}x{h}:r=25[bg];[0:v]format=rgba,scale={w}:{h}:force_original_aspect_ratio=decrease:flags=lanczos[fg];"
+                 "[bg][fg]overlay=(W-w)/2:(H-h)/2:shortest=1,format=yuv420p")
+        subprocess.run([FFMPEG, "-i", str(f), "-filter_complex", graph] + encode[1:] + [str(dest)], check=True)
+        note = f"made into a {w}x{h} video"
+    elif gif or (FFMPEG and bitrate(f) > 4_000_000):
+        subprocess.run([FFMPEG, "-i", str(f), "-vf", "scale=trunc(iw/2)*2:trunc(ih/2)*2"] + encode[1:] + [str(dest)], check=True)
         note = "re-encoded"
     elif FFMPEG:
         subprocess.run([FFMPEG, "-v", "error", "-y", "-i", str(f), "-an", "-c", "copy", "-movflags", "+faststart", str(dest)], check=True)
+        note = "copied"
     else:
         shutil.copyfile(f, dest)
+        note = "copied"
     msg = f"public/videos/{name}.mp4 ({note}, {dest.stat().st_size // 1024} KB)"
     if poster and FFMPEG:
         with tempfile.TemporaryDirectory() as tmp:
-            frame = Path(tmp) / "poster.png"
-            subprocess.run([FFMPEG, "-v", "error", "-y", "-i", str(f), "-frames:v", "1", str(frame)], check=True)
-            msg += " + poster " + save_image(Image.open(frame), key_of(poster))
+            still = Path(tmp) / "poster.png"
+            subprocess.run([FFMPEG, "-v", "error", "-y", "-i", str(dest), "-frames:v", "1", str(still)], check=True)
+            msg += " + poster " + save_image(Image.open(still), key_of(poster))
     return msg
 
 
@@ -194,7 +206,7 @@ for f in sorted(p for p in src.rglob("*") if p.is_file() and not p.name.startswi
                 if not is_video(f):
                     skipped.append(f"{rel} (not a video file; a Finder alias or shortcut?)")
                     continue
-                done.append(f"{rel} -> " + import_video(f, item["video"], item.get("poster")))
+                done.append(f"{rel} -> " + import_video(f, item["video"], item.get("poster"), item.get("frame")))
             else:
                 key = key_of(item["id"])
                 if key in written and written[key] != rel:

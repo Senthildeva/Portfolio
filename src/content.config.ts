@@ -155,7 +155,8 @@ const work = defineCollection({
       theme: opt(z.enum(["cna", "outgrow", "gnie", "jain"])),
       pager: opt(z.object({ label: z.string(), color: z.string() })),
       hero: opt(z.object({ tag: rich, title: rich, lead: opt(rich), ctas: opt(z.array(z.object({ label: z.string(), href: z.string(), ghost: opt(z.boolean()) }))) })),
-      stage: opt(z.object({ img: nodeId, alt: opt(z.string()), meta: z.record(z.string(), z.string()), intro: rich })),
+      /** Cover (a video when `video` names a file in public/videos, with `img` as its poster), facts and intro. */
+      stage: opt(z.object({ img: nodeId, video: opt(z.string()), alt: opt(z.string()), meta: z.record(z.string(), z.string()), intro: rich })),
       sections: opt(z.array(section)),
     })
     .superRefine((d, ctx) => {

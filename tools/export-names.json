@@ -131,6 +131,9 @@
       { "id": "13779:2225", "crop": [2304, 1590, 2804, 2618] },
       { "id": "13779:2226", "crop": [2304, 2698, 2804, 3726] }
     ],
-    "CNA Case study/CNA Banner.png": "13764:3166"
+    "CNA Case study/CNA Banner.png": "13764:3166",
+    "Gnie Case Study/gnie_landscape.mp4": "video-gnie-stage",
+    "Gnie Case Study/genie.gif": { "video": "video-gnie-genie", "poster": "13764:4209", "frame": [1288, 1200, "#101010"] },
+    "Gnie Case Study/giftbox-animation.gif": { "video": "video-gnie-gift", "poster": "13764:4210", "frame": [1288, 1200, "#101010"] }
   }
 }

@@ -22,6 +22,7 @@ hero:
   title: <i class="g">Tap, Scratch, Win</i> - Designing a Gamified PWA for the World's Largest Tech Show <i class="g">(GITEX 2024).</i>
 stage:
   img: "13764:4074"
+  video: video-gnie-stage
   alt: Gnie booth app
   meta:
     Client: GNIE - Gapblue Software Labs
@@ -124,16 +125,8 @@ sections:
             text: The initial React build was migrated to Next.js to leverage better PWA support, offline caching via service workers, and improved cross-device rendering.
       - type: pair
         items:
-          - img: "13764:4209"
-            w: 644
-            h: 600
-            alt: Genie character
-            label: Genie character
-          - img: "13764:4210"
-            w: 644
-            h: 600
-            alt: Gift box reveal
-            label: Gift box reveal
+          - { video: video-gnie-genie, poster: "13764:4209", ratio: 644/600, label: Genie character, alt: The animated Gnie genie mascot }
+          - { video: video-gnie-gift, poster: "13764:4210", ratio: 644/600, label: Gift box reveal, alt: The sparkling gift-box reveal animation }
   - blocks:
       - type: head
         label: The Solution
