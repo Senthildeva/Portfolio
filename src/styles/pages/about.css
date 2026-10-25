@@ -16,7 +16,6 @@
 .tl-what h3{font-family:var(--display);font-weight:700;font-size:clamp(22px,2vw,28px);line-height:32px;color:var(--primary)}
 .tl-what .role{font-size:clamp(18px,1.7vw,24px);line-height:30px;margin-top:-8px}
 .tl-what .note{font-size:20px;line-height:30px;color:var(--ink-2)}
-.tl-what .note.todo{color:var(--muted-text);font-style:italic}
 @media (max-width:760px){.tl-item{flex-direction:column;gap:12px}.tl-when{flex-basis:auto;flex-direction:row;align-items:center;gap:12px;font-size:17px}.tl-what .note{font-size:17px;line-height:26px}}
 .band{background:var(--night);color:#fff;padding-block:60px}
 .band .label{color:var(--muted)}

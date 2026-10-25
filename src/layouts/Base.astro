@@ -74,7 +74,7 @@ const canonical = new URL(path || "/", SITE.url).href;
         "main .tl-item", "main .xp-grid > *", "main .stats > *", "main .brand-grid > *", "main .quotes > *",
         ".footer .f-cta", ".footer .f-status", ".footer .f-note", ".footer .f-logo", ".footer .f-bottom",
       ].join(",");
-      const SKIP = "[data-typewriter], [data-typewriter] *, .ticker-track *, .sr-only, .ac-list";
+      const SKIP = "script, style, template, link, meta, noscript, [data-typewriter], [data-typewriter] *, .ticker-track *, .sr-only, .ac-list";
       const MEDIA = ".hero-media, .cs-cover, .cs-img, .cs-dfig, .cs-board-flat, .ac, .card, .gallery, figure";
 
       if (!reduce && "IntersectionObserver" in window) {
