@@ -5,7 +5,9 @@ import type { Brand } from "../data/brands";
 
 interface Props {
   brand: Brand;
+  /** Off in the logo ticker, where logos slide in from off-screen and would otherwise pop in late. */
+  lazy?: boolean;
 }
-const { brand } = Astro.props;
+const { brand, lazy = true } = Astro.props;
 ---
-{brand.parts.map(([id, w, h], i) => <Img id={id} w={w} h={h} alt={i === 0 ? brand.name : ""} label={i === 0 ? brand.name : ""} style={`width:${w}px;height:${h}px`} />)}
+{brand.parts.map(([id, w, h], i) => <Img id={id} w={w} h={h} alt={i === 0 ? brand.name : ""} label={i === 0 ? brand.name : ""} style={`width:${w}px;height:${h}px`} lazy={lazy} />)}

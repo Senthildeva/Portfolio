@@ -4,13 +4,14 @@ import Img from "./Img.astro";
 
 interface Props {
   name: string;
-  photos: string[];
+  /** [Figma layer id, description] */
+  photos: [string, string][];
   label: string;
 }
 const { name, photos, label } = Astro.props;
 ---
 <div class="gallery" data-gallery={name} style="margin-top:40px;padding-left:max(var(--gutter),calc((100vw - var(--wrap)) / 2))" tabindex="0" role="region" aria-label={label}>
-  <div class="gallery-track">{photos.map((id, i) => <figure><Img id={id} w={400} h={500} alt={`Off the clock photo ${i + 1}`} label={`Photo ${i + 1}`} sizes="(min-width: 1430px) 400px, (min-width: 930px) 28vw, 260px" /></figure>)}</div>
+  <div class="gallery-track">{photos.map(([id, alt], i) => <figure><Img id={id} w={400} h={500} alt={alt} label={`Photo ${i + 1}`} sizes="(min-width: 1430px) 400px, (min-width: 930px) 28vw, 260px" /></figure>)}</div>
 </div>
 
 <script>

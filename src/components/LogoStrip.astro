@@ -5,5 +5,5 @@ import BrandLogo from "./BrandLogo.astro";
 import { LOGOS } from "../data/brands";
 ---
 <Ticker cls="logos" speed={55} label="Brands I've designed for">
-  {LOGOS.map((b) => <div class="logo-item" title={b.name}><BrandLogo brand={b} /></div>)}
+  {LOGOS.map((b) => <div class="logo-item" title={b.name}><BrandLogo brand={b} lazy={false} /></div>)}
 </Ticker>

@@ -22,5 +22,12 @@ export const EXPERTISE: [title: string, chips: string[]][] = [
   ["Currently exploring", ["AI-Augmented Design", "Fintech", "Design Leadership", "Claude Entire Suite", "Agentic AI"]],
 ];
 
-/** "Off the clock" photos (Figma layer ids). */
-export const OFF_CLOCK = ["14218:10264", "14218:10265", "14218:10266", "14218:10267", "14218:10268", "14218:10269"];
+/** "Off the clock" photos: [Figma layer id, description], in Figma order (Pic 1 to Pic 6). */
+export const OFF_CLOCK: [string, string][] = [
+  ["14218:10264", "Riding gear on, standing beside the motorcycle"],
+  ["14218:10265", "Grilled chicken on rice, with the sea behind"],
+  ["14218:10266", "At the gym, next to a loaded barbell"],
+  ["14218:10267", "Playing football on a turf pitch"],
+  ["14218:10268", "Movie time: a popcorn bucket in a dark cinema"],
+  ["14218:10269", "Batting at an indoor cricket net"],
+];

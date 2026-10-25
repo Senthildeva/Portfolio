@@ -21,11 +21,13 @@ interface Props {
   sizes?: string;
   /** Decorative extra: render nothing (instead of a placeholder) while the file is missing. */
   optional?: boolean;
+  /** Load lazily when near the viewport (default). Off for small images that slide in, e.g. in a ticker. */
+  lazy?: boolean;
 }
 
-const { id, w, h, alt = "", cls = "", eager = false, label = "", style = "", sizes, optional = false } = Astro.props;
+const { id, w, h, alt = "", cls = "", eager = false, label = "", style = "", sizes, optional = false, lazy = true } = Astro.props;
 const asset = figmaAsset(id);
-const load = eager ? { fetchpriority: "high" as const } : { loading: "lazy" as const };
+const load = eager ? { fetchpriority: "high" as const } : lazy ? { loading: "lazy" as const } : {};
 
 let width: number | undefined;
 let widths: number[] | undefined;
