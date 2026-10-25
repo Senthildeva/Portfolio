@@ -1,0 +1,33 @@
+---
+// The footer's LinkedIn and call icons, from Senthil's Figma exports (32×32, #101010, 2px corners).
+// The LinkedIn mark is his exported logo picture, used as a mask so the whole icon can take the
+// hover colour; its position matches the export (a 25×26 tile at 4,3 holding the slightly larger picture).
+// The white behind the letters stops 1 unit short of the tile's edge, so no light seam shows around it.
+interface Props {
+  name: "linkedin" | "call";
+}
+const { name } = Astro.props;
+const LI_MASK = "data:image/png;base64,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";
+---
+{
+  name === "linkedin" ? (
+    <svg class="fi" viewBox="0 0 32 32" width="32" height="32" aria-hidden="true">
+      <defs>
+        <clipPath id="fi-li-tile"><rect x="4" y="3" width="25" height="26" rx="2" /></clipPath>
+        <mask id="fi-li-mark" maskUnits="userSpaceOnUse" x="0" y="0" width="32" height="32">
+          <image href={LI_MASK} x="3" y="2.9394" width="28.1667" height="26.1212" preserveAspectRatio="none" />
+        </mask>
+      </defs>
+      <rect class="fi-frame" width="32" height="32" rx="2" />
+      <g clip-path="url(#fi-li-tile)">
+        <rect x="5" y="4" width="23" height="24" fill="#fff" />
+        <rect class="fi-mark" width="32" height="32" mask="url(#fi-li-mark)" />
+      </g>
+    </svg>
+  ) : (
+    <svg class="fi" viewBox="0 0 32 32" width="32" height="32" aria-hidden="true">
+      <rect class="fi-frame" width="32" height="32" rx="2" />
+      <path d="M17.527 19.807C17.6991 19.886 17.893 19.9041 18.0767 19.8582C18.2605 19.8123 18.4231 19.7052 18.5378 19.5545L18.8337 19.167C18.9889 18.96 19.1902 18.792 19.4216 18.6763C19.6531 18.5606 19.9083 18.5003 20.167 18.5003H22.667C23.109 18.5003 23.5329 18.6759 23.8455 18.9885C24.1581 19.301 24.3337 19.725 24.3337 20.167V22.667C24.3337 23.109 24.1581 23.5329 23.8455 23.8455C23.5329 24.1581 23.109 24.3337 22.667 24.3337C18.6887 24.3337 14.8734 22.7533 12.0604 19.9403C9.24734 17.1272 7.66699 13.3119 7.66699 9.33366C7.66699 8.89163 7.84259 8.46771 8.15515 8.15515C8.46771 7.84259 8.89163 7.66699 9.33366 7.66699H11.8337C12.2757 7.66699 12.6996 7.84259 13.0122 8.15515C13.3247 8.46771 13.5003 8.89163 13.5003 9.33366V11.8337C13.5003 12.0924 13.4401 12.3476 13.3244 12.579C13.2087 12.8104 13.0407 13.0117 12.8337 13.167L12.4437 13.4595C12.2907 13.5763 12.1828 13.7425 12.1385 13.9298C12.0941 14.1171 12.116 14.314 12.2003 14.487C13.3392 16.8002 15.2123 18.671 17.527 19.807Z" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+  )
+}

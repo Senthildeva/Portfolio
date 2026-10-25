@@ -15,9 +15,11 @@
 .chai:hover .chai-arrow{transform:translateX(6px) rotate(-45deg)}
 .chai:hover .chai-pill{padding:0 30px}
 .socials{display:flex;gap:16px}
-.social{width:32px;height:32px;border-radius:2px;background:var(--ink);color:#fff;display:inline-flex;align-items:center;justify-content:center;transition:background-color .2s ease}
-.social svg{width:18px;height:18px}
-.social:hover{background:var(--primary)}
+.social{width:32px;height:32px;border-radius:2px;display:inline-flex}
+.social .fi{display:block;width:32px;height:32px}
+.fi-frame{fill:var(--ink);transition:fill .2s ease}
+.fi-mark{fill:#000;transition:fill .2s ease}
+.social:hover .fi-frame,.social:hover .fi-mark,.social:focus-visible .fi-frame,.social:focus-visible .fi-mark{fill:var(--primary)}
 .f-side{flex:1 1 0;min-width:0;display:flex;flex-direction:column;gap:24px}
 .glass{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:16px;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
 .f-status{height:68px;display:flex;align-items:center;justify-content:center;gap:8px;font-size:20px}

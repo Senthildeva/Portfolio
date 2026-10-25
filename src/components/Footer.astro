@@ -2,6 +2,7 @@
 import "./Footer.css";
 import Img from "./Img.astro";
 import Icon from "./Icon.astro";
+import FooterIcon from "./FooterIcon.astro";
 import { SITE } from "../site";
 ---
 <footer class="footer">
@@ -14,8 +15,8 @@ import { SITE } from "../site";
           <button class="chai" type="button" data-say-hi><span class="chai-pill">Let's chat over Chai ☕️</span><span class="chai-arrow"><Icon name="arrow-right" /></span></button>
         </div>
         <div class="socials">
-          <a class="social" href={SITE.linkedin} target="_blank" rel="noopener" aria-label="LinkedIn"><Icon name="linkedin" /></a>
-          <a class="social" href={`tel:${SITE.phoneHref}`} aria-label={`Call ${SITE.phoneDisplay}`}><Icon name="phone" /></a>
+          <a class="social" href={SITE.linkedin} target="_blank" rel="noopener" aria-label="LinkedIn"><FooterIcon name="linkedin" /></a>
+          <a class="social" href={`tel:${SITE.phoneHref}`} aria-label={`Call ${SITE.phoneDisplay}`}><FooterIcon name="call" /></a>
         </div>
       </div>
       <div class="f-side">
