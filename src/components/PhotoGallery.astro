@@ -1,5 +1,6 @@
 ---
-// Horizontal photo strip: scroll, swipe, drag with a mouse, or use the arrow buttons (rendered by the page with data-gallery-prev/next).
+// Endless photo strip: scrolls on its own and pauses while hovered or focused. For people who prefer
+// reduced motion it stands still and can be scrolled sideways. The second copy is hidden from screen readers.
 import Img from "./Img.astro";
 
 interface Props {
@@ -7,38 +8,15 @@ interface Props {
   /** [Figma layer id, description] */
   photos: [string, string][];
   label: string;
+  /** Seconds for one full loop. */
+  speed?: number;
 }
-const { name, photos, label } = Astro.props;
+const { name, photos, label, speed = 48 } = Astro.props;
+const sizes = "(min-width: 1430px) 400px, (min-width: 930px) 28vw, 260px";
 ---
-<div class="gallery" data-gallery={name} style="margin-top:40px;padding-left:max(var(--gutter),calc((100vw - var(--wrap)) / 2))" tabindex="0" role="region" aria-label={label}>
-  <div class="gallery-track">{photos.map(([id, alt], i) => <figure><Img id={id} w={400} h={500} alt={alt} label={`Photo ${i + 1}`} sizes="(min-width: 1430px) 400px, (min-width: 930px) 28vw, 260px" /></figure>)}</div>
+<div class="gallery" data-gallery={name} style={`--speed:${speed}s`} tabindex="0" role="region" aria-label={label}>
+  <div class="gallery-track">
+    <div class="gallery-group">{photos.map(([id, alt], i) => <figure><Img id={id} w={400} h={500} alt={alt} label={`Photo ${i + 1}`} sizes={sizes} /></figure>)}</div>
+    <div class="gallery-group" aria-hidden="true">{photos.map(([id], i) => <figure><Img id={id} w={400} h={500} alt="" label={`Photo ${i + 1}`} sizes={sizes} /></figure>)}</div>
+  </div>
 </div>
-
-<script>
-  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  document.querySelectorAll<HTMLElement>("[data-gallery]").forEach((g) => {
-    let down = false, sx = 0, sl = 0;
-    g.addEventListener("pointerdown", (e) => {
-      if (e.pointerType !== "mouse") return;
-      down = true;
-      sx = e.clientX;
-      sl = g.scrollLeft;
-      g.classList.add("dragging");
-    });
-    window.addEventListener("pointermove", (e) => {
-      if (down) g.scrollLeft = sl - (e.clientX - sx);
-    });
-    window.addEventListener("pointerup", () => {
-      down = false;
-      g.classList.remove("dragging");
-    });
-    const id = g.dataset.gallery;
-    document.querySelectorAll<HTMLElement>(`[data-gallery-prev='${id}'],[data-gallery-next='${id}']`).forEach((b) =>
-      b.addEventListener("click", () => {
-        const dir = b.hasAttribute("data-gallery-next") ? 1 : -1;
-        const fig = g.querySelector("figure");
-        g.scrollBy({ left: dir * (fig ? fig.offsetWidth + 24 : 300), behavior: reduce ? "auto" : "smooth" });
-      }),
-    );
-  });
-</script>

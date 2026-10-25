@@ -1,6 +1,7 @@
 ---
-// Landing intro, once per browser session: "hello" (handwritten) → "I’m" → Senthil Devaraj → white wipe.
-// Skipped for people who prefer reduced motion. Base.astro hides it before first paint for repeat visits.
+// Intro: "hello" (handwritten) → "I’m" → Senthil Devaraj → white wipe. It plays whenever someone arrives at
+// the site or reloads a page; Base.astro hides it before the first paint when clicking between pages, and for
+// people who prefer reduced motion. Esc ends it early. When it clears it fires "splash:done".
 import "./Splash.css";
 import name from "../assets/splash/splash-senthil.svg?raw";
 import hello from "../assets/splash/hello-stroke.txt?raw";
@@ -17,22 +18,16 @@ const STROKE = 4.23;
   <div class="splash-word" aria-hidden="true"><p class="splash-text">I’m</p></div>
   <div class="splash-word" aria-hidden="true" set:html={name} />
   <div class="splash-wipe"></div>
-  <button class="skip-splash" type="button">Skip intro</button>
 </div>
 
 <script>
   const splash = document.getElementById("splash");
-  const html = document.documentElement;
-  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  let seen = false;
-  try {
-    seen = !!sessionStorage.getItem("sd-splash");
-    sessionStorage.setItem("sd-splash", "1");
-  } catch {}
+  const done = () => dispatchEvent(new Event("splash:done"));
 
   if (splash) {
-    if (seen || reduce || html.classList.contains("no-splash")) {
+    if (document.documentElement.classList.contains("no-splash")) {
       splash.remove();
+      done();
     } else {
       document.body.classList.add("no-scroll");
       const words = splash.querySelectorAll<HTMLElement>(".splash-word");
@@ -41,11 +36,12 @@ const STROKE = 4.23;
       let step = 0;
       let timer = 0;
       const finish = () => {
-        if (!splash.isConnected) return;
+        if (!splash.isConnected || splash.classList.contains("done")) return;
         clearTimeout(timer);
         splash.classList.add("done");
         document.body.classList.remove("no-scroll");
         document.removeEventListener("keydown", onKey);
+        done();
         setTimeout(() => splash.remove(), 500);
       };
       const next = () => {
@@ -63,7 +59,6 @@ const STROKE = 4.23;
         if (e.key === "Escape") finish();
       };
       document.addEventListener("keydown", onKey);
-      splash.querySelector(".skip-splash")?.addEventListener("click", finish);
       timer = window.setTimeout(next, 200);
     }
   }

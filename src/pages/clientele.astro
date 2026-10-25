@@ -11,7 +11,7 @@ import { SECTORS, TESTIMONIALS } from "../data/clientele";
   <main id="main">
     <section class="wrap hero" aria-labelledby="cl-title">
       <p class="eyebrow">Trusted by global brands</p>
-      <h1 class="display" id="cl-title">Clients across industries, One way of working.</h1>
+      <h1 class="display wide" id="cl-title"><span class="accent">Clients across industries,</span> <span class="line">One way of working.</span></h1>
       <p class="lead" style="max-width:1000px">Over 4+ years, I've designed for BFSI, Media &amp; OTT, Agri-tech, E-commerce, Generative AI, and Enterprise SaaS - different domains, same focus on solving the actual problem.</p>
     </section>
 
@@ -25,18 +25,18 @@ import { SECTORS, TESTIMONIALS } from "../data/clientele";
 
     <section class="wrap" aria-label="Brands">
       <ul class="brand-grid" style="list-style:none;margin:0;padding:0">
-        {BRANDS.map((b) => <li class="brand" data-reveal><div class="brand-logo"><BrandLogo brand={b} /></div><p class="brand-tag">{b.tag}</p></li>)}
+        {BRANDS.map((b) => <li class="brand"><div class="brand-logo"><BrandLogo brand={b} /></div><p class="brand-tag">{b.tag}</p></li>)}
       </ul>
     </section>
 
-    <section class="wrap" aria-labelledby="sec-title" data-reveal>
+    <section class="wrap" aria-labelledby="sec-title">
       <div class="sectors">
         <h2 class="h2" id="sec-title">Industries and Sectors</h2>
         <ul class="pills" style="list-style:none;margin:0;padding:0">{SECTORS.map(([i, t]) => <li class="pill"><Icon name={i} />{t}</li>)}</ul>
       </div>
     </section>
 
-    <section class="wrap" aria-labelledby="say-title" data-reveal>
+    <section class="wrap" aria-labelledby="say-title">
       <h2 class="h2" id="say-title" style="margin-bottom:40px">What people say...</h2>
       <div class="quotes">
         {

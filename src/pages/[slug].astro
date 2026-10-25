@@ -28,11 +28,11 @@ const d = entry.data;
     {
       d.sections!.map((s) =>
         "full" in s ? (
-          <div data-reveal><Block block={s.full} /></div>
+          <div><Block block={s.full} /></div>
         ) : s.band ? (
-          <section class="cs-band" data-reveal><div class="wrap cs-sec">{s.blocks.map((b) => <Block block={b} />)}</div></section>
+          <section class="cs-band"><div class="wrap cs-sec">{s.blocks.map((b) => <Block block={b} />)}</div></section>
         ) : (
-          <section class:list={["wrap cs-sec", s.cls]} id={s.id} data-reveal>{s.blocks.map((b) => <Block block={b} />)}</section>
+          <section class:list={["wrap cs-sec", s.cls]} id={s.id}>{s.blocks.map((b) => <Block block={b} />)}</section>
         ),
       )
     }

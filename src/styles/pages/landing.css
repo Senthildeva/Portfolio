@@ -17,4 +17,4 @@
 .skill-row .ticker-group{gap:32px;padding-right:32px}
 .skill-row span{font-family:var(--display);font-size:clamp(30px,3.4vw,48px);text-transform:capitalize;color:var(--ink);white-space:nowrap}
 .skill-row img,.sparkle{width:24px;height:24px;flex:none}
-.exploring{font-family:var(--text);font-weight:800;font-size:16px;line-height:20px;color:var(--primary)}
+.exploring{font-family:var(--text);font-weight:800;font-size:20px;line-height:28px;color:var(--primary)}

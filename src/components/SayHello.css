@@ -43,6 +43,4 @@ body.hi-open .hi-panel{transform:none}
 .hi-actions a{flex:1;height:40px;border:1px solid var(--primary);border-radius:6px;background:var(--paper);color:var(--primary);display:inline-flex;align-items:center;justify-content:center;gap:12px;font-weight:800;font-size:20px;transition:background-color .2s,color .2s}
 .hi-actions a svg{width:20px;height:20px}
 .hi-actions a:hover{background:var(--primary);color:#fff}
-.hi-contact-line{font-size:14px;color:var(--ink-3)}
-.hi-contact-line a{color:var(--ink);text-decoration:underline;text-underline-offset:2px}
 @media (max-width:640px){.hi-top{padding:32px 20px 24px}.hi-foot{padding:20px 20px 28px}.hi-actions{gap:10px}.hi-actions a{font-size:16px;gap:8px}.hi-close{top:calc(28px + env(safe-area-inset-top,0px));right:max(14px,env(safe-area-inset-right,0px))}}

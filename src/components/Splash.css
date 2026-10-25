@@ -17,5 +17,3 @@
 .splash-wipe{position:absolute;inset:0;background:#fff;transform:translateX(100%)}
 .splash.wipe .splash-wipe{transform:none;transition:transform .64s cubic-bezier(.6,0,.2,1)}
 .splash.done{opacity:0;transition:opacity .45s ease;pointer-events:none}
-.skip-splash{position:absolute;right:max(24px,env(safe-area-inset-right,0px));bottom:max(24px,env(safe-area-inset-bottom,0px));color:rgba(255,255,255,.8);font-size:14px;letter-spacing:1px;text-transform:uppercase;padding:8px}
-.skip-splash:hover{color:#fff}

@@ -1,8 +1,10 @@
 /* ---------- clientele ---------- */
-.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px;padding-bottom:48px;border-bottom:1px solid var(--line)}
-.stat dt{font-family:var(--text);font-weight:500;font-size:20px;line-height:24px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-3)}
-.stat dd{margin:12px 0 0;font-family:var(--text);font-weight:800;font-size:clamp(24px,2.3vw,32px);line-height:1.35;text-transform:uppercase;color:var(--ink)}
-@media (max-width:760px){.stats{grid-template-columns:minmax(0,1fr);gap:24px}}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px;padding-bottom:48px;border-bottom:1px solid #cccccc}
+.stat:nth-child(2){text-align:center}
+.stat:nth-child(3){text-align:right}
+.stat dt{font-family:"Syne",var(--text);font-weight:500;font-size:20px;line-height:24px;letter-spacing:2px;text-transform:uppercase;color:#666666}
+.stat dd{margin:12px 0 0;font-family:var(--text);font-weight:800;font-size:clamp(24px,2.3vw,32px);line-height:1.375;text-transform:uppercase;color:var(--ink)}
+@media (max-width:760px){.stats{grid-template-columns:minmax(0,1fr);gap:24px}.stat:nth-child(n){text-align:left}}
 .brand-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px}
 @media (max-width:1100px){.brand-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:760px){.brand-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}}

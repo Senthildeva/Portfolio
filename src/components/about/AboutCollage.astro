@@ -27,7 +27,7 @@ const DOODLES_BEHIND: [string, number, number, number][] = [
 ];
 const at = (x: number, y: number, w?: number) => `left:calc(${x} * var(--u));top:calc(${y} * var(--u))${w ? `;width:calc(${w} * var(--u))` : ""}`;
 ---
-<div class:list={["ac", { "ac-flat": flat }]} data-reveal>
+<div class:list={["ac", { "ac-flat": flat }]}>
   <div class="ac-stage">
     {flat ? (
     <div class="ac-photo"><Img id={FLAT} w={1312} h={700} alt="Black-and-white portrait of Senthil Devaraj, arms folded" eager /></div>

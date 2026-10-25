@@ -24,7 +24,7 @@ const sizes = "(min-width: 1440px) 612px, (min-width: 821px) 46vw, 100vw";
       <h3 class="card-title" style={`--c:${titleColor}`} set:html={card.title} />
     </article>
   ) : (
-    <a class="card" href={`/${entry.id}`} data-reveal>
+    <a class="card" href={`/${entry.id}`}>
       <div class="card-media"><Img id={card.img} w={612} h={300} alt={card.alt} label={card.tag} sizes={sizes} /></div>
       <div class="card-tags"><span class="tag" style={tagStyle}>{card.tag}</span><span class="tag tag-line">{card.meta}</span></div>
       <h3 class="card-title" style={`--c:${titleColor}`} set:html={card.title} />
