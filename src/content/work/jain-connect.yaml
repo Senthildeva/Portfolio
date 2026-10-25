@@ -4,8 +4,8 @@ status: published
 order: 5
 featured: true
 seo:
-  title: Jain Connect · Senthil Devaraj
-  description: Jain Connect — one dashboard for every level of sales at Jain Irrigation Systems.
+  title: Jain Dealer Connect · Senthil Devaraj
+  description: Jain Dealer Connect — one dashboard for every level of sales at Jain Irrigation Systems.
 theme: jain
 pager:
   label: Jain Irrigation System (JC)
@@ -19,7 +19,7 @@ card:
   alt: Jain Connect case study cover
 hero:
   tag: <em>Jain Irrigation Systems</em> • Agri - Sales Enablement • Mobile APP
-  title: Jain Connect - <em>One dashboard for every level of sales.</em>
+  title: Jain Dealer Connect - <em>One dashboard for every level of sales.</em>
 stage:
   img: "13779:1685"
   alt: Jain Connect dashboard
