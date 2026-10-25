@@ -78,6 +78,8 @@ export const block = z.discriminatedUnion("type", [
     title: rich,
     text: rich,
     img: nodeId,
+    /** The whole 1312×700 Figma frame (screen, notes, arrows, caption) exported as one picture; used when present. */
+    frame: opt(nodeId),
     /** Where the screen sits inside the 1312×700 Figma frame. */
     imgX: opt(z.number()),
     imgY: opt(z.number()),

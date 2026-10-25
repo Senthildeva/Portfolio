@@ -198,6 +198,7 @@ sections:
         title: <em>Don't make me pick</em> something first.
         text: Live TV auto-plays on launch, with a collapsible rail beneath it. <b>After 10–15s of inactivity</b> the feed goes full screen — matching how viewers already expect a television to behave.
         img: "13858:5200"
+        frame: "13764:3448"
         imgY: 40
         imgH: 660
         alt: CNA Apple TV home screen with live news playing
@@ -213,6 +214,7 @@ sections:
         title: Make the <em>hardest</em> input on TV the <em>easiest</em>.
         text: A spatial grid keyboard filters results as you type, and <b>hold-to-dictate voice</b> search skips the keyboard entirely — two routes to the same programme in three or four presses.
         img: "13858:5197"
+        frame: "13764:3464"
         imgY: 0
         imgH: 621
         alt: CNA search screen with grid keyboard
@@ -226,6 +228,7 @@ sections:
         title: <em>Three d-pad</em> moves. Always.
         text: A flat, spatial layout — side nav over intent-based rails — keeps every destination within <b>two or three d-pad moves</b>, with oversized, high-contrast focus states legible from a ten-foot seat.
         img: "224399:1888"
+        frame: "224399:1883"
         imgX: 272
         imgY: 70
         imgW: 998
@@ -241,6 +244,7 @@ sections:
         title: Tell me what's on, <em>without leaving the broadcast.</em>
         text: One press summons a <b>'Now & Next'</b> guide over the live feed — the current programme, its progress, and the next three slots — mirroring the channel schedule viewers already trust, without ever interrupting it.
         img: "13858:5205"
+        frame: "13764:3487"
         imgY: 40
         imgH: 621
         alt: Now and Next guide over the live feed

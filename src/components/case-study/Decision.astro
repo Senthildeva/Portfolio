@@ -1,12 +1,16 @@
 ---
 // A key design decision: label, title, text, then the screen with hand-written notes and arrows,
 // positioned as in the 1312×700 Figma frame. On phones the notes become a list under the screen.
+// When the whole frame is exported as one picture (`frame`), that picture is shown instead; its notes and
+// caption stay in the page as text (read out by screen readers, shown under the picture on phones).
 import Img from "../Img.astro";
+import { figmaAsset } from "../../lib/figma";
 interface Props {
   label: string;
   title: string;
   text: string;
   img: string;
+  frame?: string;
   imgX?: number;
   imgY?: number;
   imgW?: number;
@@ -16,7 +20,8 @@ interface Props {
   arrows?: { id: string; x: number; y: number; flip?: "h" | "v" | "hv" }[];
   cap: string;
 }
-const { label, title, text, img, imgX = 0, imgY = 0, imgW = 1312, imgH = 660, alt = "", notes = [], arrows = [], cap } = Astro.props;
+const { label, title, text, img, frame, imgX = 0, imgY = 0, imgW = 1312, imgH = 660, alt = "", notes = [], arrows = [], cap } = Astro.props;
+const flat = Boolean(frame && figmaAsset(frame));
 const W = 1312, H = 700;
 const pct = (v: number, t: number) => ((v / t) * 100).toFixed(3) + "%";
 const FLIP = { h: "scale(-1,1)", v: "scale(1,-1)", hv: "scale(-1,-1)" };
@@ -25,7 +30,10 @@ const FLIP = { h: "scale(-1,1)", v: "scale(1,-1)", hv: "scale(-1,-1)" };
   <p class="cs-dlabel">{label}</p>
   <h3 class="cs-h2" set:html={title} />
   <div class="cs-sub"><p set:html={text} /></div>
-  <figure class="cs-dfig">
+  <figure class:list={["cs-dfig", { "cs-dflat": flat }]}>
+    {flat ? (
+    <div class="cs-dframe"><Img id={frame} w={W} h={H} alt={alt} sizes="(min-width: 1440px) 1312px, 92vw" /></div>
+    ) : (
     <div class="cs-dstage">
       <div class="cs-dimg" style={`left:${pct(imgX, W)};top:${pct(imgY, H)};width:${pct(imgW, W)};height:${pct(imgH, H)}`}>
         <Img id={img} w={imgW} h={imgH} alt={alt} label="Screen mockup" sizes={`(min-width: 1440px) ${imgW}px, ${((imgW / W) * 100).toFixed(0)}vw`} />
@@ -46,6 +54,7 @@ const FLIP = { h: "scale(-1,1)", v: "scale(1,-1)", hv: "scale(-1,-1)" };
         ))
       }
     </div>
+    )}
     {notes.length > 0 && <ul class="cs-ann-list">{notes.map((n) => <li><b>{n.t}</b> {n.s}</li>)}</ul>}
     <figcaption set:html={cap} />
   </figure>

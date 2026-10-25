@@ -24,7 +24,7 @@ export const LOGOS: Brand[] = [
   { name: "Aemco", parts: [["14086:9968", 107, 24]] },
   { name: "Rustic AI", parts: [["14086:9974", 145, 28]] },
   { name: "Rustic Charm", parts: [["14086:9992", 154, 44]] },
-  { name: "Danburite", parts: [["14086:9994", 33, 44], ["14086:9995", 110, 28]] },
+  { name: "Danburite", parts: [["224413:2131", 143, 44]] },
   { name: "Tenanto", parts: [["14086:9996", 119, 28]] },
 ];
 
@@ -46,6 +46,6 @@ export const BRANDS: Brand[] = [
   { name: "Aemco", tag: "E-Commerce", parts: [["14102:7047", 124, 28]] },
   { name: "Rustic AI", tag: "Generative AI", parts: [["14102:7055", 165, 32]] },
   { name: "Rustic Charm", tag: "E-Commerce", parts: [["14102:7075", 192, 55]] },
-  { name: "Danburite", tag: "Business consulting", parts: [["14102:7079", 41, 55], ["14102:7080", 138, 35]] },
+  { name: "Danburite", tag: "Business consulting", parts: [["224413:2131", 179, 55]] },
   { name: "Tenanto", tag: "Property technology", parts: [["14102:7083", 149, 35]] },
 ];

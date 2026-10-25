@@ -1,8 +1,14 @@
 ---
-// About hero collage (Figma 14199:9930): Senthil's cut-out photo on a dark backdrop with hand-written notes
-// and doodles. Notes are live text placed as in the 1312×700 frame and scaled with its width.
-// On phones the notes move into a list under the picture so they stay readable.
+// About hero collage (Figma 14199:9930): Senthil's photo on a dark backdrop with hand-written notes and doodles.
+// The photo is now the frame's own fill, so the whole frame is exported as one picture (FLAT). The notes stay
+// in the page as text: read out by screen readers, and shown as a list under the picture on phones.
+// Without that export, the older layered version is drawn: the photo layer (14199:9951) with live notes on top,
+// placed as in the 1312×700 frame and scaled with its width.
 import Img from "../Img.astro";
+import { figmaAsset } from "../../lib/figma";
+
+const FLAT = "14199:9930";
+const flat = Boolean(figmaAsset(FLAT));
 
 const ROLES = [
   { name: "Curious one", x: 64, y: 64, lines: ["I ask why,", "Then I ask why again . . ."], lx: 64, ly: 109, lw: 260 },
@@ -21,8 +27,11 @@ const DOODLES_BEHIND: [string, number, number, number][] = [
 ];
 const at = (x: number, y: number, w?: number) => `left:calc(${x} * var(--u));top:calc(${y} * var(--u))${w ? `;width:calc(${w} * var(--u))` : ""}`;
 ---
-<div class="ac" data-reveal>
+<div class:list={["ac", { "ac-flat": flat }]} data-reveal>
   <div class="ac-stage">
+    {flat ? (
+    <div class="ac-photo"><Img id={FLAT} w={1312} h={700} alt="Black-and-white portrait of Senthil Devaraj, arms folded" eager /></div>
+    ) : (
     <div class="ac-in">
       {DOODLES_BEHIND.map(([id, x, y, w]) => <span class="ac-abs" style={at(x, y, w)} aria-hidden="true"><Img id={id} alt="" optional /></span>)}
       {
@@ -40,6 +49,7 @@ const at = (x: number, y: number, w?: number) => `left:calc(${x} * var(--u));top
       <p class="ac-head" style={at(913.5, 191)}>A Passionate<br />Experience Designer</p>
       <span class="ac-abs ac-stamp" style={at(1149.6, 58.5, 104.2)} aria-hidden="true"><Img id="14218:10271" alt="" optional /></span>
     </div>
+    )}
   </div>
   <div class="ac-list">
     <p class="ac-head-m">A Passionate Experience Designer</p>
@@ -57,7 +67,7 @@ const at = (x: number, y: number, w?: number) => `left:calc(${x} * var(--u));top
 </div>
 
 <style>
-  .ac { background: #070707; overflow: hidden; }
+  .ac { position: relative; background: #070707; overflow: hidden; }
   .ac-stage {
     position: relative; aspect-ratio: 1312 / 700; container-type: inline-size; overflow: hidden;
     /* The Figma backdrop: a soft light patch behind the left-hand notes, fading to near black. */
@@ -75,6 +85,10 @@ const at = (x: number, y: number, w?: number) => `left:calc(${x} * var(--u));top
   .ac-note .r { text-align: right; }
   .ac-head { position: absolute; margin: 0; transform: translateX(-50%); text-align: center; font-weight: 700; font-size: calc(40 * var(--u)); line-height: 1.25; color: #fff; white-space: nowrap; }
   .ac-list { display: none; }
+  /* One-picture version on wide screens: the notes are in the picture, so the list is for screen readers only. */
+  @media (min-width: 761px) {
+    .ac-flat .ac-list { display: block; position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+  }
   @media (max-width: 760px) {
     .ac-role, .ac-note, .ac-head { display: none; }
     .ac-list { display: block; padding: 8px 20px 28px; font-family: var(--hand); color: #ddd; }
