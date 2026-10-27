@@ -5,7 +5,9 @@ order: 4
 featured: true
 seo:
   title: Gnie at GITEX 2024 · Senthil Devaraj
-  description: Tap, Scratch, Win — designing a gamified progressive web app for Gapblue at GITEX Global 2024 in Dubai.
+  description: "Tap, Scratch, Win: a gamified, offline-first PWA for Gapblue's booth at GITEX Global 2024 in Dubai, capturing leads and handing out scratch-and-win rewards."
+  image: /og/gnie.jpg
+  imageAlt: "Gapblue logo on a purple-to-blue gradient, with the line: Gamified PWA design - GITEX 2024"
 theme: gnie
 pager:
   label: Gnie (Gapblue)

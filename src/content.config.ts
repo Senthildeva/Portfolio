@@ -151,7 +151,7 @@ const work = defineCollection({
       /** Show on the landing page. */
       featured: z.boolean().default(false),
       card: z.object({ tag: z.string(), meta: z.string(), title: rich, color: z.string(), img: nodeId, alt: z.string().default("") }),
-      seo: opt(z.object({ title: z.string(), description: z.string() })),
+      seo: opt(z.object({ title: z.string(), description: z.string(), image: z.string().optional(), imageAlt: z.string().optional() })),
       theme: opt(z.enum(["cna", "outgrow", "gnie", "jain"])),
       pager: opt(z.object({ label: z.string(), color: z.string() })),
       hero: opt(z.object({ tag: rich, title: rich, lead: opt(rich), ctas: opt(z.array(z.object({ label: z.string(), href: z.string(), ghost: opt(z.boolean()) }))) })),

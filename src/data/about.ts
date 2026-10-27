@@ -10,7 +10,7 @@ export interface Job {
 }
 
 export const EXPERIENCE: Job[] = [
-  { when: "June 2026 - Present", current: true, company: "BORN XDS (A Tech Mahindra company)", role: "Associate UX Designer | Product Designer" },
+  { when: "June 2026 - Present", current: true, company: "BORN XDS (A Tech Mahindra Company)", role: "Associate UX Designer | Product Designer" },
   { when: "Jun 23 - Jul 25", company: "Mikado UX/UI & Branding Studio", role: "Product Designer" },
   { when: "May 22 - Jun 23", company: "Pebels - Digital Experience Studio", role: "Junior Product Designer" },
 ];

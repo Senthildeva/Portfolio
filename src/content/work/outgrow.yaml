@@ -5,7 +5,9 @@ order: 3
 featured: true
 seo:
   title: Outgrow · Senthil Devaraj
-  description: Outgrow by WayCool Labs — the one-stop solution for farmers, in their own language.
+  description: "Outgrow by WayCool Labs: one app for the whole farming cycle, with live mandi prices, farm health, weather and expert advice in the farmer's own language."
+  image: /og/outgrow.jpg
+  imageAlt: "WayCool logo on blue, with the line: Agri-tech mobile application design"
 theme: outgrow
 pager:
   label: Outgrow (Waycool labs)

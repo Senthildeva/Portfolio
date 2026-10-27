@@ -23,7 +23,7 @@ const [rw, rh] = ratio.split("/").map(Number);
 <figure class:list={["cs-img cs-video", { bleed }]} style={`aspect-ratio:${ratio}`}>
   {
     mp4 || webm ? (
-      <video autoplay muted loop playsinline preload="metadata" poster={posterAsset?.src} aria-label={alt}>
+      <video muted loop playsinline preload="none" poster={posterAsset?.src} aria-label={alt}>
         {webm && <source src={`/videos/${video}.webm`} type="video/webm" />}
         {mp4 && <source src={`/videos/${video}.mp4`} type="video/mp4" />}
       </video>
@@ -36,12 +36,24 @@ const [rw, rh] = ratio.split("/").map(Number);
 </figure>
 
 <script>
-  // Respect reduced motion: no autoplay, show controls instead.
+  // Videos download and play only when they come near the screen, and pause when scrolled away,
+  // so a page doesn't fetch every video up front. With reduced motion they wait for a tap (controls).
+  const videos = [...document.querySelectorAll<HTMLVideoElement>(".cs-video video")];
   if (matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    document.querySelectorAll<HTMLVideoElement>(".cs-video video").forEach((v) => {
-      v.removeAttribute("autoplay");
-      v.pause();
-      v.controls = true;
-    });
+    videos.forEach((v) => (v.controls = true));
+  } else if ("IntersectionObserver" in window) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const en of entries) {
+          const v = en.target as HTMLVideoElement;
+          if (en.isIntersecting) v.play().catch(() => {});
+          else v.pause();
+        }
+      },
+      { rootMargin: "300px 0px" },
+    );
+    videos.forEach((v) => io.observe(v));
+  } else {
+    videos.forEach((v) => v.play().catch(() => {}));
   }
 </script>

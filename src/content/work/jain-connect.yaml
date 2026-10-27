@@ -5,7 +5,9 @@ order: 5
 featured: true
 seo:
   title: Jain Dealer Connect · Senthil Devaraj
-  description: Jain Dealer Connect — one dashboard for every level of sales at Jain Irrigation Systems.
+  description: "Jain Dealer Connect: one sales dashboard for Jain Irrigation Systems that reshapes orders, targets and payments for every level, from zonal head to salesperson."
+  image: /og/jain-connect.jpg
+  imageAlt: "JAIN logo on a green gradient, with the line: Sales app and web dashboard design"
 theme: jain
 pager:
   label: Jain Irrigation System (JDC)

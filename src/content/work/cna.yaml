@@ -5,7 +5,9 @@ order: 2
 featured: true
 seo:
   title: Reimagining CNA · Senthil Devaraj
-  description: Redesigning CNA News for Apple TV — bringing Singapore's leading news broadcaster to the couch without losing what makes it CNA.
+  description: "Redesigning CNA News for Apple TV — bringing Singapore's leading news broadcaster to the couch without losing what makes it CNA."
+  image: /og/cna.jpg
+  imageAlt: "CNA logo on red, with the line: OTT application design - Apple TV"
 theme: cna
 pager:
   label: CNA (Mediacorp)

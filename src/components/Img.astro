@@ -33,8 +33,10 @@ let width: number | undefined;
 let widths: number[] | undefined;
 if (asset && !isSvg(asset)) {
   width = Math.min(Math.round(w ?? asset.width / 2), asset.width);
-  const candidates = [Math.round(width / 2), width, Math.round(width * 1.5), width * 2].filter((x) => x >= 120 && x <= asset.width);
-  widths = [...new Set(candidates.length ? candidates : [asset.width])];
+  // Steps sized for phones and tablets as well as the design width and its 2× version.
+  const top = Math.min(asset.width, width * 2);
+  const candidates = [360, 540, 720, 960, 1280, 1600, 1920, width, top].filter((x) => x >= 120 && x <= top);
+  widths = [...new Set(candidates.length ? candidates : [asset.width])].sort((a, b) => a - b);
 }
 const phStyle = w && h ? `--w:${w}px;--h:${h}px;${style}` : style || undefined;
 ---

@@ -7,6 +7,7 @@ import Stage from "../components/case-study/Stage.astro";
 import Block from "../components/case-study/Block.astro";
 import Pager from "../components/case-study/Pager.astro";
 import { caseStudies, neighbours, type WorkEntry } from "../lib/work";
+import { SITE } from "../site";
 
 export async function getStaticPaths() {
   const list = await caseStudies();
@@ -21,7 +22,27 @@ interface Props {
 const { entry, prev, next } = Astro.props;
 const d = entry.data;
 ---
-<Base title={d.seo!.title} description={d.seo!.description} active="work">
+<Base
+  title={d.seo!.title}
+  description={d.seo!.description}
+  active="work"
+  type="article"
+  image={d.seo!.image}
+  imageAlt={d.seo!.imageAlt}
+  schema={[
+    {
+      "@type": "CreativeWork",
+      "@id": new URL(`/${entry.id}#case-study`, SITE.url).href,
+      name: d.seo!.title.replace(/ · Senthil Devaraj$/, ""),
+      headline: d.hero!.title.replace(/<[^>]+>/g, ""),
+      description: d.seo!.description,
+      url: new URL(`/${entry.id}`, SITE.url).href,
+      ...(d.seo!.image ? { image: new URL(d.seo!.image, SITE.url).href } : {}),
+      author: { "@id": new URL("/#person", SITE.url).href },
+      inLanguage: "en",
+    },
+  ]}
+>
   <main id="main" class={`cs theme-${d.theme}`}>
     <CaseHero {...d.hero!} />
     <Stage {...d.stage!} />
