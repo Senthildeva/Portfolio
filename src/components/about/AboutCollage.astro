@@ -4,11 +4,20 @@
 // in the page as text: read out by screen readers, and shown as a list under the picture on phones.
 // Without that export, the older layered version is drawn: the photo layer (14199:9951) with live notes on top,
 // placed as in the 1312×700 frame and scaled with its width.
+import { getImage } from "astro:assets";
 import Img from "../Img.astro";
 import { figmaAsset } from "../../lib/figma";
+// Phones get a tall crop of the same picture framed on Senthil, elbow to elbow. The few letters of
+// "A Passionate Experience Designer" that fell inside it were cleared from the dark backdrop; the notes
+// show as text under the picture instead, so nothing is printed twice.
+import portraitPhone from "../../assets/about/portrait-phone.webp";
 
 const FLAT = "14199:9930";
 const flat = Boolean(figmaAsset(FLAT));
+const PHONE_W = [450, 675, 900];
+const phoneSet = (await Promise.all(PHONE_W.map((width) => getImage({ src: portraitPhone, width, format: "webp", quality: 85 }))))
+  .map((img, i) => `${img.src} ${PHONE_W[i]}w`)
+  .join(", ");
 
 const ROLES = [
   { name: "Curious one", x: 64, y: 64, lines: ["I ask why,", "Then I ask why again . . ."], lx: 64, ly: 109, lw: 260 },
@@ -30,7 +39,12 @@ const at = (x: number, y: number, w?: number) => `left:calc(${x} * var(--u));top
 <div class:list={["ac", { "ac-flat": flat }]}>
   <div class="ac-stage">
     {flat ? (
-    <div class="ac-photo"><Img id={FLAT} w={1312} h={700} alt="Black-and-white portrait of Senthil Devaraj, arms folded" eager /></div>
+    <div class="ac-photo">
+      <picture>
+        <source media="(max-width: 760px)" srcset={phoneSet} sizes="100vw" width="900" height="1400" />
+        <Img id={FLAT} w={1312} h={700} alt="Black-and-white portrait of Senthil Devaraj, arms folded" eager />
+      </picture>
+    </div>
     ) : (
     <div class="ac-in">
       {DOODLES_BEHIND.map(([id, x, y, w]) => <span class="ac-abs" style={at(x, y, w)} aria-hidden="true"><Img id={id} alt="" optional /></span>)}
@@ -77,6 +91,7 @@ const at = (x: number, y: number, w?: number) => `left:calc(${x} * var(--u));top
   .ac-abs { position: absolute; display: block; }
   .ac-abs :global(img) { display: block; width: 100%; height: auto; }
   .ac-photo { position: absolute; inset: 0; }
+  .ac-photo picture { display: block; width: 100%; height: 100%; }
   .ac-photo :global(img), .ac-photo :global(.ph) { width: 100%; height: 100%; object-fit: cover; }
   .ac-photo :global(.ph) { background: none; color: #555; }
   .ac-role { position: absolute; margin: 0; font-size: calc(36 * var(--u)); line-height: 1.25; color: #555; white-space: nowrap; }
@@ -90,6 +105,7 @@ const at = (x: number, y: number, w?: number) => `left:calc(${x} * var(--u));top
     .ac-flat .ac-list { display: block; position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
   }
   @media (max-width: 760px) {
+    .ac-flat .ac-stage { aspect-ratio: 900 / 1400; background: #070707; }
     .ac-role, .ac-note, .ac-head { display: none; }
     .ac-list { display: block; padding: 8px 20px 28px; font-family: var(--hand); color: #ddd; }
     .ac-head-m { font-weight: 700; font-size: 30px; line-height: 1.2; color: #fff; margin-bottom: 16px; }
