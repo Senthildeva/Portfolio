@@ -3,6 +3,8 @@
 status: published
 order: 2
 featured: true
+# Under a signed NDA: visitors need the shared password (NDA_PASSWORD in Vercel). See middleware.js.
+nda: true
 seo:
   title: Reimagining CNA · Senthil Devaraj
   description: "Redesigning CNA News for Apple TV — bringing Singapore's leading news broadcaster to the couch without losing what makes it CNA."
@@ -257,7 +259,7 @@ sections:
         cap: The channel's running order, overlaid on live. One press to summon, one to dismiss.
   - full:
       type: video
-      video: video-cna
+      video: nda/video-cna
       poster: "13764:3493"
       bleed: true
       ratio: 1440/723

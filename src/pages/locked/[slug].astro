@@ -1,0 +1,63 @@
+---
+// "Restricted" page for each case study under NDA (nda: true in its YAML). It is never linked: middleware.js
+// shows it at the case study's own address (/cna) to anyone who hasn't unlocked with the shared password.
+// Link previews still show the project's title and picture; search engines are asked not to list it.
+import fs from "node:fs";
+import path from "node:path";
+import Base from "../../layouts/Base.astro";
+import Img from "../../components/Img.astro";
+import NdaPanel from "../../components/NdaPanel.astro";
+import { ndaStudies, type WorkEntry } from "../../lib/work";
+
+export async function getStaticPaths() {
+  const list = await ndaStudies();
+
+  // Safety check, so a project under NDA can't go live unlocked: every project marked nda: true must be in
+  // middleware.js (and nothing else), and its videos must be in public/videos/nda/, which middleware.js locks.
+  const mw = fs.readFileSync(path.join(process.cwd(), "middleware.js"), "utf8");
+  const locked = new Set([...mw.matchAll(/"\/([a-z0-9-]+)"/g)].map((m) => m[1]));
+  for (const e of list) {
+    if (!locked.has(e.id))
+      throw new Error(`"${e.id}" is marked nda: true but isn't locked yet. Add "/${e.id}", "/${e.id}/" and "/${e.id}.html" to config.matcher in middleware.js.`);
+    const video = JSON.stringify(e.data).match(/"video":"(?!nda\/)[^"]*"/);
+    if (video) throw new Error(`"${e.id}" is under NDA, so its videos must live in public/videos/nda/ (found ${video[0]}).`);
+  }
+  for (const id of locked)
+    if (!list.some((e) => e.id === id))
+      throw new Error(`middleware.js locks "/${id}", but src/content/work/${id}.yaml isn't a published case study marked nda: true.`);
+
+  return list.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+interface Props {
+  entry: WorkEntry;
+}
+const { entry } = Astro.props;
+const d = entry.data;
+const name = d.pager?.label ?? d.card.tag;
+const accent = d.card.color.startsWith("linear") ? "#4f46e5" : d.card.color;
+---
+<Base
+  title={d.seo!.title}
+  description={d.seo!.description}
+  active="work"
+  noindex
+  path={`/${entry.id}`}
+  image={d.seo!.image}
+  imageAlt={d.seo!.imageAlt}
+>
+  <main id="main" class="nda-page">
+    <section class="wrap hero" aria-labelledby="nda-page-title">
+      <p class="eyebrow">Case study • Under NDA</p>
+      <h1 class="display nda-h1" id="nda-page-title" style={`--c:${accent}`} set:html={d.card.title} />
+    </section>
+    <section class="wrap nda-row" aria-label={`Unlock the ${name} case study`}>
+      <div class="nda-card"><NdaPanel id="nda-p" project={name} next={`/${entry.id}`} /></div>
+      <div class="nda-side">
+        <div class="nda-cover"><Img id={d.card.img} w={612} h={300} alt={d.card.alt} label={d.card.tag} sizes="(min-width: 1440px) 712px, (min-width: 901px) 45vw, 100vw" /></div>
+        <p class="nda-meta">{d.card.meta}</p>
+        <a class="btn btn-line" href="/work">See my other work</a>
+      </div>
+    </section>
+  </main>
+</Base>

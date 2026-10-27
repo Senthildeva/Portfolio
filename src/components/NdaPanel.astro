@@ -1,0 +1,39 @@
+---
+// The "Restricted" panel for case studies under NDA: shown in the pop-up (NdaGate) and on the Restricted page.
+// The password goes to /api/unlock; NdaGate's script handles the form, the show-password button and
+// "Ask me for access" (opens Say Hello with a note already written).
+import "./NdaGate.css";
+import Icon from "./Icon.astro";
+
+interface Props {
+  /** Prefix for element ids, so the pop-up and a page can both hold a panel. */
+  id: string;
+  /** Project name, e.g. "CNA (Mediacorp)". The pop-up fills it in when it opens. */
+  project: string;
+  /** Where to go after unlocking, e.g. "/cna". */
+  next: string;
+}
+const { id, project, next } = Astro.props;
+---
+<div class="nda-panel">
+  <span class="nda-icon" aria-hidden="true"><Icon name="lock-keyhole" /></span>
+  <div class="nda-head">
+    <h2 class="nda-title" id={`${id}-title`}>Restricted <span>due to a signed NDA.</span></h2>
+    <p class="nda-note">I’ve signed an NDA for <b data-nda-project>{project}</b>, so this case study is password-protected. Enter the password to view it.</p>
+  </div>
+  <form class="nda-form" method="post" action="/api/unlock" novalidate>
+    <input type="hidden" name="next" value={next} />
+    <div class="field">
+      <label for={`${id}-pass`}>Password</label>
+      <div class="nda-input">
+        <input id={`${id}-pass`} name="password" type="password" autocomplete="current-password" autocapitalize="off" spellcheck="false" required maxlength="200" aria-describedby={`${id}-err`} />
+        <button class="nda-eye" type="button" aria-label="Show password" aria-pressed="false" aria-controls={`${id}-pass`}>
+          <Icon name="eye" cls="i-eye" /><Icon name="eye-off" cls="i-eye-off" />
+        </button>
+      </div>
+      <span class="err" id={`${id}-err`} aria-live="polite"></span>
+    </div>
+    <button class="send ready" type="submit"><span class="send-label">Unlock case study</span><Icon name="arrow-right" /></button>
+  </form>
+  <p class="nda-ask">Don’t have the password? <button type="button" data-nda-ask>Ask me for access</button></p>
+</div>

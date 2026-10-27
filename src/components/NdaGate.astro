@@ -1,0 +1,153 @@
+---
+// Pop-up for case studies under NDA (nda: true in their YAML). Tapping a link to one opens it, unless this browser
+// has already unlocked (cookie nda_ok). The real lock is server-side (middleware.js): without the password,
+// the case study's address shows the Restricted page instead, so this pop-up is the friendly way in.
+import NdaPanel from "./NdaPanel.astro";
+import Icon from "./Icon.astro";
+
+interface Props {
+  /** Address → project name, e.g. { "/cna": "CNA (Mediacorp)" }. */
+  projects: Record<string, string>;
+}
+const { projects } = Astro.props;
+const any = Object.keys(projects).length > 0;
+---
+{
+  any && (
+    <dialog class="nda-dialog" id="nda-gate" aria-labelledby="nda-m-title" data-projects={JSON.stringify(projects)}>
+      <button class="nda-close" type="button" aria-label="Close" data-nda-close>
+        <Icon name="x" />
+      </button>
+      <NdaPanel id="nda-m" project="" next="/" />
+    </dialog>
+  )
+}
+
+<script>
+  const gate = document.getElementById("nda-gate") as HTMLDialogElement | null;
+  const projects: Record<string, string> = gate ? JSON.parse(gate.dataset.projects || "{}") : {};
+  const unlocked = () => document.cookie.split(/;\s*/).includes("nda_ok=1");
+  const clean = (p: string) => (p.replace(/\.html$/, "").replace(/\/+$/, "") || "/").toLowerCase();
+
+  const MESSAGES: Record<string, string> = {
+    wrong: "That password didn't work. Check it and try again.",
+    empty: "Enter the password.",
+    setup: "The password isn't set up yet. Please ask me for access.",
+  };
+
+  // ---------- Each panel: show/hide password, unlock, ask for access ----------
+  const panels = [...document.querySelectorAll<HTMLElement>(".nda-panel")].map((panel) => {
+    const form = panel.querySelector<HTMLFormElement>(".nda-form")!;
+    const input = form.elements.namedItem("password") as HTMLInputElement;
+    const next = form.elements.namedItem("next") as HTMLInputElement;
+    const field = input.closest(".field")!;
+    const err = field.querySelector(".err")!;
+    const send = form.querySelector<HTMLButtonElement>(".send")!;
+    const label = send.querySelector(".send-label")!;
+    const eye = panel.querySelector<HTMLButtonElement>(".nda-eye")!;
+    const name = panel.querySelector<HTMLElement>("[data-nda-project]")!;
+
+    const show = (msg: string) => {
+      field.classList.toggle("invalid", !!msg);
+      input.setAttribute("aria-invalid", msg ? "true" : "false");
+      err.textContent = msg;
+    };
+    input.addEventListener("input", () => show(""));
+
+    eye.addEventListener("click", () => {
+      const on = input.type === "password";
+      input.type = on ? "text" : "password";
+      eye.setAttribute("aria-pressed", String(on));
+      eye.setAttribute("aria-label", on ? "Hide password" : "Show password");
+      input.focus();
+    });
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      if (!input.value.trim()) {
+        show(MESSAGES.empty);
+        input.focus();
+        return;
+      }
+      send.disabled = true;
+      send.classList.add("busy");
+      label.textContent = "Checking…";
+      let error = "";
+      try {
+        const r = await fetch("/api/unlock", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ password: input.value }),
+        });
+        const j = await r.json().catch(() => ({}));
+        if (r.ok && j.ok) {
+          label.textContent = "Unlocked";
+          location.assign(next.value);
+          return;
+        }
+        error = j.error || "Something went wrong. Please try again.";
+      } catch {
+        error = "Couldn't reach the site. Check your connection and try again.";
+      }
+      send.disabled = false;
+      send.classList.remove("busy");
+      label.textContent = "Unlock case study";
+      show(error);
+      input.select();
+      input.focus();
+    });
+
+    // "Ask me for access": open Say Hello with the request already written.
+    panel.querySelector("[data-nda-ask]")!.addEventListener("click", () => {
+      if (gate?.open) gate.close();
+      const note = document.getElementById("hi-message") as HTMLTextAreaElement | null;
+      if (note && !note.value.trim()) note.value = `Hi Senthil, could I get the password for your ${name.textContent} case study?`;
+      dispatchEvent(new Event("say-hi:open"));
+    });
+
+    return { panel, input, next, name, show, eye };
+  });
+
+  // ---------- Restricted page: after a form post without JavaScript, say what went wrong ----------
+  const why = new URLSearchParams(location.search).get("nda");
+  const page = panels.find((p) => !gate?.contains(p.panel));
+  if (why && page) {
+    page.show(MESSAGES[why] ?? "");
+    history.replaceState(null, "", location.pathname);
+  }
+
+  // ---------- Pop-up: taps on links to a locked case study ----------
+  const modal = panels.find((p) => gate?.contains(p.panel));
+  if (gate && modal) {
+    const open = (path: string) => {
+      modal.name.textContent = projects[path];
+      modal.next.value = path;
+      modal.input.value = "";
+      modal.input.type = "password";
+      modal.eye.setAttribute("aria-pressed", "false");
+      modal.eye.setAttribute("aria-label", "Show password");
+      modal.show("");
+      gate.showModal();
+      document.body.classList.add("no-scroll");
+      modal.input.focus();
+    };
+    gate.addEventListener("close", () => document.body.classList.remove("no-scroll"));
+    gate.querySelector("[data-nda-close]")!.addEventListener("click", () => gate.close());
+    // A tap on the dimmed backdrop closes it.
+    gate.addEventListener("click", (e) => {
+      if (e.target === gate) gate.close();
+    });
+
+    document.addEventListener("click", (e) => {
+      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      const a = (e.target as Element | null)?.closest?.("a[href]") as HTMLAnchorElement | null;
+      if (!a || (a.target && a.target !== "_self") || a.hasAttribute("download")) return;
+      const url = new URL(a.href, location.href);
+      if (url.origin !== location.origin) return;
+      const path = clean(url.pathname);
+      if (!(path in projects) || unlocked()) return;
+      e.preventDefault();
+      open(path);
+    });
+  }
+</script>

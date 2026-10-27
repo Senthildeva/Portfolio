@@ -29,6 +29,7 @@ const sizes = "(min-width: 1440px) 612px, (min-width: 821px) 46vw, 100vw";
       <div class="card-tags"><span class="tag" style={tagStyle}>{card.tag}</span><span class="tag tag-line">{card.meta}</span></div>
       <h3 class="card-title" style={`--c:${titleColor}`} set:html={card.title} />
       <span class="btn btn-lg">View Project <Icon name="arrow-right" /></span>
+      {entry.data.nda && <span class="sr-only">(under NDA, password needed)</span>}
     </a>
   )
 }

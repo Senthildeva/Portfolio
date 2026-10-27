@@ -1,5 +1,6 @@
 ---
-// "Say Hello" side panel with the contact form. Opened by any element with [data-say-hi], or by /#say-hi.
+// "Say Hello" side panel with the contact form. Opened by any element with [data-say-hi], by /#say-hi,
+// or by a "say-hi:open" event.
 // Messages go to /api/contact (api/contact.js → Resend): Senthil gets the message, the sender gets "Thanks, will catch up soon".
 import "./SayHello.css";
 import Icon from "./Icon.astro";
@@ -63,6 +64,8 @@ import { SITE } from "../site";
     lastFocus?.focus({ preventScroll: true });
   }
   document.querySelectorAll("[data-say-hi]").forEach((b) => b.addEventListener("click", openHi));
+  // Other scripts can open the panel too (the NDA pop-up's "Ask me for access").
+  addEventListener("say-hi:open", () => openHi());
   document.querySelectorAll("[data-close-hi]").forEach((b) => b.addEventListener("click", closeHi));
   document.addEventListener("keydown", (e) => {
     if (!body.classList.contains("hi-open")) return;

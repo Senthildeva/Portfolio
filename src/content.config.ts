@@ -150,6 +150,8 @@ const work = defineCollection({
       order: z.number(),
       /** Show on the landing page. */
       featured: z.boolean().default(false),
+      /** Under a signed NDA: the case study needs the shared password (middleware.js, NDA_PASSWORD in Vercel). */
+      nda: z.boolean().default(false),
       card: z.object({ tag: z.string(), meta: z.string(), title: rich, color: z.string(), img: nodeId, alt: z.string().default("") }),
       seo: opt(z.object({ title: z.string(), description: z.string(), image: z.string().optional(), imageAlt: z.string().optional() })),
       theme: opt(z.enum(["cna", "outgrow", "gnie", "jain"])),

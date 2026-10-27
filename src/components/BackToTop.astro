@@ -1,0 +1,37 @@
+---
+// Floating "Back to top" button (Figma: Portfolio Works › Move to top, 224470:5932).
+// It appears once a long page has been scrolled 60% of the way down, and takes you back to the top.
+import "./BackToTop.css";
+---
+<button class="to-top" type="button" aria-label="Back to top">
+  <svg width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true" focusable="false">
+    <rect width="48" height="48" rx="24" />
+    <path d="M24 31V17M31 24L24 17L17 24" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+  </svg>
+</button>
+
+<script>
+  const btn = document.querySelector<HTMLButtonElement>(".to-top");
+  if (btn) {
+    const reduce = matchMedia("(prefers-reduced-motion: reduce)");
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const max = document.documentElement.scrollHeight - innerHeight;
+      // Only on pages longer than about two screens, once 60% of the way down.
+      btn.classList.toggle("show", max > innerHeight && scrollY / max >= 0.6);
+    };
+    const queue = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+    addEventListener("scroll", queue, { passive: true });
+    addEventListener("resize", queue);
+    update();
+    btn.addEventListener("click", (e) => {
+      scrollTo({ top: 0, behavior: reduce.matches ? "instant" : "smooth" });
+      // From the keyboard, carry on from the top of the page (the logo); after a tap, just let go of focus.
+      if (e.detail === 0) document.querySelector<HTMLElement>(".nav-logo")?.focus({ preventScroll: true });
+      else btn.blur();
+    });
+  }
+</script>

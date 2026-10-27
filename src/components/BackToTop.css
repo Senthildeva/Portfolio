@@ -1,0 +1,9 @@
+/* ---------- back to top (Figma: Move to top, 224470:5932) ---------- */
+.to-top{position:fixed;z-index:40;right:max(24px,calc(12px + env(safe-area-inset-right,0px)));bottom:max(24px,calc(12px + env(safe-area-inset-bottom,0px)));width:48px;height:48px;border-radius:50%;opacity:0;visibility:hidden;transform:translateY(16px);transition:opacity .3s ease,transform .35s cubic-bezier(.2,.8,.2,1),visibility .3s}
+.to-top.show{opacity:1;visibility:visible;transform:none}
+.to-top.show:hover{transform:translateY(-3px)}
+.to-top svg{width:48px;height:48px}
+.to-top rect{fill:var(--primary);transition:fill .2s ease}
+.to-top:hover rect,.to-top:focus-visible rect{fill:var(--ink)}
+.to-top:focus-visible{border-radius:50%}
+@media (max-width:640px){.to-top{right:max(16px,calc(8px + env(safe-area-inset-right,0px)));bottom:max(16px,calc(8px + env(safe-area-inset-bottom,0px)))}}

@@ -14,6 +14,7 @@
   },
   "license": "UNLICENSED",
   "dependencies": {
+    "@vercel/functions": "^3.10.4",
     "astro": "^7.4.2",
     "lucide-static": "^0.460.0",
     "sharp": "^0.35.5"
