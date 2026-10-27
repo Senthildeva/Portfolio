@@ -49,9 +49,14 @@ import { EXPERIENCE, EXPERTISE, OFF_CLOCK } from "../data/about";
                   {x.current && <span class="badge-current">CURRENT</span>}
                 </div>
                 <div class="tl-what">
-                  <h3>{x.company}</h3>
-                  <p class="role">{x.role}</p>
-                  {x.summary && <p class="note">{x.summary}</p>}
+                  <div class="tl-head">
+                    <h3>{x.company}</h3>
+                    <p class="role">{x.role}</p>
+                  </div>
+                  <div class="tl-body">
+                    <p class="focus">{x.focus}</p>
+                    <ul class="points">{x.points.map((pt) => <li>{pt}</li>)}</ul>
+                  </div>
                 </div>
               </li>
             ))

@@ -1,6 +1,6 @@
 ---
 // Page shell: <head>, the intro, navigation, footer, the Say Hello panel and shared scripts
-// (heading letter pop, reveal-on-scroll for every page, and the scroll-driven typewriter).
+// (reveal-on-scroll for every page, and the scroll-driven typewriter).
 import "../styles/global.css";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
@@ -164,61 +164,6 @@ const ld = JSON.stringify({
         return shown;
       };
 
-      // ---------- Headings: letters pop in one after another (after bitcandy.studio) ----------
-      // Each letter fades in while growing to 125%, then settles. Letters start 45ms apart; long
-      // headings run the wave faster so it never takes much over 2s. Plays once, when the heading's
-      // top reaches 85% of the screen. Letters are custom elements so CSS aimed at a heading's spans skips them.
-      const waves = motion ? [...document.querySelectorAll<HTMLElement>("main h1, main h2, .footer h2")].filter((h) => h.textContent?.trim() && !h.closest(".sr-only, [data-typewriter]")) : [];
-      const grads: { el: HTMLElement; bg: string }[] = [];
-      for (const h of waves) {
-        const shown = twin(h, "wp-t");
-        const pieces = splitText(shown, () => document.createElement("wp-w"), () => document.createElement("wp-c"));
-        pieces.forEach((c, i) => c?.style.setProperty("--i", String(i)));
-        const step = Math.min(45, 1600 / Math.max(1, pieces.length - 1));
-        h.style.setProperty("--step", `${step.toFixed(1)}ms`);
-        h.dataset.waveMs = String(Math.round((pieces.length - 1) * step + 360));
-        // Gradient text clips its background to its letters, which stops working once letters move on
-        // their own, so each letter gets its own slice of the gradient instead.
-        for (const el of shown.querySelectorAll<HTMLElement>("*")) {
-          if (el.localName === "wp-w" || el.localName === "wp-c") continue;
-          const cs = getComputedStyle(el);
-          if (cs.backgroundClip !== "text" && cs.getPropertyValue("-webkit-background-clip") !== "text") continue;
-          grads.push({ el, bg: cs.backgroundImage });
-          el.style.backgroundImage = "none";
-          el.querySelectorAll("wp-c").forEach((c) => c.setAttribute("data-g", ""));
-        }
-        h.classList.add("wp-ready");
-      }
-      // Lays each gradient across its letters as it was across the text, line after line.
-      const paintGrads = () => {
-        for (const g of grads) {
-          const lines = [...g.el.getClientRects()];
-          if (!lines.length) continue;
-          const total = lines.reduce((s, r) => s + r.width, 0);
-          for (const w of g.el.querySelectorAll<HTMLElement>("wp-w")) {
-            const r = w.getBoundingClientRect();
-            const mid = r.top + r.height / 2;
-            const k = Math.max(0, lines.findIndex((l) => mid >= l.top - 1 && mid <= l.bottom + 1));
-            let x = lines.slice(0, k).reduce((s, l) => s + l.width, 0) + r.left - lines[k].left;
-            for (const c of w.children as HTMLCollectionOf<HTMLElement>) {
-              c.style.backgroundImage = g.bg;
-              c.style.backgroundSize = `${total}px 100%`;
-              c.style.backgroundPosition = `${-x}px 0`;
-              x += c.offsetWidth;
-            }
-          }
-        }
-      };
-      if (grads.length) {
-        paintGrads();
-        document.fonts?.ready.then(paintGrads);
-        let t = 0;
-        addEventListener("resize", () => {
-          clearTimeout(t);
-          t = window.setTimeout(paintGrads, 150);
-        });
-      }
-
       // ---------- Reveal: blocks and images fade up as they come into view, on every page load ----------
       // Targets are the content blocks of each page; when one target contains others, the inner ones animate.
       const TARGETS = [
@@ -232,12 +177,8 @@ const ld = JSON.stringify({
 
       if (motion) {
         const found = new Set<Element>(document.querySelectorAll(TARGETS));
-        const isWave = (el: Element) => waves.includes(el as HTMLElement);
-        const holdsWave = (el: Element) => waves.some((h) => el.contains(h));
-        let targets = [...found].filter((el) => !el.matches(SKIP) && !isWave(el) && ![...found].some((o) => o !== el && el.contains(o)));
-        // Headings pop in place, so a block that holds one animates its other parts instead.
-        for (let pass = 0; pass < 6 && targets.some(holdsWave); pass++)
-          targets = targets.flatMap((el) => (holdsWave(el) ? [...el.children].filter((c) => !c.matches(SKIP) && !isWave(c)) : [el]));
+        // Headings reveal with their block, like all other text (the letter-by-letter pop was retired on 27 Oct).
+        const targets = [...found].filter((el) => !el.matches(SKIP) && ![...found].some((o) => o !== el && el.contains(o)));
         for (const el of targets) {
           el.classList.add("will-reveal");
           if (el.matches(MEDIA)) el.classList.add("rv-media");
@@ -264,19 +205,6 @@ const ld = JSON.stringify({
             { rootMargin: "0px 0px -6% 0px" },
           );
           targets.forEach((el) => io.observe(el));
-          const waveIo = new IntersectionObserver(
-            (entries) => {
-              for (const en of entries) {
-                if (!en.isIntersecting) continue;
-                const h = en.target as HTMLElement;
-                waveIo.unobserve(h);
-                h.classList.add("wp-on");
-                setTimeout(() => h.classList.add("wp-done"), Number(h.dataset.waveMs) + 120);
-              }
-            },
-            { rootMargin: "0px 0px -15% 0px" },
-          );
-          waves.forEach((h) => waveIo.observe(h));
         };
         // Wait for the intro to finish so the first screen animates in as it clears.
         if (document.getElementById("splash") && !html.classList.contains("no-splash")) {

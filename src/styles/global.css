@@ -17,6 +17,8 @@
 @font-face{font-family:"Avenir";src:url("/fonts/avenir-medium.woff2") format("woff2");font-weight:500;font-style:normal;font-display:swap}
 @font-face{font-family:"Avenir";src:url("/fonts/avenir-heavy.woff2") format("woff2");font-weight:800;font-style:normal;font-display:swap}
 @font-face{font-family:"Avenir";src:url("/fonts/avenir-black.woff2") format("woff2");font-weight:900;font-style:normal;font-display:swap}
+@font-face{font-family:"Inter";src:url("/fonts/inter-400.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Inter";src:url("/fonts/inter-600.woff2") format("woff2");font-weight:600;font-style:normal;font-display:swap}
 @font-face{font-family:"Syne";src:url("/fonts/syne-medium.woff2") format("woff2");font-weight:500;font-style:normal;font-display:swap}
 @font-face{font-family:"Caveat";src:url("/fonts/caveat-latin-400-normal.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap}
 @font-face{font-family:"Caveat";src:url("/fonts/caveat-latin-700-normal.woff2") format("woff2");font-weight:700;font-style:normal;font-display:swap}
@@ -26,7 +28,7 @@
   --ink:#101010; --ink-2:#333333; --ink-3:#666666; --muted:#888888; --muted-text:#767676; --faint:#999999; --line:#eeeeee; --line-2:#dddddd;
   --paper:#ffffff; --paper-2:#fafafa; --sand:#fcfaf7; --primary:#4f46e5; --primary-ink:#ffffff; --live:#00ba2f; --night:#101010; --night-card:#1e1e1c;
   --display:"Proxima Nova","Helvetica Neue",Arial,sans-serif;
-  --text:"Avenir","Avenir Next","Nunito Sans","Helvetica Neue",Arial,sans-serif;
+  --text:"Avenir","Avenir Next","Nunito Sans","Helvetica Neue",Arial,sans-serif;--inter:"Inter",var(--text);
   --hand:"Caveat","Bradley Hand","Segoe Print",cursive;
   --wrap:1312px; --gutter:64px; --section:150px; --radius:16px;
   color-scheme:light;
@@ -118,16 +120,6 @@ main{display:flex;flex-direction:column;gap:var(--section);padding-top:clamp(150
 .tw-c.caret::after{content:"";position:absolute;left:100%;top:.14em;bottom:.06em;width:max(2px,.06em);margin-left:.03em;background:currentColor;animation:tw-blink 1s steps(1) infinite}
 @keyframes tw-blink{50%{opacity:0}}
 
-/* ---------- headings: letters pop in one after another (Base.astro splits them) ---------- */
-/* Each letter fades in over .22s while growing to 125%, then settles back by .36s; --i and --step set the wave. */
-wp-w{white-space:nowrap}
-wp-c{display:inline-block}
-wp-c[data-g]{-webkit-background-clip:text;background-clip:text;color:transparent}
-.wp-ready wp-c{opacity:0}
-.wp-on wp-c{animation:wp-fade .22s cubic-bezier(.33,1,.68,1) both,wp-pop .36s linear both;animation-delay:calc(var(--i) * var(--step,45ms))}
-.wp-done wp-c{animation:none;opacity:1}
-@keyframes wp-fade{from{opacity:0}to{opacity:1}}
-@keyframes wp-pop{0%{transform:scale(1);animation-timing-function:cubic-bezier(.33,1,.68,1)}50%{transform:scale(1.25);animation-timing-function:cubic-bezier(.5,1,.89,1)}to{transform:scale(1)}}
 
 /* ---------- toast ---------- */
 .preview-note{position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:60;background:var(--ink);color:#fff;font-size:13px;border-radius:999px;padding:8px 14px;white-space:nowrap;opacity:.92}
@@ -138,5 +130,4 @@ wp-c[data-g]{-webkit-background-clip:text;background-clip:text;color:transparent
   .ticker-track{animation:none!important}
   .will-reveal{opacity:1;translate:none;scale:none}
   .reveal-on main,.reveal-on .footer-inner{opacity:1}
-  wp-c{opacity:1!important;animation:none!important}
 }
