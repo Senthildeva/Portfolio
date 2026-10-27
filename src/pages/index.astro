@@ -2,6 +2,7 @@
 import Base from "../layouts/Base.astro";
 import "../styles/pages/landing.css";
 import Img from "../components/Img.astro";
+import Rotator from "../components/Rotator.astro";
 import Icon from "../components/Icon.astro";
 import Ticker from "../components/Ticker.astro";
 import LogoStrip from "../components/LogoStrip.astro";
@@ -16,9 +17,13 @@ const skillsB = ["Complex workflow design", "Interaction design", "Rapid prototy
 <Base title="Senthil Devaraj · Product Designer in Chennai" description="Engineer turned product designer in Chennai. Over 4+ years, Senthil Devaraj has designed banking, media, e-commerce and AI products used by millions.">
   <main id="main">
     <section class="wrap hero" aria-labelledby="hero-title">
-      <p class="eyebrow">Product designer • BORN XDS (A Tech Mahindra Company) • Chennai</p>
-      <h1 class="display" id="hero-title">Engineer by Background. <span class="accent">Designer by Curiosity.</span></h1>
-      <p class="lead">Engineer turned product designer based in Chennai. Over 4+ years, I’ve designed banking, media, e-commerce, and AI products used by millions</p>
+      <p class="eyebrow">Product DESIGNER</p>
+      <div>
+        <h1 class="display" id="hero-title">Hey, I’m Senthil Devaraj <span aria-hidden="true" style="font-size:.7em">👋🏻</span></h1>
+        <Rotator lines={["— Product Designer by Curiosity", "— Engineer by background.", "— UX Researcher by Data & instinct.", "— Builder by habit."]} />
+      </div>
+      <p class="lead">Engineer turned product designer based in Chennai. Over 4+ years, I’ve designed Banking, Media &amp; Entertainment, Enterprises UX, Agri-tech, E-commerce, and AI products used by millions</p>
+      <p class="lead">Currently at <strong>BORN XDS (A Tech Mahindra Company)</strong></p>
       <div class="btn-row">
         <a class="btn btn-dark" href="/about">About me</a>
         <a class="btn btn-line" href="/work">Explore my Works</a>

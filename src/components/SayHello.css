@@ -7,7 +7,7 @@ body.hi-open .hi-panel{transform:none}
 .hi-close:hover{background:var(--paper-2)}
 .hi-close svg{width:24px;height:24px}
 .hi-top{display:flex;flex-direction:column;gap:40px;padding:40px 40px 32px}
-.hi-head h2{font-family:var(--display);font-weight:700;font-size:clamp(36px,4vw,48px);line-height:1.17;color:var(--primary);padding-right:48px}
+.hi-head h2{font-family:var(--display);font-weight:700;font-size:clamp(28px,4vw,48px);line-height:1.17;color:var(--primary);padding-right:48px}
 .hi-head h2 span{display:block;font-weight:400;color:var(--ink-3)}
 .hi-head p{margin-top:8px;font-size:20px;color:var(--ink-3)}
 .form{display:flex;flex-direction:column;gap:40px}

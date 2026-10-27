@@ -2,7 +2,6 @@
 import Base from "../layouts/Base.astro";
 import "../styles/pages/about.css";
 import Img from "../components/Img.astro";
-import Rotator from "../components/Rotator.astro";
 import PhotoGallery from "../components/PhotoGallery.astro";
 import AboutCollage from "../components/about/AboutCollage.astro";
 import { SITE } from "../site";
@@ -11,13 +10,9 @@ import { EXPERIENCE, EXPERTISE, OFF_CLOCK } from "../data/about";
 <Base title="About · Senthil Devaraj" description="About Senthil Devaraj, engineer turned product designer at BORN XDS (A Tech Mahindra Company): experience, expertise, tools and life off the clock." active="about" image="/og/about.jpg" imageAlt="Senthil design logo on dark ink, with the line: Engineer by background. Designer by curiosity.">
   <main id="main">
     <section class="wrap hero" aria-labelledby="about-title">
-      <p class="eyebrow">Product DESIGNER</p>
-      <div>
-        <h1 class="display" id="about-title">Hey, I’m Senthil Devaraj <span aria-hidden="true" style="font-size:.7em">👋🏻</span></h1>
-        <Rotator lines={["— Product Designer by Curiosity", "— Engineer by background.", "— UX Researcher by Data & instinct.", "— Builder by habit."]} />
-      </div>
-      <p class="lead">Engineer turned product designer based in Chennai. Over 4+ years, I’ve designed Banking, Media &amp; Entertainment, Enterprises UX, Agri-tech, E-commerce, and AI products used by millions</p>
-      <p class="lead">Currently at <strong>BORN XDS (A Tech Mahindra Company)</strong></p>
+      <p class="eyebrow">Product designer • BORN XDS (A Tech Mahindra Company) • Chennai</p>
+      <h1 class="display" id="about-title">Engineer by Background. <span class="accent">Designer by Curiosity.</span></h1>
+      <p class="lead">Engineer turned product designer based in Chennai. Over 4+ years, I’ve designed banking, media, e-commerce, and AI products used by millions</p>
       <div class="btn-row">
         <a class="btn btn-dark" href={SITE.resume} target="_blank" rel="noopener">Download Resume</a>
         <a class="btn btn-line" href={SITE.linkedin} target="_blank" rel="noopener" aria-label="Connect on LinkedIn">Connect on <Img id="14169:8963" w={63} h={16} alt="LinkedIn" label="LinkedIn" cls="li-mark" style="width:63px;height:16px" /></a>

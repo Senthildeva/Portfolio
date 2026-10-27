@@ -1,9 +1,8 @@
 ---
-// Intro: "hello" (handwritten) → "I’m" → Senthil Devaraj → white wipe. It plays whenever someone arrives at
-// the site or reloads a page; Base.astro hides it before the first paint when clicking between pages, and for
-// people who prefer reduced motion. Esc ends it early. When it clears it fires "splash:done".
+// Intro: "hello" (handwritten) → white wipe. It plays whenever someone arrives at the site or reloads a page;
+// Base.astro hides it before the first paint when clicking between pages, and for people who prefer reduced
+// motion. Esc ends it early. When it clears it fires "splash:done".
 import "./Splash.css";
-import name from "../assets/splash/splash-senthil.svg?raw";
 import hello from "../assets/splash/hello-stroke.txt?raw";
 
 // Stroke width of the Lottie line at this size (9.09 in the 1920×1080 Lottie → 4.23 in the 410×64 frame).
@@ -15,8 +14,6 @@ const STROKE = 4.23;
       <path d={hello.trim()} pathLength="1" fill="none" stroke="#fff" stroke-width={STROKE} stroke-linecap="round" stroke-linejoin="round" />
     </svg>
   </div>
-  <div class="splash-word" aria-hidden="true"><p class="splash-text">I’m</p></div>
-  <div class="splash-word" aria-hidden="true" set:html={name} />
   <div class="splash-wipe"></div>
 </div>
 
@@ -31,8 +28,8 @@ const STROKE = 4.23;
     } else {
       document.body.classList.add("no-scroll");
       const words = splash.querySelectorAll<HTMLElement>(".splash-word");
-      // How long each word stays: hello needs time to write itself.
-      const hold = [1900, 900, 1000];
+      // How long the word stays: hello needs time to write itself.
+      const hold = [1900];
       let step = 0;
       let timer = 0;
       const finish = () => {

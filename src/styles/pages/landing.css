@@ -5,7 +5,7 @@
 /* ---------- statement ---------- */
 .statement{display:flex;flex-direction:column;gap:40px;position:relative}
 .statement-body{display:flex;align-items:flex-start;gap:40px;justify-content:space-between}
-.statement-body p{font-family:var(--display);font-weight:500;font-size:clamp(28px,3.4vw,48px);line-height:1.333;max-width:1000px;color:var(--ink)}
+.statement-body p{font-family:var(--display);font-weight:500;font-size:clamp(24px,3.4vw,48px);line-height:1.333;max-width:1000px;color:var(--ink)}
 .statement-body p strong{display:block;font-weight:700;color:var(--primary)}
 .sticker{width:225px;flex:none;align-self:center;transform:rotate(-2deg);transition:transform .4s cubic-bezier(.3,1.6,.5,1)}
 .sticker:hover{transform:rotate(4deg) scale(1.06)}

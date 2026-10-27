@@ -1,4 +1,4 @@
-/* ---------- splash (Figma: Launch → Component 41: hello → I’m → Senthil Devaraj → white) ---------- */
+/* ---------- splash (Figma: Launch → Component 41; version 2 keeps only hello → white) ---------- */
 .splash{position:fixed;inset:0;z-index:200;background:var(--primary);display:flex;align-items:center;justify-content:center;overflow:hidden;
   /* Failsafe: if the script never runs, the intro still gets out of the way. */
   animation:splash-failsafe .4s ease 9s forwards}
@@ -13,7 +13,6 @@
 .splash-hello path{stroke-dasharray:1 2;stroke-dashoffset:1.01}
 .splash-hello.show{transition:opacity .2s ease}
 .splash-hello.show path{stroke-dashoffset:0;transition:stroke-dashoffset 1.6s cubic-bezier(.302,.14,.665,1) .1s}
-.splash-text{font-family:var(--display);font-weight:600;font-size:min(48px,9.37vw);color:#fff;text-align:center;line-height:1}
 .splash-wipe{position:absolute;inset:0;background:#fff;transform:translateX(100%)}
 .splash.wipe .splash-wipe{transform:none;transition:transform .64s cubic-bezier(.6,0,.2,1)}
 .splash.done{opacity:0;transition:opacity .45s ease;pointer-events:none}

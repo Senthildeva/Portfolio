@@ -10,7 +10,7 @@
 .cs-hero{display:flex;flex-direction:column;gap:24px}
 .cs-tag{align-self:flex-start;border:1px solid var(--line-2);border-radius:4px;padding:8px 16px;font-family:var(--text);font-weight:800;font-size:16px;line-height:20px;letter-spacing:2px;text-transform:uppercase;color:var(--ink)}
 .cs-tag em,.cs-tag i.g{font-weight:800}
-.cs-title{font-family:var(--display);font-weight:700;font-size:clamp(36px,4.45vw,64px);line-height:1.19;color:var(--ink);max-width:1312px}
+.cs-title{font-family:var(--display);font-weight:700;font-size:clamp(32px,4.45vw,64px);line-height:1.19;color:var(--ink);max-width:1312px}
 .cs-hero .lead{max-width:1000px}
 .cs-btn{height:40px;font-weight:800;font-size:20px;background:var(--cs);color:#fff;border-radius:8px}
 .theme-gnie .cs-btn{background:var(--grad)}
@@ -30,7 +30,7 @@
 .cs-meta dt{font-family:var(--text);font-weight:500;font-size:16px;line-height:20px;letter-spacing:2px;text-transform:uppercase;color:#8a8a8a}
 .cs-meta dd{margin:12px 0 0;font-family:var(--text);font-weight:500;font-size:16px;line-height:24px;letter-spacing:.5px;text-transform:uppercase;color:#fff}
 @media (max-width:900px){.cs-meta,.cs-meta.six{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}}
-.cs-intro{font-family:var(--text);font-size:clamp(22px,2.3vw,32px);line-height:1.5;color:#fff;max-width:1000px}
+.cs-intro{font-family:var(--text);font-size:clamp(20px,2.3vw,32px);line-height:1.5;color:#fff;max-width:1000px}
 .cs-intro .hl{color:var(--cs-hl)}
 .cs-intro .hl b{color:inherit}
 .theme-gnie .cs-intro{max-width:1200px}
@@ -41,7 +41,7 @@
 .cs-label{display:flex;justify-content:space-between;gap:24px;font-family:var(--text);font-size:16px;line-height:20px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-3)}
 .cs-label span:last-child:not(:first-child){font-variant-numeric:tabular-nums}
 .cs-head .cs-label+.cs-h2{margin-top:20px}
-.cs-h2{font-family:var(--display);font-weight:700;font-size:clamp(26px,2.3vw,32px);line-height:1.25;color:var(--ink)}
+.cs-h2{font-family:var(--display);font-weight:700;font-size:clamp(24px,2.3vw,32px);line-height:1.25;color:var(--ink)}
 .cs-sub{display:flex;flex-direction:column;gap:16px;font-family:var(--text);font-size:clamp(17px,1.4vw,20px);line-height:1.6;color:var(--ink-2);max-width:1312px}
 .cs-head .cs-sub{max-width:1000px}
 .cs-split{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:64px;align-items:stretch}
@@ -75,7 +75,7 @@
 
 /* callouts */
 .cs-callout{position:relative;overflow:hidden;background:var(--cs-soft);border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:24px}
-.cs-callout h3{font-family:var(--display);font-weight:700;font-size:clamp(26px,2.3vw,32px);line-height:1.25;color:var(--cs);position:relative}
+.cs-callout h3{font-family:var(--display);font-weight:700;font-size:clamp(22px,2.3vw,32px);line-height:1.25;color:var(--cs);position:relative}
 .theme-gnie .cs-callout h3{color:#000}
 .cs-callout p{font-size:clamp(17px,1.4vw,20px);line-height:1.6;color:var(--ink-2);position:relative;max-width:1264px}
 .cs-callout.alt h3{color:var(--cs-2)}
@@ -107,7 +107,7 @@
 .avatar-lg{width:80px;height:80px;border-radius:24px;overflow:hidden;background:var(--paper-2)}
 .avatar-lg img{width:100%;height:100%;object-fit:cover}
 .cs-persona-name{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
-.cs-persona-name h3{font-family:var(--display);font-weight:600;font-size:clamp(30px,2.8vw,40px);line-height:1.2;color:var(--cs)}
+.cs-persona-name h3{font-family:var(--display);font-weight:600;font-size:clamp(24px,2.8vw,40px);line-height:1.2;color:var(--cs)}
 .theme-outgrow .cs-persona-name h3{color:var(--cs-2)}
 .age{display:inline-flex;align-items:center;background:var(--sand);border-radius:4px;padding:8px 12px;font-family:var(--text);font-weight:900;font-size:14px;line-height:18px;letter-spacing:2px;text-transform:uppercase;color:var(--ink)}
 .cs-persona.tint .age{background:#fff;border:1px solid var(--line)}
@@ -283,4 +283,5 @@
 .cs-pg.prev:hover svg{transform:translateX(-6px)}
 @media (max-width:640px){.cs-pager{flex-direction:column;gap:0}.cs-pg{gap:14px}.cs-pg+.cs-pg{border-top:1px solid var(--line)}.cs-pg small{font-size:15px}}
 .cs-band .cs-points-head{color:#8a8a8a}.cs-band .cs-label{color:#8a8a8a}
-
+/* Phone type scale (Apple HIG / Material 3): sub-titles and hand-written kickers. */
+@media (max-width:640px){.cs-note h3{font-size:24px;line-height:30px}.cs-kicker{font-size:20px}}

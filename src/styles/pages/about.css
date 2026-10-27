@@ -1,10 +1,6 @@
 /* ---------- about ---------- */
-.rotator{--rh:1.4em;height:var(--rh);overflow:hidden;font-family:var(--display);font-weight:700;font-size:clamp(34px,5.6vw,80px);line-height:1.4;color:var(--primary)}
-.rotator ul{list-style:none;margin:0;padding:0;transition:transform .7s cubic-bezier(.65,0,.35,1)}
-.rotator li{height:var(--rh);white-space:nowrap}
-@media (max-width:640px){.rotator{--rh:2.5em;font-size:clamp(30px,9vw,40px);line-height:1.25}.rotator li{white-space:normal;display:flex;align-items:flex-start}}
 .about-hero-media{aspect-ratio:1312/700;width:100%}
-.prose-xl{font-family:var(--display);font-weight:500;font-size:clamp(22px,2.3vw,32px);line-height:1.25;color:var(--ink);display:flex;flex-direction:column;gap:1em;max-width:1312px}
+.prose-xl{font-family:var(--display);font-weight:500;font-size:clamp(20px,2.3vw,32px);line-height:1.25;color:var(--ink);display:flex;flex-direction:column;gap:1em;max-width:1312px}
 .prose-xl b{font-weight:700;color:var(--primary)}
 .timeline{display:flex}
 .tl-list{flex:1;min-width:0;display:flex;flex-direction:column;gap:40px}
@@ -35,3 +31,5 @@
 @keyframes gallery-scroll{to{transform:translateX(-50%)}}
 @media (prefers-reduced-motion:reduce){.gallery{overflow-x:auto;scrollbar-width:none}.gallery-track{animation:none!important}.gallery-group[aria-hidden]{display:none}}
 .head-row{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap}
+/* Phone type scale (Apple HIG / Material 3): expertise card titles. */
+@media (max-width:640px){.xp-card h3{font-size:24px;line-height:30px}}

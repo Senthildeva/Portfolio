@@ -15,7 +15,7 @@
 .brand-logo img{width:auto}
 .brand-logo .ph{width:var(--w);height:var(--h);border-radius:6px;font-size:10px}
 .brand-tag{font-family:var(--text);font-weight:500;font-size:14px;line-height:17px;text-transform:uppercase;color:#555555;text-align:center}
-@media (max-width:760px){.brand{height:150px}.brand-logo{transform:scale(.78)}.brand:hover .brand-logo{transform:scale(.82)}.brand-tag{font-size:11px}}
+@media (max-width:760px){.brand{height:150px}.brand-logo{transform:scale(.78)}.brand:hover .brand-logo{transform:scale(.82)}.brand-tag{font-size:12px}}
 .sectors{background:var(--sand);border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:40px}
 .pills{display:flex;flex-wrap:wrap;gap:20px}
 .pill{display:inline-flex;align-items:center;gap:12px;background:var(--paper);border-radius:8px;padding:8px 16px;font-size:16px;line-height:20px;color:var(--ink)}
