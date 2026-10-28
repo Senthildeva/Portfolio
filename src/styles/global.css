@@ -57,7 +57,7 @@ main{display:flex;flex-direction:column;gap:var(--section);padding-top:clamp(150
 .eyebrow{display:flex;align-items:center;gap:16px;font-family:var(--text);font-weight:800;font-size:16px;line-height:20px;letter-spacing:2px;text-transform:uppercase;color:var(--ink)}
 .eyebrow::before{content:"";flex:0 0 40px;height:1px;background:var(--muted)}
 .label{font-family:var(--text);font-size:16px;line-height:20px;letter-spacing:2px;text-transform:uppercase;color:var(--muted-text)}
-.display{font-family:var(--display);font-weight:700;font-size:clamp(34px,5.6vw,80px);line-height:1.25;color:var(--ink);letter-spacing:-.01em}
+.display{font-family:var(--display);font-weight:700;font-size:clamp(32px,5.6vw,80px);line-height:1.25;color:var(--ink);letter-spacing:-.01em}
 .display .accent,.accent{color:var(--primary)}
 .lead{font-family:var(--text);font-size:clamp(18px,1.7vw,24px);line-height:1.667;color:var(--ink-2);max-width:1200px}
 .lead strong{font-weight:800;color:var(--ink)}
@@ -98,9 +98,11 @@ main{display:flex;flex-direction:column;gap:var(--section);padding-top:clamp(150
 /* The longest tagline ("— UX Researcher by Data & instinct.") is 16.3em wide: sizing by the hero's width (cqi) keeps it whole at every width, 80px at 1440 as in Figma. */
 .rotator ul{list-style:none;margin:0;padding:0;transition:transform .7s cubic-bezier(.65,0,.35,1)}
 .rotator li{height:var(--rh);white-space:nowrap}
-@media (max-width:640px){.rotator{--rh:2.5em;font-size:clamp(26px,7.2vw,30px);line-height:1.25}.rotator li{white-space:normal;display:flex;align-items:flex-start}}
+@media (max-width:640px){.rotator{--rh:2.5em;font-size:24px;line-height:1.25}.rotator li{white-space:normal;display:flex;align-items:flex-start}}
 .stack-xl{display:flex;flex-direction:column;gap:100px}
 @media (max-width:640px){.stack-xl{gap:56px}}
+/* Phone type scale (28 Oct): page titles 32, case study titles 28, taglines and big statements 24, section titles 20, body 18, captions 14. */
+@media (max-width:640px){.h2{font-size:20px}}
 @media (max-width:640px){.eyebrow{font-size:13px;letter-spacing:1.5px;gap:12px;align-items:flex-start}.eyebrow::before{flex-basis:24px;margin-top:8px}}
 
 /* ---------- reveal (every page load; Base.astro picks the blocks) ---------- */

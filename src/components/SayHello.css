@@ -7,7 +7,7 @@ body.hi-open .hi-panel{transform:none}
 .hi-close:hover{background:var(--paper-2)}
 .hi-close svg{width:24px;height:24px}
 .hi-top{display:flex;flex-direction:column;gap:40px;padding:40px 40px 32px}
-.hi-head h2{font-family:var(--display);font-weight:700;font-size:clamp(28px,4vw,48px);line-height:1.17;color:var(--primary);padding-right:48px}
+.hi-head h2{font-family:var(--display);font-weight:700;font-size:clamp(24px,4vw,48px);line-height:1.17;color:var(--primary);padding-right:48px}
 .hi-head h2 span{display:block;font-weight:400;color:var(--ink-3)}
 .hi-head p{margin-top:8px;font-size:20px;color:var(--ink-3)}
 .form{display:flex;flex-direction:column;gap:40px}
@@ -43,4 +43,4 @@ body.hi-open .hi-panel{transform:none}
 .hi-actions a{flex:1;height:40px;border:1px solid var(--primary);border-radius:6px;background:var(--paper);color:var(--primary);display:inline-flex;align-items:center;justify-content:center;gap:12px;font-weight:800;font-size:20px;transition:background-color .2s,color .2s}
 .hi-actions a svg{width:20px;height:20px}
 .hi-actions a:hover{background:var(--primary);color:#fff}
-@media (max-width:640px){.hi-top{padding:32px 20px 24px}.hi-foot{padding:20px 20px 28px}.hi-actions{gap:10px}.hi-actions a{font-size:16px;gap:8px}.hi-close{top:calc(28px + env(safe-area-inset-top,0px));right:max(14px,env(safe-area-inset-right,0px))}}
+@media (max-width:640px){.hi-head p{font-size:18px}.hi-foot h3{font-size:20px}.hi-top{padding:32px 20px 24px}.hi-foot{padding:20px 20px 28px}.hi-actions{gap:10px}.hi-actions a{font-size:16px;gap:8px}.hi-close{top:calc(28px + env(safe-area-inset-top,0px));right:max(14px,env(safe-area-inset-right,0px))}}

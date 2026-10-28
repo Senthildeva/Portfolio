@@ -1,7 +1,7 @@
 ---
-// The "Restricted" panel for case studies under NDA: shown in the pop-up (NdaGate) and on the Restricted page.
-// The password goes to /api/unlock; NdaGate's script handles the form, the show-password button and
-// "Ask me for access" (opens Say Hello with a note already written).
+// The "Restricted Access" panel for case studies under NDA (Figma: Portfolio Works › 224473:1844), shown in the
+// pop-up (NdaGate) and on the Restricted page. The password goes to /api/unlock; NdaGate's script handles the
+// form, the show-password button and "Ask me for access" (opens Say Hello with a note already written).
 import "./NdaGate.css";
 import Icon from "./Icon.astro";
 
@@ -18,8 +18,9 @@ const { id, project, next } = Astro.props;
 <div class="nda-panel">
   <span class="nda-icon" aria-hidden="true"><Icon name="lock-keyhole" /></span>
   <div class="nda-head">
-    <h2 class="nda-title" id={`${id}-title`}>Restricted <span>due to a signed NDA.</span></h2>
-    <p class="nda-note">I’ve signed an NDA for <b data-nda-project>{project}</b>, so this case study is password-protected. Enter the password to view it.</p>
+    <h2 class="nda-title" id={`${id}-title`}>Restricted Access</h2>
+    <p class="nda-sub">NDA - PASSWORD PROTECTED</p>
+    <p class="sr-only" id={`${id}-desc`}>I’ve signed an NDA for <span data-nda-project>{project}</span>, so this case study is password-protected. Enter the password to view it.</p>
   </div>
   <form class="nda-form" method="post" action="/api/unlock" novalidate>
     <input type="hidden" name="next" value={next} />

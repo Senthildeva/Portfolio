@@ -22,3 +22,5 @@ a.card:hover .btn-lg svg{transform:translateX(4px)}
 .card.soon .card-media{opacity:.5}
 .card.soon .card-title{color:var(--c)}
 .view-all{width:300px;max-width:100%}
+/* Phone type scale (28 Oct): page titles 32, case study titles 28, taglines and big statements 24, section titles 20, body 18, captions 14. */
+@media (max-width:640px){.card-title{font-size:20px}}

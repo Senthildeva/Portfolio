@@ -14,7 +14,7 @@ const any = Object.keys(projects).length > 0;
 ---
 {
   any && (
-    <dialog class="nda-dialog" id="nda-gate" aria-labelledby="nda-m-title" data-projects={JSON.stringify(projects)}>
+    <dialog class="nda-dialog" id="nda-gate" aria-labelledby="nda-m-title" aria-describedby="nda-m-desc" data-projects={JSON.stringify(projects)}>
       <button class="nda-close" type="button" aria-label="Close" data-nda-close>
         <Icon name="x" />
       </button>

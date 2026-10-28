@@ -1,6 +1,6 @@
 /* ---------- about ---------- */
 .about-hero-media{aspect-ratio:1312/700;width:100%}
-.prose-xl{font-family:var(--display);font-weight:500;font-size:clamp(20px,2.3vw,32px);line-height:1.25;color:var(--ink);display:flex;flex-direction:column;gap:1em;max-width:1312px}
+.prose-xl{font-family:var(--display);font-weight:500;font-size:clamp(24px,2.3vw,32px);line-height:1.25;color:var(--ink);display:flex;flex-direction:column;gap:1em;max-width:1312px}
 .prose-xl b{font-weight:700;color:var(--primary)}
 .timeline{display:flex}
 .tl-list{flex:1;min-width:0;display:flex;flex-direction:column;gap:40px}
@@ -15,7 +15,7 @@
 .tl-what .focus{font-family:var(--inter);font-weight:600;font-size:clamp(19px,1.7vw,24px);line-height:1.25;color:var(--ink)}
 .tl-what .points{margin:0;padding-left:1.5em;list-style:disc;font-family:var(--inter);font-size:clamp(16px,1.4vw,20px);line-height:1.5;color:var(--ink)}
 .tl-what .points li::marker{font-size:.8em}
-@media (max-width:760px){.tl-item{flex-direction:column;gap:16px}.tl-when{flex-basis:auto;flex-direction:row;align-items:center;gap:12px;font-size:17px}.badge-current{font-size:13px;line-height:20px;padding:4px 10px;letter-spacing:1.5px}.tl-what{gap:16px}.tl-what .points{font-size:16px}}
+@media (max-width:760px){.tl-item{flex-direction:column;gap:16px}.tl-when{flex-basis:auto;flex-direction:row;align-items:center;gap:12px;font-size:18px}.badge-current{font-size:13px;line-height:20px;padding:4px 10px;letter-spacing:1.5px}.tl-what{gap:16px}.tl-what h3{font-size:20px}.tl-what .role,.tl-what .focus,.tl-what .points{font-size:18px}}
 .band{background:var(--night);color:#fff;padding-block:60px}
 .band .label{color:var(--muted)}
 .band .h2{color:#fff}
@@ -35,4 +35,4 @@
 @media (prefers-reduced-motion:reduce){.gallery{overflow-x:auto;scrollbar-width:none}.gallery-track{animation:none!important}.gallery-group[aria-hidden]{display:none}}
 .head-row{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap}
 /* Phone type scale (Apple HIG / Material 3): expertise card titles. */
-@media (max-width:640px){.xp-card h3{font-size:24px;line-height:30px}}
+@media (max-width:640px){.xp-card h3{font-size:20px;line-height:26px}}

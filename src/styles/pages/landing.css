@@ -18,3 +18,5 @@
 .skill-row span{font-family:var(--display);font-size:clamp(30px,3.4vw,48px);text-transform:capitalize;color:var(--ink);white-space:nowrap}
 .skill-row img,.sparkle{width:24px;height:24px;flex:none}
 .exploring{font-family:var(--text);font-weight:800;font-size:20px;line-height:28px;color:var(--primary)}
+/* Phone type scale (28 Oct): page titles 32, case study titles 28, taglines and big statements 24, section titles 20, body 18, captions 14. */
+@media (max-width:640px){.facts{font-size:18px}.exploring{font-size:18px;line-height:26px}.skill-row span{font-size:24px}}

@@ -34,4 +34,6 @@
 .quote-meta img{height:16px;width:auto;flex:none}
 .quote blockquote{margin:0;padding:16px 16px 24px;font-size:20px;line-height:36px;color:var(--ink-2)}
 .quote blockquote b{font-weight:800;color:var(--ink)}
-@media (max-width:640px){.quote blockquote{font-size:17px;line-height:30px}}
+@media (max-width:640px){.quote blockquote{font-size:18px;line-height:30px}}
+/* Phone type scale (28 Oct): page titles 32, case study titles 28, taglines and big statements 24, section titles 20, body 18, captions 14. */
+@media (max-width:640px){.stat dt{font-size:16px;line-height:20px}.stat dd{font-size:20px}.quote-who b{font-size:20px}}

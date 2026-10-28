@@ -1,14 +1,14 @@
-/* ---------- NDA: the Restricted panel (pop-up and page) ---------- */
+/* ---------- NDA: the "Restricted Access" panel (pop-up and page) — Figma 224473:1844 ---------- */
 /* Fields and the Unlock button reuse the Say Hello form styles (.field, .send in SayHello.css). */
-.nda-panel{display:flex;flex-direction:column;gap:32px;padding:40px}
-.nda-icon{width:56px;height:56px;border-radius:16px;background:rgba(79,70,229,.08);color:var(--primary);display:flex;align-items:center;justify-content:center}
-.nda-icon svg{width:28px;height:28px}
-.nda-head{display:flex;flex-direction:column;gap:12px}
-.nda-title{font-family:var(--display);font-weight:700;font-size:clamp(28px,3vw,40px);line-height:1.17;color:var(--primary)}
-.nda-title span{display:block;font-weight:400;color:var(--ink-3)}
-.nda-note{font-size:18px;line-height:1.6;color:var(--ink-2);text-wrap:pretty}
-.nda-note b{font-weight:800;color:var(--ink)}
-.nda-form{display:flex;flex-direction:column;gap:24px}
+.nda-panel{display:flex;flex-direction:column;align-items:center;gap:24px;padding:40px;text-align:center}
+.nda-icon{width:52px;height:52px;border-radius:14px;background:rgba(79,70,229,.08);color:var(--primary);display:flex;align-items:center;justify-content:center;flex:none}
+.nda-icon svg{width:26px;height:26px}
+.nda-head{width:100%;display:flex;flex-direction:column;gap:8px}
+.nda-title{font-family:var(--display);font-weight:700;font-size:48px;line-height:1.1667;color:var(--primary)}
+.nda-sub{font-family:var(--text);font-size:20px;line-height:1.35;color:var(--ink-3)}
+.nda-form{width:100%;display:flex;flex-direction:column;gap:24px;text-align:left}
+.nda-form .send.ready{color:var(--line-2)}
+.nda-form .send.ready:hover{color:#fff}
 .nda-input{position:relative}
 .nda-input input{height:52px;padding:12px 52px 12px 14px}
 .nda-eye{position:absolute;top:50%;right:6px;transform:translateY(-50%);width:40px;height:40px;border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--ink-3);transition:color .2s,background-color .2s}
@@ -21,22 +21,22 @@
 .nda-ask button:hover{color:var(--ink)}
 
 /* ---------- the pop-up ---------- */
-.nda-dialog{width:min(560px,calc(100% - 32px));max-width:none;max-height:calc(100% - 32px);margin:auto;padding:0;border:0;border-radius:16px;background:var(--paper);color:var(--ink);box-shadow:0 24px 64px rgba(16,16,16,.24);overflow:auto;overscroll-behavior:contain}
+.nda-dialog{width:min(552px,calc(100% - 32px));max-width:none;max-height:calc(100% - 32px);margin:auto;padding:0;border:0;border-radius:20px;background:var(--paper);color:var(--ink);box-shadow:0 24px 64px rgba(16,16,16,.24);overflow:auto;overscroll-behavior:contain}
 .nda-dialog::backdrop{background:rgba(16,16,16,.45)}
 .nda-dialog[open]{animation:nda-in .4s cubic-bezier(.2,.8,.2,1)}
 .nda-dialog[open]::backdrop{animation:nda-fade .3s ease}
 @keyframes nda-in{from{opacity:0;transform:translateY(24px) scale(.98)}to{opacity:1;transform:none}}
 @keyframes nda-fade{from{opacity:0}}
-.nda-close{position:absolute;top:24px;right:24px;width:40px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:8px;transition:background-color .2s}
+/* The 24px icon sits 40px from the top and right, as in Figma. */
+.nda-close{position:absolute;top:32px;right:32px;width:40px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:8px;color:#242b38;transition:background-color .2s}
 .nda-close:hover{background:var(--paper-2)}
 .nda-close svg{width:24px;height:24px}
-.nda-dialog .nda-title{padding-right:40px}
 
 /* ---------- the Restricted page (at the case study's address until unlocked) ---------- */
 main.nda-page{gap:48px}
 .nda-h1 em{font-style:normal;color:var(--c,var(--primary))}
-.nda-row{display:grid;grid-template-columns:minmax(0,560px) minmax(0,1fr);gap:40px;align-items:start}
-.nda-card{border:1px solid var(--line);border-radius:16px;background:var(--paper)}
+.nda-row{display:grid;grid-template-columns:minmax(0,552px) minmax(0,1fr);gap:40px;align-items:start}
+.nda-card{border:1px solid var(--line);border-radius:20px;background:var(--paper)}
 .nda-side{display:flex;flex-direction:column;gap:24px;align-items:flex-start}
 .nda-cover{width:100%;aspect-ratio:612/300;border-radius:16px;overflow:hidden;background:var(--paper-2)}
 .nda-cover img{width:100%;height:100%;object-fit:cover}
@@ -44,8 +44,9 @@ main.nda-page{gap:48px}
 
 @media (max-width:900px){.nda-row{grid-template-columns:minmax(0,1fr)}}
 @media (max-width:640px){
-  .nda-panel{padding:32px 20px 28px;gap:24px}
-  .nda-note{font-size:16px}
-  .nda-close{top:16px;right:12px}
+  .nda-panel{padding:32px 20px 28px}
+  .nda-title{font-size:24px}
+  .nda-sub{font-size:18px}
+  .nda-close{top:12px;right:12px}
   .nda-meta{font-size:13px;letter-spacing:1.5px}
 }
